@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budapest — Blaguss Destination Management</title>
+  <meta name="description" content="Discover Budapest as Europe's most inspiring MICE destination. Blaguss DMC delivers exceptional corporate events, incentive travel and conferences in the Hungarian capital.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sw-red: #E30613;
+  --sw-dark: #1A1A1A;
+  --sw-dark-2: #2A2A2A;
+  --sw-dark-3: #3A3A3A;
+  --sw-gray-light: #F5F5F3;
+  --sw-border: #E8E8E5;
+  --sw-white: #FFFFFF;
+  --sw-font-serif: 'Playfair Display', Georgia, serif;
+  --sw-font-sans: 'Inter', system-ui, sans-serif;
+  --sw-section-py: 4rem;
+  --sw-section-px: 3rem;
+  --sw-radius-card: 0.625rem;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sw-font-sans); color: var(--sw-dark); background: var(--sw-white); -webkit-font-smoothing: antialiased; line-height: 1.65; font-size: 16px; margin: 0; padding: 0; font-variant-numeric: lining-nums tabular-nums; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; }
+
+/* ============================================================
+   NAVBAR — főoldali 1:1 másolat (transzparens → scrolled fehér)
+   ============================================================ */
+.sw-navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  height: 56px;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1030;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.sw-navbar-right { display: flex; align-items: center; gap: 2rem; }
+.sw-navbar.scrolled {
+  background: var(--sw-white);
+  border-bottom-color: var(--sw-border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+.sw-navbar-brand { display: flex; align-items: center; text-decoration: none; }
+.sw-navbar-logo { height: 42px; width: auto; display: block; transition: opacity 0.2s; }
+.sw-navbar-brand:hover .sw-navbar-logo { opacity: 0.85; }
+.sw-nav-links { display: flex; align-items: center; gap: 2rem; }
+.sw-nav-links-btns { display: flex; align-items: center; gap: 0.375rem; }
+.sw-nav-link { font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.9); transition: color 0.3s; }
+.sw-nav-link:hover { color: var(--sw-white); }
+.sw-nav-link.active { color: var(--sw-white); font-weight: 600; }
+.sw-navbar.scrolled .sw-nav-link { color: var(--sw-dark); }
+.sw-navbar.scrolled .sw-nav-link:hover { color: var(--sw-red); }
+.sw-navbar.scrolled .sw-nav-link.active { color: var(--sw-red); }
+/* DMC — transzparens navbaron fehér alap, fekete betű */
+.sw-btn-nav-dmc { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-white); color: var(--sw-dark); transition: all 0.3s; }
+.sw-btn-nav-dmc:hover { background: rgba(255,255,255,0.85); color: var(--sw-dark); }
+/* DMC — scrolled navbaron sötét alap, fehér betű */
+.sw-navbar.scrolled .sw-btn-nav-dmc { background: var(--sw-dark); color: var(--sw-white); }
+.sw-navbar.scrolled .sw-btn-nav-dmc:hover { background: #333; color: var(--sw-white); }
+.sw-btn-nav-pco { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: background 0.2s; }
+.sw-btn-nav-pco:hover { background: #c00511; color: var(--sw-white); }
+.sw-btn-nav-contact { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; border: 1.5px solid rgba(255,255,255,0.75); color: var(--sw-white); background: transparent; transition: all 0.3s; }
+.sw-btn-nav-contact:hover { background: rgba(255,255,255,0.15); border-color: var(--sw-white); }
+.sw-navbar.scrolled .sw-btn-nav-contact { border-color: var(--sw-dark); color: var(--sw-dark); }
+.sw-navbar.scrolled .sw-btn-nav-contact:hover { background: var(--sw-dark); color: var(--sw-white); }
+
+/* ---- HAMBURGER ---- */
+.sw-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 1100; }
+.sw-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--sw-white); border-radius: 2px; transition: all 0.3s ease; transform-origin: center; }
+.sw-navbar.scrolled .sw-hamburger span { background: var(--sw-dark); }
+.sw-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.sw-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.sw-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ---- MOBILE MENU ---- */
+.sw-mobile-menu { position: fixed; top: 56px; left: 0; right: 0; bottom: 0; background: var(--sw-dark); z-index: 1020; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity 0.3s ease, transform 0.3s ease; overflow-y: auto; }
+.sw-mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+.sw-mobile-menu-inner { display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 2rem 3rem; min-height: 100%; }
+.sw-mobile-nav { display: flex; flex-direction: column; }
+.sw-mobile-link { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.875rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; letter-spacing: -0.01em; line-height: 1.2; display: block; }
+.sw-mobile-link:hover { color: var(--sw-white); }
+.sw-mobile-link:last-child { border-bottom: none; }
+.sw-mobile-btns { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
+.sw-mobile-btns .sw-btn-primary { display: block; text-align: center; font-size: 1rem; padding: 0.875rem 1.75rem; }
+.sw-mobile-btns .sw-btn-nav-pco { display: block; text-align: center; font-size: 1rem; padding: 0.875rem 1.75rem; border-radius: 5px; }
+.sw-mobile-contact-link { font-size: 0.9375rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; text-align: center; padding: 0.25rem 0; }
+.sw-mobile-contact-link:hover { color: rgba(255,255,255,0.65); }
+
+/* ============================================================
+   HERO — nem full-screen, fix magasság, kép háttér
+   ============================================================ */
+.sw-hero-dest {
+  position: relative; overflow: hidden;
+  height: 540px;
+  margin-top: 0;
+  display: flex; align-items: flex-end;
+}
+.sw-hero-dest-img {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1a2030 0%, #0d1520 100%);
+  /* Valódi kép: <img src="BUDAPEST_hero.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"> */
+}
+.sw-hero-dest-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+.sw-hero-dest-content {
+  position: relative; z-index: 2;
+  padding: 0 var(--sw-section-px) 3rem;
+  width: 100%;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem;
+}
+.sw-hero-dest-left { flex: 1; }
+.sw-breadcrumb {
+  display: flex; align-items: center; gap: 0.375rem;
+  font-size: 0.75rem; color: rgba(255,255,255,0.35);
+  margin-bottom: 0.875rem;
+}
+.sw-breadcrumb a { color: rgba(255,255,255,0.35); transition: color 0.2s; }
+.sw-breadcrumb a:hover { color: rgba(255,255,255,0.65); }
+.sw-breadcrumb-sep { color: rgba(255,255,255,0.2); }
+.sw-breadcrumb-current { color: rgba(255,255,255,0.65); }
+.sw-hero-dest-title {
+  font-family: var(--sw-font-serif);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 500; color: var(--sw-white);
+  line-height: 1.0; letter-spacing: -0.01em;
+  margin-bottom: 0.375rem;
+}
+.sw-hero-dest-sub {
+  font-family: var(--sw-font-serif);
+  font-size: 1.125rem; font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.sw-btn-primary { display: inline-block; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.02em; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: all 0.2s ease; cursor: pointer; border: none; }
+.sw-btn-primary:hover { background: #c00511; color: var(--sw-white); transform: translateY(-1px); }
+.sw-btn-outline { display: inline-block; font-weight: 600; font-size: 0.9375rem; padding: 0.75rem 1.75rem; border-radius: 5px; background: transparent; border: 1.5px solid var(--sw-dark); color: var(--sw-dark); transition: all 0.2s ease; }
+.sw-btn-outline:hover { background: var(--sw-dark); color: var(--sw-white); transform: translateY(-1px); }
+.sw-btn-outline-white { display: inline-block; font-weight: 600; font-size: 0.9375rem; padding: 0.75rem 1.75rem; border-radius: 5px; background: transparent; border: 1.5px solid rgba(255,255,255,0.5); color: var(--sw-white); transition: all 0.2s ease; }
+.sw-btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--sw-white); }
+
+/* ============================================================
+   SECTION alapok
+   ============================================================ */
+.sw-section { padding: var(--sw-section-py) var(--sw-section-px); }
+.sw-section-bg { background: var(--sw-gray-light); }
+.sw-section-dark { background: var(--sw-dark); }
+.sw-section-tag { display: block; font-size: 0.75rem; font-weight: 600; color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.sw-section-title { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 1rem; line-height: 1.2; }
+.sw-section-title-light { color: var(--sw-white); }
+
+/* ============================================================
+   STATS SÁVY — performancia mutatók kipörgő számokkal
+   ============================================================ */
+.sw-stats-bar {
+  display: flex;
+  border-bottom: 1px solid var(--sw-border);
+  background: var(--sw-white);
+}
+.sw-stat-item {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-right: 1px solid var(--sw-border);
+  position: relative;
+  overflow: hidden;
+}
+.sw-stat-item:last-child { border-right: none; }
+.sw-stat-item::after {
+  content: '';
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 0; height: 3px; background: var(--sw-red);
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sw-stat-item.is-counted::after { width: 60%; }
+.sw-stat-num {
+  font-family: var(--sw-font-serif);
+  font-size: 2.5rem; font-weight: 500;
+  color: var(--sw-dark); line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.375rem;
+  display: block;
+}
+.sw-stat-num-prefix { font-size: 1.25rem; vertical-align: middle; color: var(--sw-red); }
+.sw-stat-num-suffix { font-size: 1.5rem; color: var(--sw-red); }
+.sw-stat-label {
+  font-size: 0.8125rem; color: #6B6B6B;
+  line-height: 1.35; display: block;
+}
+
+/* ============================================================
+   WHY BUDAPEST — középre igazított, 40years stílusban
+   ============================================================ */
+.sw-about-section {
+  padding: var(--sw-section-py) var(--sw-section-px);
+  text-align: center;
+  border-bottom: 1px solid #F0F0EE;
+}
+.sw-about-title {
+  font-family: var(--sw-font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 500; color: var(--sw-dark);
+  letter-spacing: -0.01em; margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+.sw-about-body {
+  font-size: 1rem; color: #6B6B6B;
+  line-height: 1.85; max-width: 820px;
+  margin: 0 auto 1.25rem;
+}
+/* 2. bekezdés fade-wrap */
+.sw-about-p2-wrap {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.sw-about-p2-fade {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, transparent 0%, var(--sw-white) 100%);
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+/* Extra bekezdések (3-4) — alapból rejtve */
+.sw-about-extra { display: none; }
+.sw-about-extra.open { display: block; }
+/* Continue reading gomb — sw-btn-outline stílus */
+.sw-about-read-more {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.25rem;
+  font-weight: 600; font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem; border-radius: 5px;
+  background: transparent; border: 1.5px solid var(--sw-dark);
+  color: var(--sw-dark); cursor: pointer;
+  font-family: var(--sw-font-sans);
+  transition: all 0.2s ease;
+}
+.sw-about-read-more:hover { background: var(--sw-dark); color: var(--sw-white); }
+.sw-about-read-more-icon {
+  display: inline-block; transition: transform 0.35s ease;
+  font-style: normal; line-height: 1;
+}
+.sw-about-read-more.open .sw-about-read-more-icon { transform: none; }
+
+/* ============================================================
+   VENUE TYPES — főoldali destinations bento stílus
+   ============================================================ */
+.sw-venue-section { background: var(--sw-gray-light); padding-top: var(--sw-section-py); padding-bottom: var(--sw-section-py); }
+.sw-venue-header { padding: 0 var(--sw-section-px) 2rem; }
+.sw-venue-header h2 { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.sw-venue-header p { font-size: 1rem; color: #6B6B6B; max-width: 560px; }
+
+/* Draggable scroll wrap — pont mint a destinations bento */
+.sw-venue-bento-wrap {
+  overflow-x: auto; overflow-y: hidden;
+  padding-left: var(--sw-section-px);
+  cursor: grab; scrollbar-width: none; -ms-overflow-style: none;
+}
+.sw-venue-bento-wrap::after { content: ''; display: block; min-width: var(--sw-section-px); height: 1px; }
+.sw-venue-bento-wrap::-webkit-scrollbar { display: none; }
+.sw-venue-bento-wrap.dragging { cursor: grabbing; }
+
+.sw-venue-bento {
+  display: grid;
+  grid-template-columns: 360px 280px 240px 300px 260px 240px;
+  grid-template-rows: 320px;
+  gap: 12px;
+  width: max-content;
+  padding-right: var(--sw-section-px);
+}
+
+/* Kártya — azonos stílus mint sw-card-dest */
+.sw-card-venue {
+  border-radius: var(--sw-radius-card);
+  overflow: hidden; position: relative;
+  cursor: pointer; display: flex; flex-direction: column;
+}
+.sw-card-venue-placeholder {
+  position: absolute; inset: 0;
+  background: var(--sw-dark); z-index: 0;
+  transition: transform 0.55s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.sw-card-venue-placeholder span {
+  font-size: 0.625rem; color: rgba(255,255,255,0.08);
+  text-align: center; padding: 1rem;
+}
+.sw-card-venue img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(1);
+  transition: filter 0.5s ease, transform 0.55s ease;
+  z-index: 0;
+}
+.sw-card-venue:hover img { filter: grayscale(0); transform: scale(1.04); }
+.sw-card-venue:hover .sw-card-venue-placeholder { transform: scale(1.04); }
+
+.sw-card-venue-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.08) 100%);
+  z-index: 1;
+}
+.sw-card-venue-content {
+  position: relative; z-index: 2;
+  padding: 1.375rem;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  height: 100%;
+}
+.sw-card-venue-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+.sw-card-venue-badge { font-size: 0.6875rem; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.375rem; display: block; }
+.sw-card-venue-title { font-family: var(--sw-font-serif); font-size: 1.25rem; font-weight: 500; color: var(--sw-white); margin-bottom: 0.25rem; line-height: 1.15; }
+.sw-card-venue-sub { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.4; max-width: 220px; }
+
+/* Első kártya nagyobb cím */
+.sw-card-venue:first-child .sw-card-venue-title { font-size: 1.625rem; }
+
+/* ============================================================
+   PRO TIP — egyedi dizájn
+   ============================================================ */
+.sw-protip-section { padding: var(--sw-section-py) var(--sw-section-px); border-bottom: 1px solid var(--sw-border); }
+.sw-protip-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--sw-dark);
+}
+.sw-protip-left {
+  background: var(--sw-red);
+  padding: 3rem 2.5rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.sw-protip-eyebrow {
+  font-size: 0.6875rem; font-weight: 700;
+  color: rgba(255,255,255,0.65); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 1.5rem; display: block;
+}
+.sw-protip-icon-wrap {
+  width: 56px; height: 56px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.75rem; margin-bottom: 1.5rem;
+}
+.sw-protip-left-title {
+  font-family: var(--sw-font-serif);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500; color: var(--sw-white);
+  line-height: 1.15; letter-spacing: -0.01em;
+}
+.sw-protip-left-tag {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  margin-top: 1.5rem;
+  font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+}
+.sw-protip-left-tag::before { content: ''; display: block; width: 20px; height: 1px; background: rgba(255,255,255,0.4); }
+.sw-protip-right {
+  padding: 3rem 2.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 1.75rem;
+}
+.sw-protip-body {
+  font-size: 1rem; color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+}
+.sw-protip-body strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
+/* ============================================================
+   DESTINATIONS CTA SÁV
+   ============================================================ */
+.sw-dest-cta-bar {
+  background: var(--sw-gray-light);
+  padding: 3rem var(--sw-section-px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  border-bottom: 1px solid var(--sw-border);
+}
+.sw-dest-cta-left { min-width: 0; }
+.sw-dest-cta-tag { font-size: 0.75rem; font-weight: 600; color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+.sw-dest-cta-title { font-family: var(--sw-font-serif); font-size: clamp(1.25rem, 2vw, 1.625rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; line-height: 1.25; margin-bottom: 0.5rem; }
+.sw-dest-cta-body { font-size: 0.9375rem; color: #6B6B6B; line-height: 1.65; max-width: 860px; }
+.sw-dest-cta-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; flex-shrink: 0; }
+
+/* ============================================================
+   CONTACT / CTA — főoldali 1:1 másolat
+   ============================================================ */
+.sw-cta { background: var(--sw-dark); padding: var(--sw-section-py) var(--sw-section-px); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.sw-cta-left { display: flex; flex-direction: column; justify-content: center; }
+.sw-cta-title { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 2.5vw, 2.25rem); font-weight: 500; color: var(--sw-white); letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 1rem; }
+.sw-cta-body { font-size: 1rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+.sw-cta-form { background: var(--sw-white); border-radius: 10px; padding: 2rem; }
+.sw-form-input { width: 100%; border: 1px solid var(--sw-border); border-radius: 6px; padding: 0.6875rem 1rem; font-size: 0.9375rem; color: var(--sw-dark); background: #FAFAFA; font-family: var(--sw-font-sans); outline: none; transition: border-color 0.2s; margin-bottom: 0.75rem; }
+.sw-form-input:focus { border-color: var(--sw-dark); }
+.sw-form-textarea { width: 100%; border: 1px solid var(--sw-border); border-radius: 6px; padding: 0.6875rem 1rem; font-size: 0.9375rem; color: var(--sw-dark); background: #FAFAFA; font-family: var(--sw-font-sans); outline: none; resize: none; height: 90px; margin-bottom: 0.75rem; }
+.sw-form-checks { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+.sw-form-check-label { font-size: 0.875rem; color: #6B6B6B; display: flex; align-items: center; gap: 0.375rem; cursor: pointer; }
+.sw-form-submit { width: 100%; background: var(--sw-red); color: var(--sw-white); font-size: 1rem; font-weight: 600; padding: 0.8125rem; border-radius: 5px; border: none; cursor: pointer; letter-spacing: 0.02em; transition: background 0.2s; }
+.sw-form-submit:hover { background: #c00511; }
+.sw-service-sel { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+.sw-service-option { border: 1px solid var(--sw-border); border-radius: 8px; padding: 1rem 1.125rem; cursor: pointer; position: relative; transition: all 0.25s ease; background: #FAFAFA; }
+.sw-service-option:hover { border-color: #ccc; background: #F5F5F3; }
+.sw-service-option.active { border-color: var(--sw-dark); background: var(--sw-white); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.sw-service-label { font-size: 0.9375rem; font-weight: 600; color: var(--sw-dark); margin-bottom: 0.2rem; display: block; }
+.sw-service-sub { font-size: 0.8125rem; color: #6B6B6B; display: block; line-height: 1.4; }
+.sw-service-dot { position: absolute; top: 1rem; right: 1rem; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid #ccc; transition: all 0.25s; background: transparent; }
+.sw-service-option.active .sw-service-dot { background: var(--sw-dark); border-color: var(--sw-dark); }
+
+/* ============================================================
+   BLOG CAROUSEL
+   ============================================================ */
+.sw-blog-section { padding-top: var(--sw-section-py); padding-bottom: var(--sw-section-py); border-bottom: 1px solid var(--sw-border); }
+.sw-blog-header { padding: 0 var(--sw-section-px) 1.75rem; }
+.sw-blog-header h2 { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.sw-blog-header p { font-size: 1rem; color: #6B6B6B; }
+.sw-blog-scroll { overflow-x: auto; overflow-y: hidden; padding-left: var(--sw-section-px); cursor: grab; scrollbar-width: none; -ms-overflow-style: none; }
+.sw-blog-scroll::-webkit-scrollbar { display: none; }
+.sw-blog-scroll.dragging { cursor: grabbing; }
+.sw-blog-track { display: flex; gap: 14px; width: max-content; padding-right: var(--sw-section-px); }
+.sw-card-blog { border: none; border-radius: 0; background: transparent; cursor: pointer; display: block; text-decoration: none; width: 320px; flex-shrink: 0; }
+.sw-card-blog:hover .sw-card-blog-img { transform: scale(1.02); }
+.sw-card-blog-img { height: 260px; background: var(--sw-dark); position: relative; overflow: hidden; border-radius: 10px; transition: transform 0.4s ease; }
+.sw-card-blog-placeholder { position: absolute; inset: 0; background: linear-gradient(135deg, #1A1A1A, #2A2A2A); }
+.sw-card-blog-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%); }
+.sw-card-blog-cat { position: absolute; top: 0.875rem; left: 0.875rem; z-index: 2; font-size: 0.6875rem; font-weight: 700; color: var(--sw-white); background: rgba(227,6,19,0.85); padding: 0.1875rem 0.5rem; border-radius: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+.sw-card-blog-body { padding: 1rem 0 0; }
+.sw-card-blog-title { font-family: var(--sw-font-serif); font-size: 1.0625rem; font-weight: 500; color: var(--sw-dark); line-height: 1.35; margin-bottom: 0.375rem; }
+.sw-card-blog-excerpt { font-size: 0.875rem; color: #6B6B6B; line-height: 1.55; margin-bottom: 0.375rem; }
+.sw-card-blog-meta { font-size: 0.8125rem; color: #aaa; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.sw-footer { background: #0D0D0D; padding: 3.5rem 3rem 1.5rem; }
+.sw-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.sw-footer-logo { font-size: 1.25rem; font-weight: 800; color: var(--sw-red); letter-spacing: -0.02em; font-family: var(--sw-font-sans); margin-bottom: 0.25rem; display: block; }
+.sw-footer-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+.sw-footer-col-title { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block; }
+.sw-footer-link { font-size: 0.875rem; color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.375rem; transition: color 0.2s; }
+.sw-footer-link:hover { color: rgba(255,255,255,0.7); }
+.sw-footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.sw-footer-copy { font-size: 0.8125rem; color: rgba(255,255,255,0.2); }
+.sw-social-btn { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: all 0.2s; }
+.sw-social-btn:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+[data-reveal] { opacity: 0; transition: opacity 0.65s ease, transform 0.65s ease; }
+[data-reveal="fade-up"] { transform: translateY(24px); }
+[data-reveal="fade-in"] { transform: none; }
+[data-reveal].is-visible { opacity: 1; transform: none; }
+[data-reveal-stagger] > * { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal-stagger] > *:nth-child(1) { transition-delay: 0s; }
+[data-reveal-stagger] > *:nth-child(2) { transition-delay: 0.08s; }
+[data-reveal-stagger] > *:nth-child(3) { transition-delay: 0.16s; }
+[data-reveal-stagger] > *:nth-child(4) { transition-delay: 0.24s; }
+[data-reveal-stagger] > *:nth-child(5) { transition-delay: 0.32s; }
+[data-reveal-stagger] > *:nth-child(6) { transition-delay: 0.40s; }
+[data-reveal-stagger].is-visible > * { opacity: 1; transform: none; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+/* ---- LG: 992px ---- */
+@media (max-width: 992px) {
+  /* Navbar */
+  .sw-nav-links { display: none; }
+  .sw-nav-links-btns .sw-btn-nav-contact { display: none; }
+  .sw-hamburger { display: flex; }
+
+  /* Hero badge eltűnik — nincs hely */
+  
+  /* Stats — 2×2 grid */
+  .sw-stats-bar { flex-wrap: wrap; }
+  .sw-stat-item { flex: 1 1 50%; border-bottom: 1px solid var(--sw-border); }
+  .sw-stat-item:nth-child(2) { border-right: none; }
+  .sw-stat-item:nth-child(3) { border-bottom: none; }
+  .sw-stat-item:nth-child(4) { border-right: none; border-bottom: none; }
+
+  /* Venue bento — kisebb oszlopok */
+  .sw-venue-bento {
+    grid-template-rows: 280px;
+    grid-template-columns: 320px 260px 220px 270px 240px 220px;
+  }
+
+  /* Pro tip — egymás alá */
+  .sw-protip-wrap { grid-template-columns: 1fr; }
+  .sw-protip-left { padding: 2.5rem 2rem; }
+  .sw-protip-right { padding: 2.5rem 2rem; }
+
+  /* Destinations CTA sáv — egymás alá */
+  .sw-dest-cta-bar { grid-template-columns: 1fr; gap: 1.5rem; }
+  .sw-dest-cta-right { width: 100%; }
+
+  /* Blog */
+  .sw-blog-header { padding: 0 var(--sw-section-px) 1.5rem; }
+
+  /* Contact form — egymás alá */
+  .sw-cta { grid-template-columns: 1fr; gap: 2.5rem; }
+
+  /* Footer */
+  .sw-footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+/* ---- MD: 768px ---- */
+@media (max-width: 768px) {
+  :root { --sw-section-py: 3rem; --sw-section-px: 1.5rem; }
+
+  /* Navbar */
+  .sw-navbar { padding: 0 1.5rem; }
+
+  /* Hero */
+  .sw-hero-dest { height: 400px; }
+  .sw-hero-dest-content { padding: 0 1.5rem 2.5rem; }
+  .sw-hero-dest-title { font-size: clamp(2.5rem, 7vw, 3.5rem); }
+
+  /* Stats — marad 2×2, de kisebb padding */
+  .sw-stat-item { padding: 1.5rem 1rem; }
+  .sw-stat-num { font-size: 2rem; }
+
+  /* About — read-more gomb teljes széles */
+  .sw-about-read-more { width: 100%; justify-content: center; }
+
+  /* Venue bento */
+  .sw-venue-bento {
+    grid-template-rows: 240px;
+    grid-template-columns: 280px 220px 190px 230px 210px 190px;
+  }
+
+  /* Pro tip */
+  .sw-protip-section { padding: var(--sw-section-py) var(--sw-section-px); }
+  .sw-protip-left { padding: 2rem 1.5rem; }
+  .sw-protip-right { padding: 2rem 1.5rem; gap: 1.25rem; }
+  .sw-protip-left-title { font-size: 1.5rem; }
+
+  /* Blog */
+  .sw-blog-scroll { padding-left: var(--sw-section-px); }
+  .sw-card-blog { width: 280px; }
+  .sw-card-blog-img { height: 220px; }
+
+  /* Contact form */
+  .sw-cta-form { padding: 1.5rem; }
+  .sw-service-sel { grid-template-columns: 1fr; gap: 0.5rem; }
+
+  /* Footer */
+  .sw-footer { padding: 3rem 1.5rem 1.5rem; }
+  .sw-footer-grid { grid-template-columns: 1fr 1fr; }
+  .sw-footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}
+
+/* ---- SM: 576px ---- */
+@media (max-width: 576px) {
+  :root { --sw-section-py: 2.5rem; --sw-section-px: 1.25rem; }
+
+  /* Navbar */
+  .sw-navbar { padding: 0 1.25rem; }
+  .sw-navbar-logo-text { font-size: 1rem; }
+  .sw-nav-links-btns { display: none; }
+
+  /* Hero */
+  .sw-hero-dest { height: 340px; }
+  .sw-hero-dest-content { padding: 0 1.25rem 2rem; }
+  .sw-hero-dest-title { font-size: clamp(2rem, 9vw, 2.75rem); }
+  .sw-hero-dest-sub { font-size: 1rem; }
+  .sw-breadcrumb { font-size: 0.6875rem; }
+
+  /* Stats — 1 oszlop */
+  .sw-stats-bar { flex-direction: column; flex-wrap: nowrap; }
+  .sw-stat-item { flex: none; width: 100%; border-right: none; border-bottom: 1px solid var(--sw-border); }
+  .sw-stat-item:last-child { border-bottom: none; }
+  .sw-stat-num { font-size: 2rem; }
+
+  /* About */
+  .sw-about-title { font-size: clamp(1.5rem, 5vw, 1.875rem); }
+  .sw-about-body { font-size: 0.9375rem; }
+
+  /* Venue bento */
+  .sw-venue-bento {
+    grid-template-rows: 200px;
+    grid-template-columns: 240px 190px 170px 200px 185px 170px;
+  }
+  .sw-venue-header { padding: 0 var(--sw-section-px) 1.25rem; }
+
+  /* Pro tip */
+  .sw-protip-left { padding: 1.75rem 1.25rem; }
+  .sw-protip-right { padding: 1.75rem 1.25rem; }
+  .sw-protip-icon-wrap { width: 44px; height: 44px; font-size: 1.375rem; }
+  .sw-protip-left-title { font-size: 1.25rem; }
+  .sw-protip-body { font-size: 0.9375rem; }
+
+  /* Destinations CTA sáv */
+  .sw-dest-cta-bar { padding: 2rem var(--sw-section-px); }
+  .sw-dest-cta-title { font-size: 1.125rem; }
+  .sw-dest-cta-body { font-size: 0.875rem; }
+  .sw-dest-cta-right { width: 100%; }
+  .sw-dest-cta-right .sw-btn-primary { width: 100%; text-align: center; display: block; }
+
+  /* Blog */
+  .sw-card-blog { width: 260px; }
+  .sw-card-blog-img { height: 200px; }
+
+  /* Contact form */
+  .sw-cta-title { font-size: 1.5rem; }
+
+  /* Footer */
+  .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
+  .sw-footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/* ---- XS: 390px ---- */
+@media (max-width: 390px) {
+  .sw-hero-dest { height: 300px; }
+  .sw-hero-dest-title { font-size: clamp(1.75rem, 9vw, 2.25rem); }
+  .sw-stat-item { padding: 1.125rem 1rem; }
+  .sw-stat-num { font-size: 1.75rem; }
+  .sw-venue-bento {
+    grid-template-rows: 180px;
+    grid-template-columns: 210px 170px 155px 180px 165px 155px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="sw-navbar">
+  <a href="index.html" class="sw-navbar-brand">
+    <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="sw-navbar-logo">
+  </a>
+  <div class="sw-navbar-right">
+    <div class="sw-nav-links">
+      <a href="#" class="sw-nav-link">About Us</a>
+      <span class="sw-nav-link active" style="cursor:default;opacity:0.5;">Destinations</span>
+      <a href="#" class="sw-nav-link">References</a>
+      <a href="#" class="sw-nav-link">Blog</a>
+    </div>
+    <div class="sw-nav-links-btns">
+      <a href="blaguss_dmc.html" class="sw-btn-nav-dmc">DMC</a>
+      <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO</a>
+      <a href="#contact" class="sw-btn-nav-contact">Contact</a>
+    </div>
+    <button class="sw-hamburger" id="sw-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="sw-mobile-menu" id="sw-mobile-menu">
+  <div class="sw-mobile-menu-inner">
+    <nav class="sw-mobile-nav">
+      <a href="#" class="sw-mobile-link">About Us</a>
+      <a href="blaguss_budapest.html" class="sw-mobile-link">Destinations</a>
+      <a href="#" class="sw-mobile-link">References</a>
+      <a href="#" class="sw-mobile-link">Blog</a>
+    </nav>
+    <div>
+      <div class="sw-mobile-btns">
+        <a href="blaguss_dmc.html" class="sw-btn-primary">DMC Services</a>
+        <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO Services</a>
+      </div>
+      <a href="#contact" class="sw-mobile-contact-link" style="display:block; text-align:center; margin-top:1rem;">Get in Touch →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO — kép placeholder, nem full-screen
+     ============================================================ -->
+<section class="sw-hero-dest">
+  <div class="sw-hero-dest-img">
+    <img src="BUDAPEST_hero.webp" alt="Budapest cityscape" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+  </div>
+  <div class="sw-hero-dest-overlay"></div>
+  <div class="sw-hero-dest-content">
+    <div class="sw-hero-dest-left">
+      <div class="sw-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sw-breadcrumb-sep">›</span>
+        <span style="cursor:default;opacity:0.5;">Destinations</span>
+        <span class="sw-breadcrumb-sep">›</span>
+        <span class="sw-breadcrumb-current">Budapest</span>
+      </div>
+      <h1 class="sw-hero-dest-title">Budapest</h1>
+      <p class="sw-hero-dest-sub">Europe's most inspiring event destination</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS SÁVY — kipörgő számok
+     ============================================================ -->
+<div class="sw-stats-bar" id="sw-stats-bar">
+  <div class="sw-stat-item">
+    <span class="sw-stat-num">
+      <span id="stat-mice" data-target="2">0</span><span class="sw-stat-num-suffix">M+</span>
+    </span>
+    <span class="sw-stat-label">MICE visitors per year</span>
+  </div>
+  <div class="sw-stat-item">
+    <span class="sw-stat-num">
+      <span id="stat-venues" data-target="300">0</span><span class="sw-stat-num-suffix">+</span>
+    </span>
+    <span class="sw-stat-label">Event venues in the city</span>
+  </div>
+  <div class="sw-stat-item">
+    <span class="sw-stat-num">
+      <span class="sw-stat-num-prefix">#</span><span id="stat-icca" data-target="8">0</span>
+    </span>
+    <span class="sw-stat-label">ICCA world congress ranking</span>
+  </div>
+  <div class="sw-stat-item">
+    <span class="sw-stat-num" style="font-size:2rem; letter-spacing:-0.02em;">UNESCO</span>
+    <span class="sw-stat-label">World Heritage Site</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     WHY BUDAPEST — középre igazított (40years stílus)
+     ============================================================ -->
+<section class="sw-about-section" data-reveal="fade-up">
+  <span class="sw-section-tag">Why Budapest</span>
+  <h2 class="sw-about-title">Hungary's Capital —<br>Grand Venues, Rich History</h2>
+
+  <!-- 1. bekezdés — mindig látszik -->
+  <p class="sw-about-body">Budapest is one of Europe's most dynamic destinations for corporate events and incentive travel. Straddling the Danube between Buda's forested hills and Pest's elegant boulevards, the city offers a rare combination: centuries of imperial architecture, world-class gastronomy and a vibrant contemporary culture — all within a compact, walkable capital that surprises first-time visitors and rewards those who return.</p>
+
+  <!-- 2. bekezdés — levágva + fade, JS méretezi -->
+  <div class="sw-about-p2-wrap" id="sw-about-p2-wrap">
+    <p class="sw-about-body" id="sw-about-p2">From the grand halls of the Hungarian State Opera to rooftop terraces overlooking Parliament, from candlelit gala dinners in 19th-century palaces to private boat receptions on the Danube — every event in Budapest becomes an experience in itself. The city's extraordinary density of landmark venues means that within a single programme, delegates can move from a Baroque concert hall to a contemporary rooftop bar without ever leaving the inner districts.</p>
+    <div class="sw-about-p2-fade" id="sw-about-p2-fade"></div>
+  </div>
+
+  <!-- 3-4. bekezdés — alapból rejtve -->
+  <p class="sw-about-body sw-about-extra" id="sw-about-extra-1">Budapest's hospitality infrastructure is equally impressive. The city is home to more than a dozen five-star international hotel brands, all within easy reach of the historic centre, and its restaurant scene has earned growing international recognition — with several Michelin-starred establishments that make for unforgettable gala dinner settings. Add to this an outstanding network of pre- and post-conference excursion options — wine country, thermal spas, riverbank cycling — and Budapest consistently delivers experiences that go well beyond the conference room.</p>
+  <p class="sw-about-body sw-about-extra" id="sw-about-extra-2">With one of the most competitive value propositions in Central Europe, excellent air connectivity to over 150 direct destinations, and a Blaguss team that has operated here for over four decades, your Budapest programme is in expert hands from the first site inspection to the final transfer.</p>
+
+  <button class="sw-about-read-more" id="sw-about-read-more" aria-expanded="false">
+    Continue reading <i class="sw-about-read-more-icon">↓</i>
+  </button>
+</section>
+
+<!-- ============================================================
+     VENUE TYPES — destinations bento stílusban
+     ============================================================ -->
+<section class="sw-venue-section">
+  <div class="sw-venue-header" data-reveal="fade-up">
+    <span class="sw-section-tag">Venue Types</span>
+    <h2>Where We Host Events</h2>
+    <p>From palaces to river boats — Budapest offers a venue for every occasion.</p>
+  </div>
+  <div class="sw-venue-bento-wrap" id="sw-venue-wrap">
+    <div class="sw-venue-bento" data-reveal-stagger>
+
+      <!-- 1. Historic Palaces — wide -->
+      <div class="sw-card-venue">
+        <img src="VENUE_01_palaces.webp" alt="Historic palace gala venue Budapest">
+        <div class="sw-card-venue-overlay"></div>
+        <div class="sw-card-venue-content">
+          <span class="sw-card-venue-badge">Gala & Dinners</span>
+          <h3 class="sw-card-venue-title">Historic Palaces</h3>
+          <p class="sw-card-venue-sub">Gala dinners in grand 19th century settings</p>
+        </div>
+      </div>
+
+      <!-- 2. 5-Star Hotels -->
+      <div class="sw-card-venue">
+        <img src="VENUE_02_hotels.webp" alt="5-star hotel conference facility Budapest">
+        <div class="sw-card-venue-overlay"></div>
+        <div class="sw-card-venue-content">
+          <span class="sw-card-venue-badge">Conferences</span>
+          <h3 class="sw-card-venue-title">5-Star Hotels</h3>
+          <p class="sw-card-venue-sub">International facilities & luxury accommodation</p>
+        </div>
+      </div>
+
+      <!-- 3. Cultural Venues -->
+      <div class="sw-card-venue">
+        <img src="VENUE_03_cultural.webp" alt="Cultural venue event Budapest">
+        <div class="sw-card-venue-overlay"></div>
+        <div class="sw-card-venue-content">
+          <span class="sw-card-venue-badge">Cultural</span>
+          <h3 class="sw-card-venue-title">Cultural Venues</h3>
+          <p class="sw-card-venue-sub">Opera House, museums, art galleries</p>
+        </div>
+      </div>
+
+      <!-- 4. Danube Cruises -->
+      <div class="sw-card-venue">
+        <img src="VENUE_04_danube.webp" alt="Danube river cruise dinner Budapest night">
+        <div class="sw-card-venue-overlay"></div>
+        <div class="sw-card-venue-content">
+          <span class="sw-card-venue-badge">Unique Experience</span>
+          <h3 class="sw-card-venue-title">Danube Cruises</h3>
+          <p class="sw-card-venue-sub">Private boat dinners on the Danube</p>
+        </div>
+      </div>
+
+      <!-- 5. Congress Centres -->
+      <div class="sw-card-venue">
+        <img src="VENUE_05_congress.webp" alt="Congress centre Budapest">
+        <div class="sw-card-venue-overlay"></div>
+        <div class="sw-card-venue-content">
+          <span class="sw-card-venue-badge">Congress</span>
+          <h3 class="sw-card-venue-title">Congress Centres</h3>
+          <p class="sw-card-venue-sub">Budapest Congress Centre, Hungexpo</p>
+        </div>
+      </div>
+
+      <!-- 6. Unique Spaces -->
+      <div class="sw-card-venue">
+        <img src="VENUE_06_unique.webp" alt="Unique event venue Budapest museum">
+        <div class="sw-card-venue-overlay"></div>
+        <div class="sw-card-venue-content">
+          <span class="sw-card-venue-badge">Off the Beaten Track</span>
+          <h3 class="sw-card-venue-title">Unique Spaces</h3>
+          <p class="sw-card-venue-sub">Caves, thermal baths, rooftop terraces</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRO TIP — egyedi dizájn
+     ============================================================ -->
+<section class="sw-protip-section">
+  <div class="sw-protip-wrap" data-reveal="fade-up">
+    <div class="sw-protip-left">
+      <div>
+        <span class="sw-protip-eyebrow">Insider Knowledge</span>
+        <div class="sw-protip-icon-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="32" height="32"><path fill="#ffffff" d="M99.998,25c13.803,0,26.307,5.603,35.361,14.65,9.06,9.06,14.669,21.571,14.669,35.368,0,20.446-6.591,27.95-12.97,35.199-5.176,5.887-10.191,11.593-10.191,26.165v25.94c0,3.477-1.428,6.643-3.722,8.944l-.019.019c-2.3,2.294-5.467,3.716-8.944,3.716h-28.363c-3.477,0-6.643-1.428-8.944-3.722l-.019-.019c-2.294-2.301-3.716-5.467-3.716-8.937v-25.74l-.006-.2c0-14.572-5.015-20.285-10.191-26.165-6.378-7.251-12.97-14.753-12.97-35.199,0-13.803,5.603-26.307,14.669-35.368,9.054-9.054,21.557-14.65,35.361-14.65h-.006ZM89.123,163c-1.829,0-3.309-1.48-3.309-3.309s1.48-3.309,3.309-3.309h21.758c1.829,0,3.309,1.48,3.309,3.309s-1.48,3.309-3.309,3.309h-21.758ZM89.123,151.692c-1.829,0-3.309-1.48-3.309-3.309s1.48-3.309,3.309-3.309h21.758c1.829,0,3.309,1.48,3.309,3.309s-1.48,3.309-3.309,3.309h-21.758ZM115.876,133.079h4.446c.711-14.643,6.159-20.848,11.768-27.225,5.564-6.326,11.315-12.866,11.315-30.832,0-11.994-4.853-22.845-12.698-30.689-7.852-7.852-18.709-12.711-30.708-12.711s-22.849,4.86-30.708,12.711c-7.845,7.845-12.698,18.695-12.698,30.689,0,17.964,5.751,24.504,11.315,30.832,5.609,6.385,11.057,12.582,11.768,27.225h4.446M90.744,133.072h5.945M103.307,133.072h5.945M167.296,110.066c1.577.905,2.12,2.921,1.215,4.498-.905,1.577-2.921,2.12-4.498,1.215l-8.356-4.827c-1.577-.905-2.12-2.921-1.215-4.498s2.921-2.12,4.498-1.215l8.356,4.827ZM44.347,39.086c1.577.905,2.12,2.921,1.215,4.498-.905,1.577-2.921,2.12-4.498,1.215l-8.356-4.827c-1.577-.905-2.12-2.921-1.215-4.498.905-1.577,2.921-2.12,4.498-1.215l8.356,4.827ZM164.001,34.258c1.577-.911,3.599-.375,4.511,1.202.911,1.577.375,3.599-1.202,4.511l-8.356,4.827c-1.577.911-3.599.375-4.511-1.202s-.375-3.599,1.202-4.511l8.356-4.827ZM41.065,105.245c1.577-.905,3.593-.362,4.498,1.215s.362,3.593-1.215,4.498l-8.356,4.827c-1.577.905-3.593.362-4.498-1.215-.905-1.577-.362-3.593,1.215-4.498l8.356-4.827ZM175.808,71.712c1.829,0,3.309,1.48,3.309,3.309s-1.48,3.309-3.309,3.309h-9.648c-1.829,0-3.309-1.48-3.309-3.309s1.48-3.309,3.309-3.309h9.648ZM33.84,71.712c1.829,0,3.309,1.48,3.309,3.309s-1.48,3.309-3.309,3.309h-9.648c-1.829,0-3.309-1.48-3.309-3.309s1.48-3.309,3.309-3.309h9.648ZM120.246,139.695h-40.498v22.625c0,1.674.679,3.186,1.771,4.278,1.105,1.105,2.617,1.784,4.291,1.784h28.363c1.674,0,3.192-.679,4.278-1.771,1.105-1.105,1.784-2.617,1.784-4.291v-22.625h.011Z"/></svg>
+      </div>
+        <h3 class="sw-protip-left-title">Combine Budapest with a countryside excursion</h3>
+        <span class="sw-protip-left-tag">Pro Tip from our team</span>
+      </div>
+    </div>
+    <div class="sw-protip-right">
+      <p class="sw-protip-body">The most memorable incentive programmes pair a Budapest city programme with a one-day excursion beyond the capital. <strong>Eger's Baroque old town and world-famous wine cellars</strong> make for an outstanding afternoon, while <strong>Lake Balaton</strong> — just 90 minutes away — offers a completely different atmosphere: lakeside restaurants, vineyards and a relaxed pace that recharges even the most demanding delegate group.</p>
+      <p class="sw-protip-body">Blaguss handles all logistics seamlessly, from private coaches to venue bookings, ensuring a smooth transition between city buzz and countryside tranquillity. Many of our clients tell us the countryside day becomes the highlight they remember most.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DESTINATIONS CTA SÁV
+     ============================================================ -->
+<div class="sw-dest-cta-bar" data-reveal="fade-up">
+  <div class="sw-dest-cta-left">
+    <span class="sw-dest-cta-tag">Explore More</span>
+    <h3 class="sw-dest-cta-title">Budapest is just the beginning —<br>discover all of Hungary</h3>
+    <p class="sw-dest-cta-body">From the thermal shores of Lake Balaton to the wine hills of Tokaj and the baroque streets of Eger, Hungary offers an extraordinary variety of settings beyond the capital. Whether you're planning a multi-destination incentive programme or looking for the perfect day-trip to complement your Budapest event, we know every corner of the country.</p>
+  </div>
+  <div class="sw-dest-cta-right">
+    <span class="sw-btn-primary" style="cursor:default;opacity:0.5;">View All Destinations</span>
+    <a href="#contact" class="sw-btn-outline">Contact Us</a>
+  </div>
+</div>
+
+<!-- ============================================================
+     BLOG SZEKCIÓ — főoldali 1:1 másolat
+     ============================================================ -->
+<section class="sw-blog-section">
+  <div class="sw-blog-header" data-reveal="fade-up">
+    <span class="sw-section-tag">Knowledge Hub</span>
+    <h2>Insights &amp; Inspiration</h2>
+    <p>Expert perspectives on destination management, events, and the art of creating memorable experiences in Hungary.</p>
+  </div>
+  <div class="sw-blog-scroll" id="sw-blog-scroll">
+    <div class="sw-blog-track" id="sw-blog-track">
+      <a href="#" class="sw-card-blog">
+        <div class="sw-card-blog-img"><img src="BLOG_01.webp" alt="Budapest incentive travel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Incentive Travel</span></div>
+        <div class="sw-card-blog-body">
+          <h3 class="sw-card-blog-title">Why Budapest Leads in Incentive Travel</h3>
+          <p class="sw-card-blog-excerpt">The Hungarian capital offers a rare combination of architectural grandeur and competitive pricing.</p>
+          <p class="sw-card-blog-meta">5 min read · March 2025</p>
+        </div>
+      </a>
+      <a href="#" class="sw-card-blog">
+        <div class="sw-card-blog-img"><img src="BLOG_02.webp" alt="DMC services Budapest" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">DMC</span></div>
+        <div class="sw-card-blog-body">
+          <h3 class="sw-card-blog-title">DMC vs. Local Agency: Know the Difference</h3>
+          <p class="sw-card-blog-excerpt">Not all event partners are equal. Here's what sets a DMC apart.</p>
+          <p class="sw-card-blog-meta">4 min read · February 2025</p>
+        </div>
+      </a>
+      <a href="#" class="sw-card-blog">
+        <div class="sw-card-blog-img"><img src="BLOG_03.webp" alt="Congress planning Hungary" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Congress</span></div>
+        <div class="sw-card-blog-body">
+          <h3 class="sw-card-blog-title">Planning a Congress in Hungary: What to Expect</h3>
+          <p class="sw-card-blog-excerpt">From venue selection to on-site logistics, precision at every step.</p>
+          <p class="sw-card-blog-meta">6 min read · January 2025</p>
+        </div>
+      </a>
+      <a href="#" class="sw-card-blog">
+        <div class="sw-card-blog-img"><img src="BLOG_04.webp" alt="Hidden Hungary venues" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Destinations</span></div>
+        <div class="sw-card-blog-body">
+          <h3 class="sw-card-blog-title">Hidden Hungary: Venues Clients Haven't Seen Yet</h3>
+          <p class="sw-card-blog-excerpt">Beyond Budapest, extraordinary spaces await discovery.</p>
+          <p class="sw-card-blog-meta">5 min read · December 2024</p>
+        </div>
+      </a>
+      <a href="#" class="sw-card-blog">
+        <div class="sw-card-blog-img"><img src="BLOG_05.webp" alt="Gala dinner Budapest Danube" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Incentive Travel</span></div>
+        <div class="sw-card-blog-body">
+          <h3 class="sw-card-blog-title">Gala Dinners: Hungary's Most Spectacular Venues</h3>
+          <p class="sw-card-blog-excerpt">From castle halls to rooftop terraces overlooking the Danube.</p>
+          <p class="sw-card-blog-meta">5 min read · October 2024</p>
+        </div>
+      </a>
+      <a href="#" class="sw-card-blog">
+        <div class="sw-card-blog-img"><img src="BLOG_06.webp" alt="Congress networking" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">PCO</span></div>
+        <div class="sw-card-blog-body">
+          <h3 class="sw-card-blog-title">The Art of the Congress: What Makes a Scientific Event Truly Memorable</h3>
+          <p class="sw-card-blog-excerpt">Beyond the agenda and the keynotes, the best congresses leave a lasting impression through atmosphere, logistics, and the unexpected.</p>
+          <p class="sw-card-blog-meta">7 min read · September 2024</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT FORM — főoldali 1:1 másolat, DMC pre-selected
+     ============================================================ -->
+<section class="sw-cta" id="contact" data-reveal="fade-up">
+  <div class="sw-cta-left">
+    <span class="sw-section-tag">Get in Touch</span>
+    <h2 class="sw-cta-title">Plan Your Budapest Event</h2>
+    <p class="sw-cta-body">Tell us about your group, your objectives and your dates. Our Budapest team will get back to you within 24 hours with a tailored proposal.</p>
+  </div>
+  <div class="sw-cta-form">
+    <p style="font-size: 0.8125rem; font-weight: 600; color: #6B6B6B; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.625rem;">Select the service you're interested in.</p>
+    <div class="sw-service-sel">
+      <div class="sw-service-option active" data-service="dmc">
+        <div class="sw-service-dot"></div>
+        <span class="sw-service-label">DMC Services</span>
+        <span class="sw-service-sub">Corporate events, incentive travel</span>
+      </div>
+      <div class="sw-service-option" data-service="pco">
+        <div class="sw-service-dot"></div>
+        <span class="sw-service-label">PCO Services</span>
+        <span class="sw-service-sub">Conferences, congresses</span>
+      </div>
+    </div>
+    <input type="hidden" id="service-type" value="dmc">
+    <input type="text" class="sw-form-input" placeholder="Name">
+    <input type="email" class="sw-form-input" placeholder="e-mail address">
+    <input type="tel" class="sw-form-input" placeholder="Phone">
+    <textarea class="sw-form-textarea" placeholder="Message"></textarea>
+    <div class="sw-form-checks">
+      <label class="sw-form-check-label"><input type="checkbox"> GDPR</label>
+      <label class="sw-form-check-label"><input type="checkbox"> Newsletter</label>
+    </div>
+    <button class="sw-form-submit">Send Enquiry</button>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="sw-footer">
+  <div class="sw-footer-grid">
+    <div>
+      <span class="sw-footer-logo">BLAGUSS</span>
+      <p style="font-size: 0.5625rem; color: rgba(255,255,255,0.25); margin-bottom: 0.25rem;">Destination Management</p>
+      <span class="sw-footer-tagline">Bridge to Hungary</span>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Navigation</span>
+      <a href="#" class="sw-footer-link">About Us</a>
+      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">Destinations</span>
+      <a href="#" class="sw-footer-link">References</a>
+      <a href="#" class="sw-footer-link">Blog</a>
+      <a href="#" class="sw-footer-link">GDPR</a>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Services</span>
+      <a href="blaguss_dmc.html" class="sw-footer-link">DMC</a>
+      <a href="blaguss_pco.html" class="sw-footer-link">PCO</a>
+      <a href="#contact" class="sw-footer-link">Contact</a>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Follow us</span>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.25rem;">
+        <a href="#" class="sw-social-btn" aria-label="LinkedIn">in</a>
+        <a href="#" class="sw-social-btn" aria-label="Facebook">fb</a>
+        <a href="#" class="sw-social-btn" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+  </div>
+  <div class="sw-footer-bottom">
+    <span class="sw-footer-copy">© 2026 Blaguss Destination Management Kft.</span>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="color: rgba(255,255,255,0.18); font-size: 0.8125rem;">Made by</span>
+      <a href="https://simpleweb.hu" target="_blank" style="color: #ffca3a; font-size: 0.8125rem; font-weight: 700; opacity: 0.5; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.5'">simpleweb</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ---- Navbar scroll — transzparens → fehér ---- */
+  const navbar = document.querySelector('.sw-navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ---- Hamburger ---- */
+  const hamburger = document.getElementById('sw-hamburger');
+  const mobileMenu = document.getElementById('sw-mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (isOpen) navbar.classList.add('scrolled');
+    else if (window.scrollY <= 60) navbar.classList.remove('scrolled');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ---- Continue reading (Why Budapest fold) ---- */
+  (function () {
+    const p2wrap = document.getElementById('sw-about-p2-wrap');
+    const p2 = document.getElementById('sw-about-p2');
+    const p2fade = document.getElementById('sw-about-p2-fade');
+    const extras = document.querySelectorAll('.sw-about-extra');
+    const btn = document.getElementById('sw-about-read-more');
+    if (!p2wrap || !btn) return;
+
+    // Kiszámítjuk a 3 sor magasságát a 2. bekezdésből
+    function getThreeLineHeight() {
+      const lineH = parseFloat(getComputedStyle(p2).lineHeight) || 29;
+      return Math.round(lineH * 3);
+    }
+
+    function setCollapsed() {
+      const h = getThreeLineHeight();
+      p2wrap.style.maxHeight = h + 'px';
+      p2fade.style.opacity = '1';
+      p2wrap.style.overflow = 'hidden';
+      p2wrap.style.transition = 'max-height 0.55s cubic-bezier(0.16,1,0.3,1)';
+      extras.forEach(el => el.classList.remove('open'));
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.querySelector('.sw-about-read-more-icon').textContent = '↓';
+      btn.childNodes[0].textContent = 'Continue reading ';
+    }
+
+    function setExpanded() {
+      p2wrap.style.maxHeight = p2.scrollHeight + 'px';
+      p2fade.style.opacity = '0';
+      extras.forEach(el => el.classList.add('open'));
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.querySelector('.sw-about-read-more-icon').textContent = '↑';
+      btn.childNodes[0].textContent = 'Show less ';
+    }
+
+    // Init
+    setCollapsed();
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.contains('open');
+      if (isOpen) setCollapsed(); else setExpanded();
+    });
+  })();
+
+  /* ---- Service selector ---- */
+  document.querySelectorAll('.sw-service-option').forEach(opt => {
+    opt.addEventListener('click', function () {
+      document.querySelectorAll('.sw-service-option').forEach(o => o.classList.remove('active'));
+      this.classList.add('active');
+      const serviceInput = document.getElementById('service-type');
+      if (serviceInput) serviceInput.value = this.dataset.service;
+    });
+  });
+
+  /* ---- Stat counter — kipörgő számok ---- */
+  function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+  function animateCounter(el, target, duration) {
+    const start = performance.now();
+    const isDecimal = target < 10; // pl. 2M esetén
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutQuart(progress);
+      const current = Math.round(eased * target);
+      el.textContent = isDecimal ? current : current;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  let statsAnimated = false;
+  const statsBar = document.getElementById('sw-stats-bar');
+
+  function tryAnimateStats() {
+    if (statsAnimated) return;
+    const rect = statsBar.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9) {
+      statsAnimated = true;
+      // stat elemek piros vonala
+      statsBar.querySelectorAll('.sw-stat-item').forEach((item, i) => {
+        setTimeout(() => item.classList.add('is-counted'), i * 100);
+      });
+      // counter-ek
+      const statEls = [
+        { id: 'stat-mice', target: 2, duration: 1200 },
+        { id: 'stat-venues', target: 300, duration: 1400 },
+        { id: 'stat-icca', target: 8, duration: 900 },
+      ];
+      statEls.forEach(({ id, target, duration }) => {
+        const el = document.getElementById(id);
+        if (el) animateCounter(el, target, duration);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', tryAnimateStats, { passive: true });
+  tryAnimateStats(); // azonnal is próbáljuk, ha már látható
+
+  /* ---- Venue bento — draggable scroll ---- */
+  const venueWrap = document.getElementById('sw-venue-wrap');
+  if (venueWrap) {
+    let isDragging = false, startX = 0, scrollLeft = 0;
+    venueWrap.addEventListener('mousedown', e => {
+      isDragging = true;
+      venueWrap.classList.add('dragging');
+      startX = e.pageX - venueWrap.offsetLeft;
+      scrollLeft = venueWrap.scrollLeft;
+    });
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      venueWrap.classList.remove('dragging');
+    });
+    venueWrap.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - venueWrap.offsetLeft;
+      const walk = (x - startX) * 1.2;
+      venueWrap.scrollLeft = scrollLeft - walk;
+    });
+  }
+
+  /* ---- Blog scroll — draggable ---- */
+  const blogScroll = document.getElementById('sw-blog-scroll');
+  if (blogScroll) {
+    let bDrag = false, bStartX = 0, bLeft = 0;
+    blogScroll.addEventListener('mousedown', e => { bDrag = true; blogScroll.classList.add('dragging'); bStartX = e.pageX - blogScroll.offsetLeft; bLeft = blogScroll.scrollLeft; });
+    document.addEventListener('mouseup', () => { bDrag = false; blogScroll.classList.remove('dragging'); });
+    blogScroll.addEventListener('mousemove', e => { if (!bDrag) return; e.preventDefault(); blogScroll.scrollLeft = bLeft - (e.pageX - blogScroll.offsetLeft - bStartX) * 1.2; });
+  }
+
+  /* ---- Scroll reveal — IntersectionObserver ---- */
+  const reveals = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-visible'));
+  }
+
+});
+</script>
+
+</body>
+</html>

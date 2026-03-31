@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PAGE_TITLE}} — Blaguss Destination Management</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   BLAGUSS DMC — Aloldal sablon
+   Másolj be innen: _variables.scss + _custom.scss
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sw-red: #E30613;
+  --sw-dark: #1A1A1A;
+  --sw-dark-2: #2A2A2A;
+  --sw-dark-3: #3A3A3A;
+  --sw-gray-light: #F5F5F3;
+  --sw-border: #E8E8E5;
+  --sw-white: #FFFFFF;
+  --sw-font-serif: 'Playfair Display', Georgia, serif;
+  --sw-font-sans: 'Inter', system-ui, sans-serif;
+  --sw-section-py: 4rem;
+  --sw-section-px: 3rem;
+  --sw-radius-card: 0.625rem;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sw-font-sans); color: var(--sw-dark); background: var(--sw-white); -webkit-font-smoothing: antialiased; line-height: 1.65; font-size: 16px; margin: 0; padding: 0; font-variant-numeric: lining-nums tabular-nums; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; }
+
+/* ---- NAVBAR ---- */
+.sw-navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem; height: 56px; background: var(--sw-white);
+  border-bottom: 1px solid var(--sw-border);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1030;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+/* ⚠️ Aloldalon a navbar alapból fehér (nem transzparens)
+   Ha hero szekció van, add hozzá a transparent + scrolled logikát a főoldal mintájára */
+.sw-navbar-right { display: flex; align-items: center; gap: 2rem; }
+.sw-navbar-brand { display: flex; align-items: center; }
+.sw-navbar-logo { height: 42px; width: auto; display: block; transition: opacity 0.2s; }
+.sw-navbar-brand:hover .sw-navbar-logo { opacity: 0.85; }
+.sw-nav-links { display: flex; align-items: center; gap: 2rem; }
+.sw-nav-links-btns { display: flex; align-items: center; gap: 0.375rem; }
+.sw-nav-link { font-size: 0.875rem; font-weight: 500; color: var(--sw-dark); transition: color 0.3s; }
+.sw-nav-link:hover { color: var(--sw-red); }
+.sw-nav-link.active { color: var(--sw-red); font-weight: 600; }
+.sw-btn-nav-dmc { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-dark); color: var(--sw-white); transition: all 0.3s; }
+.sw-btn-nav-dmc:hover { background: #333; color: var(--sw-white); }
+.sw-btn-nav-pco { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: background 0.2s; }
+.sw-btn-nav-pco:hover { background: #c00511; color: var(--sw-white); }
+.sw-btn-nav-contact { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; border: 1.5px solid var(--sw-dark); color: var(--sw-dark); background: transparent; transition: all 0.3s; }
+.sw-btn-nav-contact:hover { background: var(--sw-dark); color: var(--sw-white); }
+
+/* ---- HAMBURGER ---- */
+.sw-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; }
+.sw-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--sw-dark); border-radius: 2px; transition: all 0.3s ease; transform-origin: center; }
+.sw-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.sw-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.sw-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ---- MOBILE MENU ---- */
+.sw-mobile-menu { position: fixed; top: 56px; left: 0; right: 0; bottom: 0; background: var(--sw-dark); z-index: 1020; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity 0.3s ease, transform 0.3s ease; overflow-y: auto; }
+.sw-mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+.sw-mobile-menu-inner { display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 2rem 3rem; min-height: 100%; }
+.sw-mobile-nav { display: flex; flex-direction: column; }
+.sw-mobile-link { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.875rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; display: block; }
+.sw-mobile-link:hover { color: var(--sw-white); }
+.sw-mobile-link:last-child { border-bottom: none; }
+.sw-mobile-btns { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
+.sw-mobile-btns .sw-btn-primary { display: block; text-align: center; font-size: 1rem; padding: 0.875rem 1.75rem; }
+.sw-mobile-btns .sw-btn-nav-pco { display: block; text-align: center; font-size: 1rem; padding: 0.875rem 1.75rem; border-radius: 5px; }
+.sw-mobile-contact-link { font-size: 0.9375rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; text-align: center; padding: 0.25rem 0; }
+
+/* ---- PAGE HEADER (hero alternatíva aloldalakra) ---- */
+.sw-page-header { background: var(--sw-dark); padding: 6rem var(--sw-section-px) 4rem; margin-top: 56px; }
+.sw-page-header-tag { display: block; font-size: 0.75rem; font-weight: 600; color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.sw-page-header-title { font-family: var(--sw-font-serif); font-size: clamp(2rem, 5vw, 3rem); font-weight: 500; color: var(--sw-white); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1rem; }
+.sw-page-header-body { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 560px; }
+
+/* ---- BREADCRUMB ---- */
+.sw-breadcrumb { padding: 1rem var(--sw-section-px); background: var(--sw-white); border-bottom: 1px solid var(--sw-border); margin-top: 56px; }
+.sw-breadcrumb-list { display: flex; align-items: center; gap: 0.5rem; list-style: none; }
+.sw-breadcrumb-item { font-size: 0.8125rem; color: #6B6B6B; }
+.sw-breadcrumb-item a { color: #6B6B6B; transition: color 0.2s; }
+.sw-breadcrumb-item a:hover { color: var(--sw-red); }
+.sw-breadcrumb-item.active { color: var(--sw-dark); font-weight: 500; }
+.sw-breadcrumb-sep { color: #ccc; font-size: 0.75rem; }
+
+/* ---- BUTTONS ---- */
+.sw-btn-primary { display: inline-block; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.02em; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: all 0.2s ease; cursor: pointer; border: none; }
+.sw-btn-primary:hover { background: #c00511; color: var(--sw-white); transform: translateY(-1px); }
+.sw-btn-outline { display: inline-block; font-weight: 600; font-size: 0.9375rem; padding: 0.75rem 1.75rem; border-radius: 5px; background: transparent; border: 1.5px solid var(--sw-dark); color: var(--sw-dark); transition: all 0.2s ease; }
+.sw-btn-outline:hover { background: var(--sw-dark); color: var(--sw-white); transform: translateY(-1px); }
+.sw-btn-white { display: inline-block; font-weight: 600; font-size: 0.9375rem; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-white); color: var(--sw-dark); transition: all 0.2s; }
+
+/* ---- SECTIONS ---- */
+.sw-section { padding: var(--sw-section-py) var(--sw-section-px); }
+.sw-section-bg { background: var(--sw-gray-light); }
+.sw-section-dark { background: var(--sw-dark); }
+.sw-section-tag { display: block; font-size: 0.75rem; font-weight: 600; color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.sw-section-title { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 1rem; line-height: 1.2; }
+.sw-section-body { font-size: 1rem; color: #6B6B6B; line-height: 1.75; max-width: 720px; }
+.sw-section-header-split { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+/* ---- ÁLTALÁNOS KÁRTYA ---- */
+.sw-card { background: var(--sw-white); border: 1px solid var(--sw-border); border-radius: var(--sw-radius-card); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+.sw-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.sw-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--sw-dark); }
+.sw-card-body { padding: 1.5rem; }
+.sw-card-tag { font-size: 0.6875rem; font-weight: 700; color: var(--sw-red); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+.sw-card-title { font-family: var(--sw-font-serif); font-size: 1.25rem; font-weight: 500; color: var(--sw-dark); line-height: 1.3; margin-bottom: 0.5rem; }
+.sw-card-excerpt { font-size: 0.9375rem; color: #6B6B6B; line-height: 1.6; margin-bottom: 1rem; }
+.sw-card-meta { font-size: 0.8125rem; color: #aaa; }
+
+/* ---- GRID LAYOUTS ---- */
+.sw-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.sw-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+.sw-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
+
+/* ---- CONTACT SPLIT ---- */
+.sw-contact { display: grid; grid-template-columns: 1fr 1fr; }
+.sw-contact-left { background: var(--sw-dark-3); padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: space-between; }
+.sw-contact-tag { font-size: 0.75rem; font-weight: 600; color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+.sw-contact-title { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 2.5vw, 2.25rem); font-weight: 500; color: var(--sw-white); letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 1rem; }
+.sw-contact-body { font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+.sw-contact-right { background: var(--sw-white); padding: 2.75rem 3rem; border-left: 1px solid var(--sw-border); }
+.sw-form-input { width: 100%; border: 1px solid var(--sw-border); border-radius: 6px; padding: 0.6875rem 1rem; font-size: 0.9375rem; color: var(--sw-dark); background: #FAFAFA; font-family: var(--sw-font-sans); outline: none; transition: border-color 0.2s; margin-bottom: 0.75rem; }
+.sw-form-input:focus { border-color: var(--sw-dark); }
+.sw-form-textarea { width: 100%; border: 1px solid var(--sw-border); border-radius: 6px; padding: 0.6875rem 1rem; font-size: 0.9375rem; color: var(--sw-dark); background: #FAFAFA; font-family: var(--sw-font-sans); outline: none; resize: none; height: 90px; margin-bottom: 0.75rem; }
+.sw-form-checks { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+.sw-form-check-label { font-size: 0.875rem; color: #6B6B6B; display: flex; align-items: center; gap: 0.375rem; cursor: pointer; }
+.sw-form-submit { width: 100%; background: var(--sw-red); color: var(--sw-white); font-size: 1rem; font-weight: 600; padding: 0.8125rem; border-radius: 5px; border: none; cursor: pointer; letter-spacing: 0.02em; transition: background 0.2s; }
+.sw-form-submit:hover { background: #c00511; }
+.sw-service-sel { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+.sw-service-option { border: 1px solid var(--sw-border); border-radius: 8px; padding: 1rem 1.125rem; cursor: pointer; position: relative; transition: all 0.25s ease; background: #FAFAFA; }
+.sw-service-option.active { border-color: var(--sw-dark); background: var(--sw-white); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.sw-service-label { font-size: 0.9375rem; font-weight: 600; color: var(--sw-dark); margin-bottom: 0.2rem; display: block; }
+.sw-service-sub { font-size: 0.8125rem; color: #6B6B6B; display: block; line-height: 1.4; }
+.sw-service-dot { position: absolute; top: 1rem; right: 1rem; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid #ccc; transition: all 0.25s; background: transparent; }
+.sw-service-option.active .sw-service-dot { background: var(--sw-dark); border-color: var(--sw-dark); }
+
+/* ---- FOOTER ---- */
+.sw-footer { background: #0D0D0D; padding: 3.5rem 3rem 1.5rem; }
+.sw-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.sw-footer-logo { font-size: 1.25rem; font-weight: 800; color: var(--sw-red); letter-spacing: -0.02em; font-family: var(--sw-font-sans); margin-bottom: 0.25rem; display: block; }
+.sw-footer-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+.sw-footer-col-title { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block; }
+.sw-footer-link { font-size: 0.875rem; color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.375rem; transition: color 0.2s; }
+.sw-footer-link:hover { color: rgba(255,255,255,0.7); }
+.sw-footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.sw-footer-copy { font-size: 0.8125rem; color: rgba(255,255,255,0.2); }
+.sw-social-btn { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: all 0.2s; }
+.sw-social-btn:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); }
+
+/* ---- SCROLL REVEAL ---- */
+[data-reveal] { opacity: 0; transition: opacity 0.65s ease, transform 0.65s ease; }
+[data-reveal="fade-up"] { transform: translateY(24px); }
+[data-reveal="fade-in"] { transform: none; }
+[data-reveal].is-visible { opacity: 1; transform: none; }
+[data-reveal-stagger] > * { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal-stagger] > *:nth-child(1) { transition-delay: 0s; }
+[data-reveal-stagger] > *:nth-child(2) { transition-delay: 0.08s; }
+[data-reveal-stagger] > *:nth-child(3) { transition-delay: 0.16s; }
+[data-reveal-stagger].is-visible > * { opacity: 1; transform: none; }
+
+/* ============================================================
+   RESPONSIVE — Bootstrap breakpoints
+   ============================================================ */
+@media (max-width: 992px) {
+  .sw-nav-links { display: none; }
+  .sw-nav-links-btns .sw-btn-nav-contact { display: none; }
+  .sw-hamburger { display: flex; }
+  .sw-grid-3 { grid-template-columns: 1fr 1fr; }
+  .sw-grid-4 { grid-template-columns: 1fr 1fr; }
+  .sw-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  :root { --sw-section-py: 3rem; --sw-section-px: 1.5rem; }
+  .sw-navbar { padding: 0 1.5rem; }
+  .sw-contact { grid-template-columns: 1fr; }
+  .sw-contact-left { padding: 3rem 1.5rem; }
+  .sw-contact-right { padding: 2rem 1.5rem; border-left: none; border-top: 1px solid var(--sw-border); }
+  .sw-footer { padding: 3rem 1.5rem 1.5rem; }
+  .sw-footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .sw-page-header { padding: 5rem var(--sw-section-px) 3rem; }
+  .sw-section-header-split { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 576px) {
+  :root { --sw-section-py: 2.5rem; --sw-section-px: 1.25rem; }
+  .sw-navbar { padding: 0 1.25rem; }
+  .sw-navbar-logo { height: 34px; }
+  .sw-nav-links-btns { display: none; }
+  .sw-grid-2 { grid-template-columns: 1fr; }
+  .sw-grid-3 { grid-template-columns: 1fr; }
+  .sw-grid-4 { grid-template-columns: 1fr 1fr; }
+  .sw-service-sel { grid-template-columns: 1fr; }
+  .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
+  .sw-footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .sw-page-header { padding: 4rem var(--sw-section-px) 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="sw-navbar">
+  <a href="/" class="sw-navbar-brand">
+    <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="sw-navbar-logo">
+  </a>
+  <div class="sw-navbar-right">
+    <div class="sw-nav-links">
+      <a href="/about" class="sw-nav-link">About Us</a>
+      <a href="/destinations" class="sw-nav-link">Destinations</a>
+      <a href="/references" class="sw-nav-link">References</a>
+      <a href="/blog" class="sw-nav-link">Blog</a>
+    </div>
+    <div class="sw-nav-links-btns">
+      <a href="/dmc" class="sw-btn-nav-dmc">DMC</a>
+      <a href="/pco" class="sw-btn-nav-pco">PCO</a>
+      <a href="/contact" class="sw-btn-nav-contact">Contact</a>
+    </div>
+    <button class="sw-hamburger" id="sw-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="sw-mobile-menu" id="sw-mobile-menu">
+  <div class="sw-mobile-menu-inner">
+    <nav class="sw-mobile-nav">
+      <a href="/about" class="sw-mobile-link">About Us</a>
+      <a href="/destinations" class="sw-mobile-link">Destinations</a>
+      <a href="/references" class="sw-mobile-link">References</a>
+      <a href="/blog" class="sw-mobile-link">Blog</a>
+    </nav>
+    <div class="sw-mobile-btns">
+      <a href="/dmc" class="sw-btn-primary">DMC Services</a>
+      <a href="/pco" class="sw-btn-nav-pco">PCO Services</a>
+      <a href="/contact" class="sw-mobile-contact-link">Contact Us →</a>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HEADER — sötét, aloldalakhoz -->
+<!-- Opció A: Sötét fejléc (DMC, PCO, Destinations, References, Blog) -->
+<header class="sw-page-header">
+  <span class="sw-page-header-tag">{{SECTION_TAG}}</span>
+  <h1 class="sw-page-header-title">{{PAGE_TITLE}}</h1>
+  <p class="sw-page-header-body">{{PAGE_DESCRIPTION}}</p>
+</header>
+
+<!-- Opció B: Breadcrumb (Blog cikk, Destination detail) -->
+<!--
+<nav class="sw-breadcrumb">
+  <ol class="sw-breadcrumb-list">
+    <li class="sw-breadcrumb-item"><a href="/">Home</a></li>
+    <span class="sw-breadcrumb-sep">›</span>
+    <li class="sw-breadcrumb-item"><a href="/blog">Blog</a></li>
+    <span class="sw-breadcrumb-sep">›</span>
+    <li class="sw-breadcrumb-item active">{{PAGE_TITLE}}</li>
+  </ol>
+</nav>
+-->
+
+<!-- ============================================================
+     TARTALOM SZEKCIÓK — válaszd ki ami kell
+     ============================================================ -->
+
+<!-- SZEKCIÓ: Intro / szöveges bevezető -->
+<section class="sw-section" data-reveal="fade-up">
+  <span class="sw-section-tag">{{TAG}}</span>
+  <h2 class="sw-section-title">{{SECTION_TITLE}}</h2>
+  <p class="sw-section-body">{{SECTION_BODY}}</p>
+</section>
+
+<!-- SZEKCIÓ: 3 oszlopos kártyák -->
+<!--
+<section class="sw-section sw-section-bg">
+  <div class="sw-section-header-split" data-reveal="fade-up">
+    <div>
+      <span class="sw-section-tag">{{TAG}}</span>
+      <h2 class="sw-section-title">{{TITLE}}</h2>
+    </div>
+    <a href="#" class="sw-btn-outline">View All</a>
+  </div>
+  <div class="sw-grid-3" data-reveal-stagger>
+    <div class="sw-card">
+      <div class="sw-card-img"></div>
+      <div class="sw-card-body">
+        <span class="sw-card-tag">Category</span>
+        <h3 class="sw-card-title">Card Title</h3>
+        <p class="sw-card-excerpt">Card description text.</p>
+        <a href="#" class="sw-btn-outline" style="font-size:0.875rem; padding: 0.5rem 1.25rem;">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- SZEKCIÓ: Contact form -->
+<!--
+<div class="sw-contact">
+  <div class="sw-contact-left">
+    <div>
+      <span class="sw-contact-tag">Get in Touch</span>
+      <h2 class="sw-contact-title">Let's Create Something Extraordinary</h2>
+      <p class="sw-contact-body">Tell us about your project. Our team will get back to you within 24 hours.</p>
+    </div>
+  </div>
+  <div class="sw-contact-right">
+    <p style="font-size: 0.8125rem; font-weight: 600; color: #6B6B6B; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.625rem;">Select the service you're interested in.</p>
+    <div class="sw-service-sel">
+      <div class="sw-service-option active"><div class="sw-service-dot"></div><span class="sw-service-label">DMC Services</span><span class="sw-service-sub">Corporate events, incentive travel</span></div>
+      <div class="sw-service-option"><div class="sw-service-dot"></div><span class="sw-service-label">PCO Services</span><span class="sw-service-sub">Conferences, congresses</span></div>
+    </div>
+    <input type="text" class="sw-form-input" placeholder="Name">
+    <input type="email" class="sw-form-input" placeholder="Email address">
+    <input type="tel" class="sw-form-input" placeholder="Phone">
+    <textarea class="sw-form-textarea" placeholder="Message"></textarea>
+    <div class="sw-form-checks">
+      <label class="sw-form-check-label"><input type="checkbox"> GDPR</label>
+      <label class="sw-form-check-label"><input type="checkbox"> Newsletter</label>
+    </div>
+    <button class="sw-form-submit">Send Enquiry</button>
+  </div>
+</div>
+-->
+
+<!-- FOOTER -->
+<footer class="sw-footer">
+  <div class="sw-footer-grid">
+    <div>
+      <span class="sw-footer-logo">BLAGUSS</span>
+      <p style="font-size: 0.5625rem; color: rgba(255,255,255,0.25); margin-bottom: 0.25rem;">Destination Management</p>
+      <span class="sw-footer-tagline">Bridge to Hungary</span>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Navigation</span>
+      <a href="/about" class="sw-footer-link">About Us</a>
+      <a href="/destinations" class="sw-footer-link">Destinations</a>
+      <a href="/references" class="sw-footer-link">References</a>
+      <a href="/blog" class="sw-footer-link">Blog</a>
+      <a href="/gdpr" class="sw-footer-link">GDPR</a>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Services</span>
+      <a href="/dmc" class="sw-footer-link">DMC</a>
+      <a href="/pco" class="sw-footer-link">PCO</a>
+      <a href="/contact" class="sw-footer-link">Contact</a>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Follow us</span>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.25rem;">
+        <a href="#" class="sw-social-btn" aria-label="LinkedIn">in</a>
+        <a href="#" class="sw-social-btn" aria-label="Facebook">fb</a>
+        <a href="#" class="sw-social-btn" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+  </div>
+  <div class="sw-footer-bottom">
+    <span class="sw-footer-copy">© 2026 Blaguss Destination Management Kft.</span>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="color: rgba(255,255,255,0.18); font-size: 0.8125rem;">Made by</span>
+      <a href="https://simpleweb.hu" target="_blank" style="display: inline-flex; align-items: center; opacity: 0.5; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.5'">
+        <!-- Simple Web SVG logó ide -->
+        <span style="color: #ffca3a; font-size: 0.8125rem; font-weight: 700;">simpleweb</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Hamburger menu
+  const hamburger = document.getElementById('sw-hamburger');
+  const mobileMenu = document.getElementById('sw-mobile-menu');
+  const navbar = document.querySelector('.sw-navbar');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Service selector
+  document.querySelectorAll('.sw-service-option').forEach(opt => {
+    opt.addEventListener('click', function () {
+      document.querySelectorAll('.sw-service-option').forEach(o => o.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-visible'));
+  }
+
+});
+</script>
+</body>
+</html>
