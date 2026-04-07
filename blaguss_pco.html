@@ -98,8 +98,8 @@ a { text-decoration: none; }
 .sw-section-tag { display: block; font-size: 0.75rem; font-weight: 600; color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
 .sw-hero-title { font-family: var(--sw-font-serif); font-size: clamp(2.75rem, 5.5vw, 3.75rem); font-weight: 500; color: var(--sw-white); line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
 .sw-hero-accent { color: var(--sw-red); }
-.sw-hero-subtitle { font-family: var(--sw-font-serif); font-size: 1.125rem; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; }
-.sw-hero-body { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 2rem; max-width: 480px; }
+.sw-hero-subtitle { font-family: var(--sw-font-serif); font-size: 1.125rem; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.75); margin-bottom: 1.25rem; }
+.sw-hero-body { font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 2rem; max-width: 480px; }
 
 /* ---- BUTTONS ---- */
 .sw-btn-primary { display: inline-block; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.02em; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: all 0.2s ease; cursor: pointer; border: none; }
@@ -573,15 +573,15 @@ a { text-decoration: none; }
   </a>
   <div class="sw-navbar-right">
     <div class="sw-nav-links">
-      <a href="#" class="sw-nav-link">About Us</a>
-      <a href="#" class="sw-nav-link">Destinations</a>
-      <a href="#" class="sw-nav-link">References</a>
-      <a href="#" class="sw-nav-link">Blog</a>
+      <span class="sw-nav-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-nav-link">Destinations</a>
+      
+      <a href="blaguss_blog.html" class="sw-nav-link">Blog</a>
     </div>
     <div class="sw-nav-links-btns">
       <a href="blaguss_dmc.html" class="sw-btn-nav-dmc">DMC</a>
       <a href="blaguss_pco.html" class="sw-btn-nav-pco active">PCO</a>
-      <a href="#contact" class="sw-btn-nav-contact">Contact</a>
+      <a href="blaguss_contact.html" class="sw-btn-nav-contact">Contact</a>
     </div>
     <button class="sw-hamburger" id="sw-hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -593,15 +593,15 @@ a { text-decoration: none; }
 <div class="sw-mobile-menu" id="sw-mobile-menu">
   <div class="sw-mobile-menu-inner">
     <nav class="sw-mobile-nav">
-      <a href="#" class="sw-mobile-link">About Us</a>
-      <a href="#" class="sw-mobile-link">Destinations</a>
-      <a href="#" class="sw-mobile-link">References</a>
-      <a href="#" class="sw-mobile-link">Blog</a>
+      <span class="sw-mobile-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-mobile-link">Destinations</a>
+      
+      <a href="blaguss_blog.html" class="sw-mobile-link">Blog</a>
     </nav>
     <div class="sw-mobile-btns">
       <a href="blaguss_dmc.html" class="sw-btn-primary">DMC Services</a>
       <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO Services</a>
-      <a href="#contact" class="sw-mobile-contact-link">Contact Us →</a>
+      <a href="blaguss_contact.html" class="sw-mobile-contact-link">Contact Us →</a>
     </div>
   </div>
 </div>
@@ -619,7 +619,7 @@ a { text-decoration: none; }
     <h1 class="sw-hero-title">Full-Service PCO<br>for <span class="sw-hero-accent">International</span><br>Conferences</h1>
     <p class="sw-hero-subtitle">Strategic planning · Operational excellence · Local expertise</p>
     <p class="sw-hero-body">We provide full-service PCO solutions for international conferences, combining strategic planning, operational excellence, and local expertise in Budapest and across Europe.</p>
-    <a href="#contact" class="sw-btn-primary">Request a Proposal</a>
+    <a href="blaguss_contact.html" class="sw-btn-primary">Request a Proposal</a>
   </div>
 </section>
 
@@ -1134,7 +1134,7 @@ a { text-decoration: none; }
       <h2>Events We're Proud Of</h2>
       <p>A selection of extraordinary experiences delivered for our clients across Hungary and beyond.</p>
     </div>
-    <a href="#" class="sw-btn-outline" style="white-space: nowrap; flex-shrink: 0;">View All References</a>
+    
   </div>
   <div class="sw-ref-outer">
 
@@ -1242,17 +1242,16 @@ a { text-decoration: none; }
     </div>
     <div>
       <span class="sw-footer-col-title">Navigation</span>
-      <a href="#" class="sw-footer-link">About Us</a>
-      <a href="#" class="sw-footer-link">Destinations</a>
-      <a href="#" class="sw-footer-link">References</a>
-      <a href="#" class="sw-footer-link">Blog</a>
-      <a href="#" class="sw-footer-link">GDPR</a>
+      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-footer-link">Destinations</a>
+            <a href="blaguss_blog.html" class="sw-footer-link">Blog</a>
+      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">GDPR</span>
     </div>
     <div>
       <span class="sw-footer-col-title">Services</span>
       <a href="blaguss_dmc.html" class="sw-footer-link">DMC</a>
       <a href="blaguss_pco.html" class="sw-footer-link">PCO</a>
-      <a href="#contact" class="sw-footer-link">Contact</a>
+      <a href="blaguss_contact.html" class="sw-footer-link">Contact</a>
     </div>
     <div>
       <span class="sw-footer-col-title">Follow us</span>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Blaguss Destination Management</title>
+  <meta name="description" content="Expert perspectives on destination management, incentive travel, congress organisation and the art of creating memorable experiences in Hungary.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sw-red: #E30613;
+  --sw-dark: #1A1A1A;
+  --sw-dark-2: #2A2A2A;
+  --sw-dark-3: #3A3A3A;
+  --sw-gray-light: #F5F5F3;
+  --sw-border: #E8E8E5;
+  --sw-white: #FFFFFF;
+  --sw-font-serif: 'Playfair Display', Georgia, serif;
+  --sw-font-sans: 'Inter', system-ui, sans-serif;
+  --sw-section-py: 4rem;
+  --sw-section-px: 3rem;
+  --sw-radius-card: 0.625rem;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sw-font-sans); color: var(--sw-dark); background: var(--sw-white); -webkit-font-smoothing: antialiased; line-height: 1.65; font-size: 16px; margin: 0; padding: 0; font-variant-numeric: lining-nums tabular-nums; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; }
+
+/* ============================================================
+   NAVBAR — transzparens → scrolled fehér (budapest mintájára)
+   ============================================================ */
+.sw-navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  height: 56px;
+  background: var(--sw-white);
+  border-bottom: 1px solid var(--sw-border);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1030;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+.sw-navbar-right { display: flex; align-items: center; gap: 2rem; }
+.sw-navbar.scrolled {
+  background: var(--sw-white);
+  border-bottom-color: var(--sw-border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+.sw-navbar-brand { display: flex; align-items: center; text-decoration: none; }
+.sw-navbar-logo { height: 42px; width: auto; display: block; transition: opacity 0.2s; }
+.sw-navbar-brand:hover .sw-navbar-logo { opacity: 0.85; }
+.sw-nav-links { display: flex; align-items: center; gap: 2rem; }
+.sw-nav-links-btns { display: flex; align-items: center; gap: 0.375rem; }
+.sw-nav-link { font-size: 0.875rem; font-weight: 500; color: var(--sw-dark); transition: color 0.3s; }
+.sw-nav-link:hover { color: var(--sw-red); }
+.sw-nav-link.active { color: var(--sw-red); font-weight: 600; }
+.sw-btn-nav-dmc { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-dark); color: var(--sw-white); transition: all 0.3s; }
+.sw-btn-nav-dmc:hover { background: #333; color: var(--sw-white); }
+.sw-btn-nav-pco { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: background 0.2s; }
+.sw-btn-nav-pco:hover { background: #c00511; color: var(--sw-white); }
+.sw-btn-nav-contact { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; border: 1.5px solid var(--sw-dark); color: var(--sw-dark); background: transparent; transition: all 0.3s; }
+.sw-btn-nav-contact:hover { background: var(--sw-dark); color: var(--sw-white); }
+
+/* ---- HAMBURGER ---- */
+.sw-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 1100; }
+.sw-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--sw-dark); border-radius: 2px; transition: all 0.3s ease; transform-origin: center; }
+.sw-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.sw-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.sw-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ---- MOBILE MENU ---- */
+.sw-mobile-menu { position: fixed; top: 56px; left: 0; right: 0; bottom: 0; background: var(--sw-dark); z-index: 1020; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity 0.3s ease, transform 0.3s ease; overflow-y: auto; }
+.sw-mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+.sw-mobile-menu-inner { display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 2rem 3rem; min-height: 100%; }
+.sw-mobile-nav { display: flex; flex-direction: column; }
+.sw-mobile-link { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.875rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; letter-spacing: -0.01em; line-height: 1.2; display: block; }
+.sw-mobile-link:hover { color: var(--sw-white); }
+.sw-mobile-link.active { color: var(--sw-white); }
+.sw-mobile-link:last-child { border-bottom: none; }
+.sw-mobile-btns { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
+.sw-mobile-btns .sw-btn-primary { display: block; text-align: center; font-size: 1rem; padding: 0.875rem 1.75rem; }
+.sw-mobile-btns .sw-btn-nav-pco { display: block; text-align: center; font-size: 1rem; padding: 0.875rem 1.75rem; border-radius: 5px; }
+.sw-mobile-contact-link { font-size: 0.9375rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; text-align: center; padding: 0.25rem 0; }
+.sw-mobile-contact-link:hover { color: rgba(255,255,255,0.65); }
+
+/* ============================================================
+   HERO — sötét, képes (budapest mintájára)
+   ============================================================ */
+.sw-blog-hero {
+  background: var(--sw-gray-light);
+  padding: 5.5rem var(--sw-section-px) 3.5rem;
+  margin-top: 56px;
+  border-bottom: 1px solid var(--sw-border);
+}
+.sw-blog-hero-content {
+  max-width: 640px;
+}
+.sw-blog-hero-tag {
+  display: block;
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.sw-blog-hero-title {
+  font-family: var(--sw-font-serif);
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 500; color: var(--sw-dark);
+  line-height: 1.05; letter-spacing: -0.01em;
+  margin-bottom: 0.875rem;
+}
+.sw-blog-hero-title span { color: var(--sw-red); }
+.sw-blog-hero-body {
+  font-size: 1rem; color: #6B6B6B; line-height: 1.65; max-width: 520px;
+}
+
+/* ============================================================
+   FILTER BAR
+   ============================================================ */
+.sw-filter-bar {
+  padding: 1.25rem var(--sw-section-px);
+  border-bottom: 1px solid var(--sw-border);
+  background: var(--sw-white);
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+  position: sticky; top: 56px; z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.sw-filter-label {
+  font-size: 0.6875rem; font-weight: 600;
+  color: #6B6B6B; letter-spacing: 0.06em; text-transform: uppercase;
+  white-space: nowrap; margin-right: 0.25rem; flex-shrink: 0;
+}
+.sw-filter-pill {
+  font-size: 0.8125rem; font-weight: 600;
+  padding: 0.375rem 1rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--sw-border);
+  color: #6B6B6B;
+  background: var(--sw-white);
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.sw-filter-pill:hover { border-color: var(--sw-dark); color: var(--sw-dark); }
+.sw-filter-pill.active { background: var(--sw-red); border-color: var(--sw-red); color: var(--sw-white); }
+
+/* ============================================================
+   FEATURED POST
+   ============================================================ */
+.sw-blog-featured {
+  margin: 3rem var(--sw-section-px) 0;
+  border-radius: 12px; overflow: hidden;
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  min-height: 340px;
+}
+.sw-feat-img {
+  background: var(--sw-dark);
+  position: relative;
+
+}
+.sw-feat-img-placeholder {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1A2535 0%, #0D1520 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.sw-feat-img-placeholder span {
+  font-size: 0.6875rem; color: rgba(255,255,255,0.08); text-align: center; padding: 2rem;
+}
+.sw-feat-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.25) 100%);
+  z-index: 1;
+}
+.sw-feat-content {
+  background: var(--sw-gray-light);
+  padding: 2.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.sw-feat-badge {
+  display: inline-block;
+  background: var(--sw-red); color: var(--sw-white);
+  font-size: 0.6875rem; font-weight: 700;
+  padding: 0.25rem 0.625rem; border-radius: 3px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 1rem; align-self: flex-start;
+}
+.sw-feat-title {
+  font-family: var(--sw-font-serif);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 500; color: var(--sw-dark);
+  line-height: 1.3; margin-bottom: 0.875rem;
+}
+.sw-feat-body {
+  font-size: 0.9375rem; color: #6B6B6B; line-height: 1.65; margin-bottom: 1.25rem;
+}
+.sw-feat-meta {
+  font-size: 0.8125rem; color: #aaa; margin-bottom: 1.25rem;
+}
+.sw-feat-btn {
+  display: inline-block;
+  border: 1.5px solid var(--sw-dark); color: var(--sw-dark);
+  font-size: 0.875rem; font-weight: 600;
+  padding: 0.625rem 1.375rem; border-radius: 5px;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+.sw-feat-btn:hover { background: var(--sw-dark); color: var(--sw-white); transform: translateY(-1px); }
+
+/* ============================================================
+   BLOG GRID SZEKCIÓ
+   ============================================================ */
+.sw-blog-section { padding: var(--sw-section-py) var(--sw-section-px); }
+.sw-blog-section-title { margin-bottom: 1.75rem; }
+.sw-blog-section-title {
+  font-family: var(--sw-font-serif);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em;
+}
+
+
+/* Blog grid — 3 oszlopos */
+.sw-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* Blog kártya */
+.sw-card-blog-list {
+  border: 1px solid var(--sw-border);
+  border-radius: 10px; overflow: hidden;
+  background: var(--sw-white);
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: block; text-decoration: none;
+}
+.sw-card-blog-list:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.sw-card-blog-list-img {
+  height: 200px;
+  background: var(--sw-dark);
+  position: relative; overflow: hidden;
+}
+.sw-card-blog-list-img-placeholder {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1A1A1A, #2A2A2A);
+  display: flex; align-items: center; justify-content: center;
+}
+.sw-card-blog-list-img-placeholder span {
+  font-size: 0.625rem; color: rgba(255,255,255,0.08); text-align: center; padding: 1rem;
+}
+/* Valódi kép esetén: img tag position:absolute, inset:0, object-fit:cover, width/height 100% */
+.sw-card-blog-list-img img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.sw-card-blog-list:hover .sw-card-blog-list-img img { transform: scale(1.04); }
+.sw-card-blog-list-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%);
+  z-index: 1;
+}
+.sw-card-blog-list-cat {
+  position: absolute; bottom: 0.75rem; left: 0.875rem; z-index: 2;
+  font-size: 0.6875rem; font-weight: 700; color: var(--sw-white);
+  background: rgba(227,6,19,0.85);
+  padding: 0.1875rem 0.5rem; border-radius: 2px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.sw-card-blog-list-body { padding: 1.25rem; }
+.sw-card-blog-list-title {
+  font-family: var(--sw-font-serif);
+  font-size: 1.0625rem; font-weight: 500;
+  color: var(--sw-dark); line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+.sw-card-blog-list-excerpt {
+  font-size: 0.875rem; color: #6B6B6B; line-height: 1.55; margin-bottom: 0.75rem;
+}
+.sw-card-blog-list-meta {
+  font-size: 0.8125rem; color: #aaa;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.sw-card-blog-list-meta-dot {
+  width: 3px; height: 3px; border-radius: 50%; background: #ddd; flex-shrink: 0;
+}
+
+/* ============================================================
+   LOAD MORE
+   ============================================================ */
+.sw-blog-load-more {
+  text-align: center;
+  padding: 2rem var(--sw-section-px) 3rem;
+}
+.sw-load-btn {
+  display: inline-block;
+  border: 1.5px solid var(--sw-border);
+  color: var(--sw-dark); background: var(--sw-white);
+  font-size: 0.9375rem; font-weight: 600;
+  padding: 0.75rem 2rem; border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sw-load-btn:hover { border-color: var(--sw-dark); transform: translateY(-1px); }
+
+/* ============================================================
+   CTA STRIP
+   ============================================================ */
+.sw-blog-cta {
+  background: var(--sw-gray-light);
+  padding: 3rem var(--sw-section-px);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem;
+  border-top: 1px solid var(--sw-border);
+}
+.sw-blog-cta-left { flex: 1; min-width: 0; }
+.sw-blog-cta-title {
+  font-family: var(--sw-font-serif);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em;
+  margin-bottom: 0.375rem; line-height: 1.25;
+}
+.sw-blog-cta-sub { font-size: 0.9375rem; color: #6B6B6B; }
+.sw-btn-primary { display: inline-block; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.02em; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: all 0.2s ease; cursor: pointer; border: none; white-space: nowrap; }
+.sw-btn-primary:hover { background: #c00511; color: var(--sw-white); transform: translateY(-1px); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.sw-footer { background: #0D0D0D; padding: 3.5rem 3rem 1.5rem; }
+.sw-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.sw-footer-logo { font-size: 1.25rem; font-weight: 800; color: var(--sw-red); letter-spacing: -0.02em; font-family: var(--sw-font-sans); margin-bottom: 0.25rem; display: block; }
+.sw-footer-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+.sw-footer-col-title { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block; }
+.sw-footer-link { font-size: 0.875rem; color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.375rem; transition: color 0.2s; }
+.sw-footer-link:hover { color: rgba(255,255,255,0.7); }
+.sw-footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.sw-footer-copy { font-size: 0.8125rem; color: rgba(255,255,255,0.2); }
+.sw-social-btn { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: all 0.2s; }
+.sw-social-btn:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+[data-reveal] { opacity: 0; transition: opacity 0.65s ease, transform 0.65s ease; }
+[data-reveal="fade-up"] { transform: translateY(24px); }
+[data-reveal="fade-in"] { transform: none; }
+[data-reveal].is-visible { opacity: 1; transform: none; }
+[data-reveal-stagger] > * { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal-stagger] > *:nth-child(1) { transition-delay: 0s; }
+[data-reveal-stagger] > *:nth-child(2) { transition-delay: 0.08s; }
+[data-reveal-stagger] > *:nth-child(3) { transition-delay: 0.16s; }
+[data-reveal-stagger] > *:nth-child(4) { transition-delay: 0.24s; }
+[data-reveal-stagger] > *:nth-child(5) { transition-delay: 0.32s; }
+[data-reveal-stagger] > *:nth-child(6) { transition-delay: 0.40s; }
+[data-reveal-stagger].is-visible > * { opacity: 1; transform: none; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+/* ---- LG: 992px ---- */
+@media (max-width: 992px) {
+  .sw-nav-links { display: none; }
+  .sw-nav-links-btns .sw-btn-nav-contact { display: none; }
+  .sw-hamburger { display: flex; }
+  .sw-blog-grid { grid-template-columns: 1fr 1fr; }
+  .sw-footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+/* ---- MD: 768px ---- */
+@media (max-width: 768px) {
+  :root { --sw-section-py: 3rem; --sw-section-px: 1.5rem; }
+  .sw-navbar { padding: 0 1.5rem; }
+  .sw-blog-hero { padding: 4.5rem 1.5rem 3rem; }
+  .sw-blog-featured { grid-template-columns: 1fr; margin: 2rem 1.5rem 0; }
+  .sw-feat-img { height: 240px; }
+  .sw-feat-content { padding: 2rem; }
+  .sw-blog-cta { flex-direction: column; align-items: flex-start; }
+  .sw-blog-cta .sw-btn-primary { width: 100%; text-align: center; display: block; }
+  .sw-footer { padding: 3rem 1.5rem 1.5rem; }
+  .sw-footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}
+
+/* ---- SM: 576px ---- */
+@media (max-width: 576px) {
+  :root { --sw-section-py: 2.5rem; --sw-section-px: 1.25rem; }
+  .sw-navbar { padding: 0 1.25rem; }
+  .sw-nav-links-btns { display: none; }
+  .sw-blog-hero { padding: 4rem 1.25rem 2.5rem; }
+  .sw-blog-hero-title { font-size: clamp(2rem, 8vw, 2.75rem); }
+  .sw-blog-hero-body { font-size: 0.9375rem; }
+  .sw-filter-bar { padding: 1rem 1.25rem; }
+  .sw-blog-featured { margin: 1.5rem 1.25rem 0; border-radius: 10px; }
+  .sw-feat-img { height: 200px; }
+  .sw-feat-content { padding: 1.5rem; }
+  .sw-blog-grid { grid-template-columns: 1fr; }
+  .sw-blog-section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
+  .sw-footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="sw-navbar">
+  <a href="index.html" class="sw-navbar-brand">
+    <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="sw-navbar-logo">
+  </a>
+  <div class="sw-navbar-right">
+    <div class="sw-nav-links">
+      <span class="sw-nav-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-nav-link">Destinations</a>
+      
+      <span class="sw-nav-link active" style="cursor:default;">Blog</span>
+    </div>
+    <div class="sw-nav-links-btns">
+      <a href="blaguss_dmc.html" class="sw-btn-nav-dmc">DMC</a>
+      <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO</a>
+      <a href="blaguss_contact.html" class="sw-btn-nav-contact">Contact</a>
+    </div>
+    <button class="sw-hamburger" id="sw-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="sw-mobile-menu" id="sw-mobile-menu">
+  <div class="sw-mobile-menu-inner">
+    <nav class="sw-mobile-nav">
+      <span class="sw-mobile-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-mobile-link">Destinations</a>
+      
+      <span class="sw-mobile-link active" style="cursor:default;">Blog</span>
+    </nav>
+    <div class="sw-mobile-btns">
+      <a href="blaguss_dmc.html" class="sw-btn-primary">DMC Services</a>
+      <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO Services</a>
+      <a href="blaguss_contact.html" class="sw-mobile-contact-link">Contact Us →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SZEKCIÓ: Hero -->
+<header class="sw-blog-hero">
+  <div class="sw-blog-hero-content">
+    <span class="sw-blog-hero-tag">Blaguss Journal</span>
+    <h1 class="sw-blog-hero-title">Insights &<br><span>Inspiration</span></h1>
+    <p class="sw-blog-hero-body">Expert perspectives on destination management, events, and the art of creating memorable experiences in Hungary.</p>
+  </div>
+</header>
+
+<!-- SZEKCIÓ: Filter bar -->
+<div class="sw-filter-bar" id="sw-filter-bar">
+  <button class="sw-filter-pill active" data-filter="all">All</button>
+  <button class="sw-filter-pill" data-filter="incentive">Incentive Travel</button>
+  <button class="sw-filter-pill" data-filter="congress">Congress & PCO</button>
+  <button class="sw-filter-pill" data-filter="destinations">Destinations</button>
+  <button class="sw-filter-pill" data-filter="dmc">DMC</button>
+  <button class="sw-filter-pill" data-filter="sustainability">Sustainability</button>
+</div>
+
+<!-- SZEKCIÓ: Featured post -->
+<div class="sw-blog-featured" data-reveal="fade-up">
+  <div class="sw-feat-img">
+    <img src="ARTICLE_featured.webp" alt="Budapest incentive event" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+    <div class="sw-feat-img-overlay"></div>
+  </div>
+  <div class="sw-feat-content">
+    <span class="sw-feat-badge">✦ Featured</span>
+    <h2 class="sw-feat-title">Why Budapest Leads in Incentive Travel for International Groups</h2>
+    <p class="sw-feat-body">The Hungarian capital offers a rare combination of architectural grandeur, exceptional gastronomy, and competitive pricing — making it Europe's most compelling incentive destination.</p>
+    <p class="sw-feat-meta">Incentive Travel · 5 min read · March 2025</p>
+    <a href="blaguss_blog_cikk.html" class="sw-feat-btn">Read Article →</a>
+  </div>
+</div>
+
+<!-- SZEKCIÓ: Blog grid -->
+<section class="sw-blog-section">
+  <h2 class="sw-blog-section-title" data-reveal="fade-up">Latest Articles</h2>
+  <div class="sw-blog-grid" data-reveal-stagger>
+
+    <!-- Kártya 1 -->
+    <a href="blaguss_blog_cikk.html" class="sw-card-blog-list">
+      <div class="sw-card-blog-list-img">
+        <img src="ARTICLE_01.webp" alt="Budapest gala dinner" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="sw-card-blog-list-overlay"></div>
+        <span class="sw-card-blog-list-cat">DMC</span>
+      </div>
+      <div class="sw-card-blog-list-body">
+        <h3 class="sw-card-blog-list-title">DMC vs. Local Agency: Know the Difference</h3>
+        <p class="sw-card-blog-list-excerpt">Not all event partners are equal. Here's what sets a Destination Management Company apart — and why it matters.</p>
+        <div class="sw-card-blog-list-meta">
+          4 min read
+          <div class="sw-card-blog-list-meta-dot"></div>
+          February 2025
+        </div>
+      </div>
+    </a>
+
+    <!-- Kártya 2 -->
+    <a href="blaguss_blog_cikk.html" class="sw-card-blog-list">
+      <div class="sw-card-blog-list-img">
+        <img src="ARTICLE_02.webp" alt="Congress hall" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="sw-card-blog-list-overlay"></div>
+        <span class="sw-card-blog-list-cat">Congress</span>
+      </div>
+      <div class="sw-card-blog-list-body">
+        <h3 class="sw-card-blog-list-title">Planning a Congress in Hungary: What to Expect</h3>
+        <p class="sw-card-blog-list-excerpt">From venue selection to on-site logistics, international congress organisation demands precision at every step.</p>
+        <div class="sw-card-blog-list-meta">
+          6 min read
+          <div class="sw-card-blog-list-meta-dot"></div>
+          January 2025
+        </div>
+      </div>
+    </a>
+
+    <!-- Kártya 3 -->
+    <a href="blaguss_blog_cikk.html" class="sw-card-blog-list">
+      <div class="sw-card-blog-list-img">
+        <img src="ARTICLE_03.webp" alt="Balaton vineyard" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="sw-card-blog-list-overlay"></div>
+        <span class="sw-card-blog-list-cat">Destinations</span>
+      </div>
+      <div class="sw-card-blog-list-body">
+        <h3 class="sw-card-blog-list-title">Hidden Hungary: Venues Clients Haven't Seen Yet</h3>
+        <p class="sw-card-blog-list-excerpt">Beyond Budapest, Hungary has extraordinary spaces — thermal retreats, estates, lakeside venues that turn events into memories.</p>
+        <div class="sw-card-blog-list-meta">
+          5 min read
+          <div class="sw-card-blog-list-meta-dot"></div>
+          December 2024
+        </div>
+      </div>
+    </a>
+
+    <!-- Kártya 4 -->
+    <a href="blaguss_blog_cikk.html" class="sw-card-blog-list">
+      <div class="sw-card-blog-list-img">
+        <img src="ARTICLE_04.webp" alt="Sustainable event" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="sw-card-blog-list-overlay"></div>
+        <span class="sw-card-blog-list-cat">Sustainability</span>
+      </div>
+      <div class="sw-card-blog-list-body">
+        <h3 class="sw-card-blog-list-title">Sustainable Events in Hungary: Our Approach</h3>
+        <p class="sw-card-blog-list-excerpt">Local suppliers, responsible venues, regional products — how we integrate sustainability into every programme.</p>
+        <div class="sw-card-blog-list-meta">
+          4 min read
+          <div class="sw-card-blog-list-meta-dot"></div>
+          November 2024
+        </div>
+      </div>
+    </a>
+
+    <!-- Kártya 5 -->
+    <a href="blaguss_blog_cikk.html" class="sw-card-blog-list">
+      <div class="sw-card-blog-list-img">
+        <img src="ARTICLE_05.webp" alt="Budapest rooftop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="sw-card-blog-list-overlay"></div>
+        <span class="sw-card-blog-list-cat">Incentive Travel</span>
+      </div>
+      <div class="sw-card-blog-list-body">
+        <h3 class="sw-card-blog-list-title">Gala Dinners: Hungary's Most Spectacular Venues</h3>
+        <p class="sw-card-blog-list-excerpt">From castle halls to rooftop terraces overlooking the Danube — the best gala dinner venues in Hungary.</p>
+        <div class="sw-card-blog-list-meta">
+          5 min read
+          <div class="sw-card-blog-list-meta-dot"></div>
+          October 2024
+        </div>
+      </div>
+    </a>
+
+    <!-- Kártya 6 -->
+    <a href="blaguss_blog_cikk.html" class="sw-card-blog-list">
+      <div class="sw-card-blog-list-img">
+        <img src="ARTICLE_06.webp" alt="Cooking class team building" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="sw-card-blog-list-overlay"></div>
+        <span class="sw-card-blog-list-cat">DMC</span>
+      </div>
+      <div class="sw-card-blog-list-body">
+        <h3 class="sw-card-blog-list-title">Team Building in Hungary: Beyond the Obvious</h3>
+        <p class="sw-card-blog-list-excerpt">Wine tasting in a Tokaj cellar, cooking with a Hungarian chef, or a sunrise hike above the Danube Bend — fresh ideas.</p>
+        <div class="sw-card-blog-list-meta">
+          4 min read
+          <div class="sw-card-blog-list-meta-dot"></div>
+          September 2024
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- SZEKCIÓ: Load more -->
+<div class="sw-blog-load-more">
+  <button class="sw-load-btn">Load More Articles</button>
+</div>
+
+<!-- SZEKCIÓ: CTA strip -->
+<div class="sw-blog-cta" data-reveal="fade-up">
+  <div class="sw-blog-cta-left">
+    <p class="sw-blog-cta-title">Ready to plan your next event?</p>
+    <p class="sw-blog-cta-sub">Our team is happy to discuss your programme and share tailored ideas.</p>
+  </div>
+  <a href="blaguss_contact.html" class="sw-btn-primary">Request a Proposal</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="sw-footer">
+  <div class="sw-footer-grid">
+    <div>
+      <span class="sw-footer-logo">BLAGUSS</span>
+      <p style="font-size: 0.5625rem; color: rgba(255,255,255,0.25); margin-bottom: 0.25rem;">Destination Management</p>
+      <span class="sw-footer-tagline">Bridge to Hungary</span>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Navigation</span>
+      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-footer-link">Destinations</a>
+            <span class="sw-footer-link" style="cursor:default; opacity:0.65;">Blog</span>
+      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">GDPR</span>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Services</span>
+      <a href="blaguss_dmc.html" class="sw-footer-link">DMC</a>
+      <a href="blaguss_pco.html" class="sw-footer-link">PCO</a>
+      <a href="blaguss_contact.html" class="sw-footer-link">Contact</a>
+    </div>
+    <div>
+      <span class="sw-footer-col-title">Follow us</span>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.25rem;">
+        <a href="#" class="sw-social-btn" aria-label="LinkedIn">in</a>
+        <a href="#" class="sw-social-btn" aria-label="Facebook">fb</a>
+        <a href="#" class="sw-social-btn" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+  </div>
+  <div class="sw-footer-bottom">
+    <span class="sw-footer-copy">© 2026 Blaguss Destination Management Kft.</span>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="color: rgba(255,255,255,0.18); font-size: 0.8125rem;">Made by</span>
+      <a href="https://simpleweb.hu" target="_blank" style="display: inline-flex; align-items: center; opacity: 0.5; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.5'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232.65 66.09" style="height: 18px; width: auto; display: block;"><defs><style>.st0{fill:#ffca3a;}</style></defs><path class="st0" d="M45.17,17.8c1.94,0,3.32,1.25,3.32,2.99s-1.38,3.01-3.32,3.01-3.32-1.25-3.32-3.01,1.4-2.99,3.32-2.99ZM45.17,46.73c-1.96,0-3.07-1.17-3.07-3.38v-14.11c0-2.21,1.13-3.38,3.07-3.38s3.09,1.17,3.09,3.38v14.11c0,2.21-1.13,3.38-3.09,3.38Z"/><path class="st0" d="M79.91,46.73c-1.98,0-3.07-1.17-3.07-3.38v-9.1c0-2.27-1.11-3.55-2.99-3.55s-3.11,1.44-3.11,3.72v8.93c0,2.21-1.02,3.38-2.94,3.38s-2.96-1.17-2.96-3.38v-9.06c0-2.25-1.15-3.59-3.03-3.59s-3.07,1.42-3.07,3.72v8.93c0,2.21-1.09,3.38-3.07,3.38s-3.09-1.17-3.09-3.38v-14.21c0-2.03,1.15-3.28,3.01-3.28,1.77,0,2.88,1.15,2.98,3.09v.58h.31c.63-2.3,2.84-3.8,5.62-3.8s4.95,1.46,5.61,3.88h.29c.79-2.34,3.13-3.88,6.1-3.88,4.03,0,6.51,2.5,6.51,6.58v11.04c0,2.21-1.11,3.38-3.09,3.38Z"/><path class="st0" d="M90.39,53.7c-2,0-3.07-1.19-3.07-3.38v-21.08c0-2.17,1.08-3.38,3.03-3.38,1.82,0,2.92,1,3.07,2.84v.58h.31c.83-2.17,3.01-3.55,5.85-3.55,4.72,0,7.51,3.44,7.51,9.31v2.36c0,5.89-2.8,9.37-7.54,9.37-2.78,0-4.9-1.25-5.78-3.44h-.31v6.99c0,2.19-1.09,3.38-3.07,3.38ZM97.15,41.99c2.27,0,3.59-1.82,3.59-4.93v-1.61c0-3.15-1.32-4.93-3.63-4.93s-3.65,1.75-3.65,4.74v2.13c0,2.82,1.46,4.61,3.69,4.61Z"/><path class="st0" d="M110.63,43.35v-21.17c0-2.23,1.11-3.4,3.07-3.4s3.09,1.17,3.09,3.4v21.17c0,2.21-1.13,3.38-3.09,3.38s-3.07-1.17-3.07-3.38Z"/><path class="st0" d="M120.12,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM133.19,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M140.33,25.27c-.21-.79-.33-1.63-.33-2.15,0-1.79,1.27-3.01,3.11-3.01,1.69,0,2.69,1.09,3.23,3.47l3.26,14.51h.31l3.53-14.61c.58-2.38,1.54-3.38,3.32-3.38s2.78,1.04,3.36,3.38l3.51,14.61h.33l3.13-14.51c.48-2.34,1.55-3.47,3.26-3.47,1.8,0,3.07,1.23,3.07,2.96,0,.54-.1,1.36-.23,1.82l-5.13,18.6c-.61,2.21-1.77,3.21-3.69,3.21-2.02,0-3.3-1-3.92-3.38l-3.57-13.51h-.25l-3.61,13.69c-.56,2.09-1.86,3.21-3.74,3.21s-3.15-.79-3.84-3.21l-5.13-18.22Z"/><path class="st0" d="M174.33,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM187.4,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M202.95,43.35h-.31v.5c0,1.86-1.21,2.9-3.05,2.9-1.98,0-3.05-1.21-3.05-3.4v-21.17c0-2.17,1.09-3.38,3.07-3.38s3.07,1.21,3.07,3.38v7.05h.31c.69-2.11,3.01-3.47,5.89-3.47,4.65,0,7.45,3.46,7.45,9.33v2.36c0,5.87-2.8,9.35-7.53,9.35-2.84,0-5.07-1.31-5.85-3.44ZM206.4,42.01c2.25,0,3.55-1.8,3.55-4.91v-1.57c0-3.13-1.32-5.01-3.59-5.01s-3.69,1.84-3.69,4.82v2.03c0,2.84,1.48,4.65,3.72,4.65Z"/><g><path class="st0" d="M33.08,12.69c.53-.19.95-.3,1.5-.3,1.92,0,3.2,1.31,3.2,3.25,0,1.64-1.01,2.78-2.91,3.27l-12.63,4.58.36.14,12.23,4.74c1.92.57,2.93,1.73,2.93,3.33,0,1.94-1.31,3.33-3.16,3.33-.55,0-.97-.11-1.54-.34l-12.75-5.92c-2.93-1.16-3.98-2.78-3.98-5.14,0-2.49,1.14-4.22,3.98-5.25l12.77-5.69Z"/><path class="st0" d="M33.8,37.05c2.85,1.03,3.98,2.76,3.98,5.25s-1.05,3.98-3.98,5.14l-12.75,5.92c-.57.23-.99.34-1.54.34-1.85,0-3.16-1.39-3.16-3.33,0-1.6,1.01-2.76,2.93-3.33l12.23-4.74.36-.14-12.63-4.58c-1.9-.48-2.91-1.62-2.91-3.27,0-1.94,1.29-3.25,3.2-3.25.55,0,.97.11,1.5.3l12.77,5.69Z"/></g></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ---- Hamburger ---- */
+  const hamburger = document.getElementById('sw-hamburger');
+  const mobileMenu = document.getElementById('sw-mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ---- Filter pills ---- */
+  const pills = document.querySelectorAll('.sw-filter-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', function () {
+      pills.forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      // Józsi: itt jön a Laravel/Alpine.js filter logika
+    });
+  });
+
+  /* ---- Scroll reveal ---- */
+  const reveals = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-visible'));
+  }
+
+});
+</script>
+</body>
+</html>

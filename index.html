@@ -82,11 +82,11 @@ a { text-decoration: none; }
 .sw-section-tag { display: block; font-size: 0.75rem; font-weight: 600; color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
 .sw-hero-title { font-family: var(--sw-font-serif); font-size: clamp(3rem, 6vw, 4rem); font-weight: 500; color: var(--sw-white); line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
 .sw-hero-accent { color: var(--sw-red); }
-.sw-hero-subtitle { font-family: var(--sw-font-serif); font-size: 1.125rem; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; }
-.sw-hero-body { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 2rem; max-width: 480px; }
+.sw-hero-subtitle { font-family: var(--sw-font-serif); font-size: 1.125rem; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.75); margin-bottom: 1.25rem; }
+.sw-hero-body { font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 2rem; max-width: 480px; }
 .sw-hero-scroll { position: absolute; bottom: 2rem; right: 3rem; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.375rem; }
 .sw-hero-scroll-line { width: 1px; height: 36px; background: rgba(255,255,255,0.2); }
-.sw-hero-scroll-text { font-size: 0.6875rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; }
+.sw-hero-scroll-text { font-size: 0.6875rem; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; text-transform: uppercase; }
 
 /* ---- BUTTONS ---- */
 .sw-btn-primary { display: inline-block; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.02em; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: all 0.2s ease; cursor: pointer; border: none; }
@@ -123,9 +123,9 @@ a { text-decoration: none; }
 .sw-card-service-placeholder { position: absolute; inset: 0; background: var(--sw-dark); z-index: 0; transition: transform 0.6s ease; }
 .sw-card-service-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.05) 100%); z-index: 1; transition: background 0.3s; }
 .sw-card-service-content { position: relative; z-index: 2; padding: 2rem; }
-.sw-card-service-tag { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.625rem; display: block; }
+.sw-card-service-tag { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.625rem; display: block; }
 .sw-card-service-title { font-family: var(--sw-font-serif); font-size: 1.75rem; font-weight: 500; color: var(--sw-white); letter-spacing: -0.01em; margin-bottom: 0.75rem; line-height: 1.2; }
-.sw-card-service-body { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 1.5rem; }
+.sw-card-service-body { font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.65; margin-bottom: 1.5rem; }
 .sw-card-service:hover .sw-card-service-overlay { background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.1) 100%); }
 
 /* Expertise kártya — hover videó */
@@ -159,8 +159,8 @@ a { text-decoration: none; }
 .sw-card-dest-placeholder { position: absolute; inset: 0; background: var(--sw-dark); z-index: 0; transition: transform 0.55s ease; }
 .sw-card-dest-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.08) 100%); z-index: 1; }
 .sw-card-dest-content { position: relative; z-index: 2; padding: 1.375rem; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
-.sw-card-dest-sub { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.4; max-width: 220px; }
-.sw-card-dest-badge { font-size: 0.6875rem; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.375rem; display: block; }
+.sw-card-dest-sub { font-size: 0.875rem; color: rgba(255,255,255,0.75); line-height: 1.4; max-width: 220px; }
+.sw-card-dest-badge { font-size: 0.6875rem; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.375rem; display: block; }
 .sw-card-dest-title { font-family: var(--sw-font-serif); font-size: 1.25rem; font-weight: 500; color: var(--sw-white); margin-bottom: 0.25rem; line-height: 1.15; }
 .sw-card-dest:hover .sw-card-dest-placeholder { transform: scale(1.04); }
 .sw-card-dest:hover img { transform: scale(1.04); }
@@ -548,20 +548,20 @@ a { text-decoration: none; }
 
 <!-- NAVBAR -->
 <nav class="sw-navbar">
-  <a href="#" class="sw-navbar-brand">
+  <a href="index.html" class="sw-navbar-brand">
     <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="sw-navbar-logo">
   </a>
   <div class="sw-navbar-right">
     <div class="sw-nav-links">
-      <a href="#" class="sw-nav-link">About Us</a>
-      <span class="sw-nav-link" style="cursor:default;opacity:0.5;">Destinations</span>
-      <a href="#" class="sw-nav-link">References</a>
-      <a href="#" class="sw-nav-link">Blog</a>
+      <span class="sw-nav-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-nav-link">Destinations</a>
+      
+      <a href="blaguss_blog.html" class="sw-nav-link">Blog</a>
     </div>
     <div class="sw-nav-links-btns">
       <a href="blaguss_dmc.html" class="sw-btn-nav-dmc">DMC</a>
       <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO</a>
-      <a href="#contact" class="sw-btn-nav-contact">Contact</a>
+      <a href="blaguss_contact.html" class="sw-btn-nav-contact">Contact</a>
     </div>
     <button class="sw-hamburger" id="sw-hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -573,15 +573,15 @@ a { text-decoration: none; }
 <div class="sw-mobile-menu" id="sw-mobile-menu">
   <div class="sw-mobile-menu-inner">
     <nav class="sw-mobile-nav">
-      <a href="#" class="sw-mobile-link">About Us</a>
-      <span class="sw-mobile-link" style="cursor:default;opacity:0.5;">Destinations</span>
-      <a href="#" class="sw-mobile-link">References</a>
-      <a href="#" class="sw-mobile-link">Blog</a>
+      <span class="sw-mobile-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-mobile-link">Destinations</a>
+      
+      <a href="blaguss_blog.html" class="sw-mobile-link">Blog</a>
     </nav>
     <div class="sw-mobile-btns">
       <a href="blaguss_dmc.html" class="sw-btn-primary">DMC Services</a>
       <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO Services</a>
-      <a href="#contact" class="sw-mobile-contact-link">Contact Us →</a>
+      <a href="blaguss_contact.html" class="sw-mobile-contact-link">Contact Us →</a>
     </div>
   </div>
 </div>
@@ -598,7 +598,7 @@ a { text-decoration: none; }
     <h1 class="sw-hero-title">Bridge to<br><span class="sw-hero-accent">Hungary</span></h1>
     <p class="sw-hero-subtitle">Destination Management since 1984</p>
     <p class="sw-hero-body">Four decades of trusted expertise, creative thinking, and flawless execution — bringing Hungary to the world's most discerning clients.</p>
-    <a href="#" class="sw-btn-primary">Explore Our Services</a>
+    <a href="blaguss_dmc.html" class="sw-btn-primary">Explore Our Services</a>
   </div>
   <div class="sw-hero-scroll">
     <div class="sw-hero-scroll-line"></div>
@@ -611,7 +611,7 @@ a { text-decoration: none; }
   <div style="max-width: 900px; margin: 0 auto;" data-reveal="fade-up">
     <h2 class="sw-about-title">40 Years of Bridging the World to Hungary</h2>
     <p class="sw-about-body">Since 1984, Blaguss DMC has been the partner of choice for international organizations, corporations, and event professionals seeking an uncompromising standard of service in Hungary and the wider region.</p>
-    <a href="#" class="sw-btn-outline">About Us</a>
+    <span class="sw-btn-outline" style="cursor:default;opacity:0.5;">About Us</span>
   </div>
 </section>
 
@@ -689,7 +689,7 @@ a { text-decoration: none; }
       </a>
 
       <!-- Lake Balaton — széles, felső sor -->
-      <a href="#" class="sw-card-dest sw-dest-balaton">
+      <a href="blaguss_destinations.html" class="sw-card-dest sw-dest-balaton">
         <img src="DEST_Balaton.webp" alt="Lake Balaton" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="sw-card-dest-placeholder" style="background: #0d2137; opacity:0;"></div>
         <div class="sw-card-dest-overlay"></div>
@@ -701,7 +701,7 @@ a { text-decoration: none; }
       </a>
 
       <!-- Eger — felső sor -->
-      <a href="#" class="sw-card-dest sw-dest-eger">
+      <a href="blaguss_destinations.html" class="sw-card-dest sw-dest-eger">
         <img src="DEST_Eger.webp" alt="Eger" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="sw-card-dest-placeholder" style="background: #1f1209; opacity:0;"></div>
         <div class="sw-card-dest-overlay"></div>
@@ -713,7 +713,7 @@ a { text-decoration: none; }
       </a>
 
       <!-- Debrecen — alsó sor -->
-      <a href="#" class="sw-card-dest sw-dest-debrecen">
+      <a href="blaguss_destinations.html" class="sw-card-dest sw-dest-debrecen">
         <img src="DEST_Debrecen.webp" alt="Debrecen" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="sw-card-dest-placeholder" style="background: #111827; opacity:0;"></div>
         <div class="sw-card-dest-overlay"></div>
@@ -725,7 +725,7 @@ a { text-decoration: none; }
       </a>
 
       <!-- Pécs — alsó sor -->
-      <a href="#" class="sw-card-dest sw-dest-pecs">
+      <a href="blaguss_destinations.html" class="sw-card-dest sw-dest-pecs">
         <img src="DEST_Pecs.webp" alt="Pécs" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="sw-card-dest-placeholder" style="background: #1a0d1a; opacity:0;"></div>
         <div class="sw-card-dest-overlay"></div>
@@ -737,7 +737,7 @@ a { text-decoration: none; }
       </a>
 
       <!-- Tokaj — alsó sor -->
-      <a href="#" class="sw-card-dest sw-dest-tokaj">
+      <a href="blaguss_destinations.html" class="sw-card-dest sw-dest-tokaj">
         <img src="DEST_Tokaj.webp" alt="Tokaj" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="sw-card-dest-placeholder" style="background: #1a1200; opacity:0;"></div>
         <div class="sw-card-dest-overlay"></div>
@@ -749,7 +749,7 @@ a { text-decoration: none; }
       </a>
 
       <!-- Győr — jobb oszlop, 2 sor, kifut -->
-      <a href="#" class="sw-card-dest sw-dest-gyor">
+      <a href="blaguss_destinations.html" class="sw-card-dest sw-dest-gyor">
         <div class="sw-card-dest-placeholder" style="background: #0d1a0d;"></div>
         <div class="sw-card-dest-overlay"></div>
         <div class="sw-card-dest-content">
@@ -772,7 +772,7 @@ a { text-decoration: none; }
       <h2>Events We're Proud Of</h2>
       <p>A selection of extraordinary experiences delivered for our clients across Hungary and beyond.</p>
     </div>
-    <a href="#" class="sw-btn-outline" style="white-space: nowrap; flex-shrink: 0;">View All References</a>
+    
   </div>
   <div class="sw-ref-outer">
 
@@ -893,7 +893,7 @@ a { text-decoration: none; }
   </div>
   <div class="sw-blog-scroll" id="sw-blog-scroll">
     <div class="sw-blog-track" id="sw-blog-track">
-      <a href="#" class="sw-card-blog">
+      <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_01.webp" alt="Budapest incentive travel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Incentive Travel</span></div>
         <div class="sw-card-blog-body">
           <h3 class="sw-card-blog-title">Why Budapest Leads in Incentive Travel</h3>
@@ -901,7 +901,7 @@ a { text-decoration: none; }
           <p class="sw-card-blog-meta">5 min read · March 2025</p>
         </div>
       </a>
-      <a href="#" class="sw-card-blog">
+      <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_02.webp" alt="DMC services Budapest" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">DMC</span></div>
         <div class="sw-card-blog-body">
           <h3 class="sw-card-blog-title">DMC vs. Local Agency: Know the Difference</h3>
@@ -909,7 +909,7 @@ a { text-decoration: none; }
           <p class="sw-card-blog-meta">4 min read · February 2025</p>
         </div>
       </a>
-      <a href="#" class="sw-card-blog">
+      <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_03.webp" alt="Congress planning Hungary" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Congress</span></div>
         <div class="sw-card-blog-body">
           <h3 class="sw-card-blog-title">Planning a Congress in Hungary: What to Expect</h3>
@@ -917,7 +917,7 @@ a { text-decoration: none; }
           <p class="sw-card-blog-meta">6 min read · January 2025</p>
         </div>
       </a>
-      <a href="#" class="sw-card-blog">
+      <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_04.webp" alt="Hidden Hungary venues" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Destinations</span></div>
         <div class="sw-card-blog-body">
           <h3 class="sw-card-blog-title">Hidden Hungary: Venues Clients Haven't Seen Yet</h3>
@@ -925,7 +925,7 @@ a { text-decoration: none; }
           <p class="sw-card-blog-meta">5 min read · December 2024</p>
         </div>
       </a>
-      <a href="#" class="sw-card-blog">
+      <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_05.webp" alt="Gala dinner Budapest Danube" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Incentive Travel</span></div>
         <div class="sw-card-blog-body">
           <h3 class="sw-card-blog-title">Gala Dinners: Hungary's Most Spectacular Venues</h3>
@@ -933,7 +933,7 @@ a { text-decoration: none; }
           <p class="sw-card-blog-meta">5 min read · October 2024</p>
         </div>
       </a>
-      <a href="#" class="sw-card-blog">
+      <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_06.webp" alt="Congress networking" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">PCO</span></div>
         <div class="sw-card-blog-body">
           <h3 class="sw-card-blog-title">The Art of the Congress: What Makes a Scientific Event Truly Memorable</h3>
@@ -954,17 +954,16 @@ a { text-decoration: none; }
     </div>
     <div>
       <span class="sw-footer-col-title">Navigation</span>
-      <a href="#" class="sw-footer-link">About Us</a>
-      <a href="#" class="sw-footer-link">Destinations</a>
-      <a href="#" class="sw-footer-link">References</a>
-      <a href="#" class="sw-footer-link">Blog</a>
-      <a href="#" class="sw-footer-link">GDPR</a>
+      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">About Us</span>
+      <a href="blaguss_destinations.html" class="sw-footer-link">Destinations</a>
+            <a href="blaguss_blog.html" class="sw-footer-link">Blog</a>
+      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">GDPR</span>
     </div>
     <div>
       <span class="sw-footer-col-title">Services</span>
-      <a href="#" class="sw-footer-link">DMC</a>
-      <a href="#" class="sw-footer-link">PCO</a>
-      <a href="#" class="sw-footer-link">Contact</a>
+      <a href="blaguss_dmc.html" class="sw-footer-link">DMC</a>
+      <a href="blaguss_pco.html" class="sw-footer-link">PCO</a>
+      <a href="blaguss_contact.html" class="sw-footer-link">Contact</a>
     </div>
     <div>
       <span class="sw-footer-col-title">Follow us</span>
