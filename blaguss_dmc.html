@@ -475,7 +475,12 @@ a { text-decoration: none; }
   .sw-hero-content { padding: 0 1.5rem 3rem; }
   .sw-hero-title { font-size: clamp(2.25rem, 8vw, 3rem); }
   .sw-beyond-grid { grid-template-columns: 1fr; border-radius: 10px; height: auto; }
-  .sw-beyond-left { min-height: 280px; }
+  .sw-beyond-left { min-height: unset; aspect-ratio: 3/4; }
+  /* Track record — 2 oszlop, box arány eltávolítva */
+  .sw-ref-bento { grid-template-columns: 1fr 1fr; }
+  .sw-ref-bento-row { display: contents; }
+  .sw-ref-box { aspect-ratio: unset; min-height: unset; padding: 1.25rem; }
+  .sw-ref-box:nth-child(-n+4) { aspect-ratio: 3/4; }
   .sw-cta { padding: var(--sw-section-py) var(--sw-section-px); }
   .sw-footer { padding: 3rem 1.5rem 1.5rem; }
   .sw-footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
@@ -490,6 +495,12 @@ a { text-decoration: none; }
   .sw-hero-title { font-size: clamp(2rem, 9vw, 2.75rem); }
   .sw-bento-4col { grid-template-columns: 1fr 1fr; }
   .sw-bcard-wide { grid-column: span 2; }
+  /* Track record — 2 oszlop mobilon is */
+  .sw-ref-bento { grid-template-columns: 1fr 1fr; }
+  .sw-ref-box { aspect-ratio: unset; min-height: 160px; }
+  .sw-ref-box-stat { min-height: 200px; }
+  .sw-ref-box-text h2 { font-size: 3rem; }
+  .sw-ref-review-quote { font-size: 0.875rem; }
   .sw-sustain-grid { grid-template-columns: 1fr; }
   .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
   .sw-footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -620,6 +631,14 @@ a { text-decoration: none; }
       </div>
     </div>
 
+    <div class="sw-bcard sw-bcard-text">
+      <div>
+        <div class="sw-bcard-text-icon sw-bcard-animate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="72" height="72"><path fill="#E30613" d="M12 10a4 4 0 1 0 0-8a4 4 0 0 0 0 8Zm-6.5 3a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5ZM21 10.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0Zm-9 .5a5 5 0 0 1 5 5v6H7v-6a5 5 0 0 1 5-5Zm-7 5c0-.693.1-1.362.288-1.994l-.17.014A3.5 3.5 0 0 0 2 17.5V22h3v-6Zm17 6v-4.5a3.5 3.5 0 0 0-3.288-3.494c.187.632.288 1.301.288 1.994v6h3Z"/></svg></div>
+        <h3 class="sw-bcard-text-title sw-bcard-animate">Team Building &<br>Activities</h3>
+        <p class="sw-bcard-text-sub sw-bcard-animate">Interactive activities, cultural tours and partner programmes</p>
+      </div>
+    </div>
+
     <div class="sw-bcard sw-bcard-visual sw-bcard-wide">
       <div class="sw-bcard-visual-placeholder"></div>
       <div class="sw-bcard-visual-overlay"></div>
@@ -640,14 +659,6 @@ a { text-decoration: none; }
     <div class="sw-bcard sw-bcard-stat" style="background: var(--sw-dark-2);">
       <p class="sw-bcard-stat-num sw-bcard-animate"><span data-count="1200">0</span><span class="sw-stat-suffix">+</span></p>
       <p class="sw-bcard-stat-label sw-bcard-animate">Events delivered<br>across Hungary</p>
-    </div>
-
-    <div class="sw-bcard sw-bcard-text">
-      <div>
-        <div class="sw-bcard-text-icon sw-bcard-animate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="72" height="72"><path fill="#E30613" d="M12 10a4 4 0 1 0 0-8a4 4 0 0 0 0 8Zm-6.5 3a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5ZM21 10.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0Zm-9 .5a5 5 0 0 1 5 5v6H7v-6a5 5 0 0 1 5-5Zm-7 5c0-.693.1-1.362.288-1.994l-.17.014A3.5 3.5 0 0 0 2 17.5V22h3v-6Zm17 6v-4.5a3.5 3.5 0 0 0-3.288-3.494c.187.632.288 1.301.288 1.994v6h3Z"/></svg></div>
-        <h3 class="sw-bcard-text-title sw-bcard-animate">Team Building &<br>Activities</h3>
-        <p class="sw-bcard-text-sub sw-bcard-animate">Interactive activities, cultural tours and partner programmes</p>
-      </div>
     </div>
 
     <div class="sw-bcard sw-bcard-text">
