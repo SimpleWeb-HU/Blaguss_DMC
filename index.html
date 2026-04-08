@@ -176,7 +176,7 @@ a { text-decoration: none; }
 
 /* ---- REFERENCES ---- */
 /* ---- REFERENCES — Apple bento stílus ---- */
-.sw-ref-section { padding: var(--sw-section-py) var(--sw-section-px); }
+.sw-ref-section { padding: var(--sw-section-py) var(--sw-section-px); pointer-events: none; }
 .sw-ref-section-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
 .sw-ref-section-header-text { flex: 1; min-width: 0; }
 .sw-ref-section-header h2 { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
@@ -473,7 +473,19 @@ a { text-decoration: none; }
   .sw-cta-left { padding: 0; }
   .sw-cta-form { padding: 1.5rem; }
 
-  /* Blog */
+  /* Blog — lista layout ≤768px */
+  .sw-blog-scroll { overflow-x: unset; overflow-y: unset; padding-left: 0; }
+  .sw-blog-track { display: flex; flex-direction: column; gap: 0; width: auto; padding: 0 var(--sw-section-px); }
+  .sw-card-blog { width: auto; display: flex; flex-direction: row; align-items: flex-start; gap: 0.875rem; padding: 0.875rem 0; border-bottom: 1px solid var(--sw-border); }
+  .sw-card-blog:last-child { border-bottom: none; }
+  .sw-card-blog-img { width: 100px; height: 100px; flex-shrink: 0; border-radius: 6px; }
+  .sw-card-blog-body { padding: 0; flex: 1; min-width: 0; }
+  .sw-card-blog-title { font-size: 0.9375rem; margin-bottom: 0.25rem; }
+  .sw-card-blog-excerpt { font-size: 0.8125rem; margin-bottom: 0.25rem; }
+  .sw-card-blog:hover .sw-card-blog-img { transform: none; }
+  .sw-card-blog-cat { position: static; background: transparent; color: var(--sw-red); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--sw-red); border-radius: 20px; padding: 0.125rem 0.5rem; display: inline-block; margin-bottom: 0.3rem; }
+  .sw-card-blog-img .sw-card-blog-cat { display: none; }
+  .sw-card-blog-body .sw-card-blog-cat { display: inline-block; }
 
   /* Footer */
   .sw-footer { padding: 3rem 1.5rem 1.5rem; }
@@ -872,6 +884,7 @@ a { text-decoration: none; }
       <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_01.webp" alt="Budapest incentive travel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Incentive Travel</span></div>
         <div class="sw-card-blog-body">
+          <span class="sw-card-blog-cat">Incentive Travel</span>
           <h3 class="sw-card-blog-title">Why Budapest Leads in Incentive Travel</h3>
           <p class="sw-card-blog-excerpt">The Hungarian capital offers a rare combination of architectural grandeur and competitive pricing.</p>
           <p class="sw-card-blog-meta">5 min read · March 2025</p>
@@ -880,6 +893,7 @@ a { text-decoration: none; }
       <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_02.webp" alt="DMC services Budapest" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">DMC</span></div>
         <div class="sw-card-blog-body">
+          <span class="sw-card-blog-cat">DMC</span>
           <h3 class="sw-card-blog-title">DMC vs. Local Agency: Know the Difference</h3>
           <p class="sw-card-blog-excerpt">Not all event partners are equal. Here's what sets a DMC apart.</p>
           <p class="sw-card-blog-meta">4 min read · February 2025</p>
@@ -888,6 +902,7 @@ a { text-decoration: none; }
       <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_03.webp" alt="Congress planning Hungary" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Congress</span></div>
         <div class="sw-card-blog-body">
+          <span class="sw-card-blog-cat">Congress</span>
           <h3 class="sw-card-blog-title">Planning a Congress in Hungary: What to Expect</h3>
           <p class="sw-card-blog-excerpt">From venue selection to on-site logistics, precision at every step.</p>
           <p class="sw-card-blog-meta">6 min read · January 2025</p>
@@ -896,6 +911,7 @@ a { text-decoration: none; }
       <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_04.webp" alt="Hidden Hungary venues" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Destinations</span></div>
         <div class="sw-card-blog-body">
+          <span class="sw-card-blog-cat">Destinations</span>
           <h3 class="sw-card-blog-title">Hidden Hungary: Venues Clients Haven't Seen Yet</h3>
           <p class="sw-card-blog-excerpt">Beyond Budapest, extraordinary spaces await discovery.</p>
           <p class="sw-card-blog-meta">5 min read · December 2024</p>
@@ -904,6 +920,7 @@ a { text-decoration: none; }
       <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_05.webp" alt="Gala dinner Budapest Danube" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">Incentive Travel</span></div>
         <div class="sw-card-blog-body">
+          <span class="sw-card-blog-cat">Incentive Travel</span>
           <h3 class="sw-card-blog-title">Gala Dinners: Hungary's Most Spectacular Venues</h3>
           <p class="sw-card-blog-excerpt">From castle halls to rooftop terraces overlooking the Danube.</p>
           <p class="sw-card-blog-meta">5 min read · October 2024</p>
@@ -912,6 +929,7 @@ a { text-decoration: none; }
       <a href="blaguss_blog_cikk.html" class="sw-card-blog">
         <div class="sw-card-blog-img"><img src="BLOG_06.webp" alt="Congress networking" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"><div class="sw-card-blog-overlay"></div><span class="sw-card-blog-cat">PCO</span></div>
         <div class="sw-card-blog-body">
+          <span class="sw-card-blog-cat">PCO</span>
           <h3 class="sw-card-blog-title">The Art of the Congress: What Makes a Scientific Event Truly Memorable</h3>
           <p class="sw-card-blog-excerpt">Beyond the agenda and the keynotes, the best congresses leave a lasting impression through atmosphere, logistics, and the unexpected.</p>
           <p class="sw-card-blog-meta">7 min read · September 2024</p>
@@ -1086,6 +1104,14 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', updateNavbar, { passive: true });
   updateNavbar();
 
+
+  // Blog excerpt truncation — ≤768px
+  if (window.innerWidth <= 768) {
+    document.querySelectorAll('.sw-card-blog-excerpt').forEach(el => {
+      const txt = el.textContent;
+      if (txt.length > 60) el.textContent = txt.slice(0, 60).trimEnd() + '…';
+    });
+  }
 
   // Destinations — natív scroll, JS nélkül
   document.querySelectorAll('.sw-service-option').forEach(opt => {
@@ -1360,6 +1386,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (top <= 0) {
         swRefRevealed = true;
         refOuter.classList.add('sw-ref-outer-visible');
+        refSection.style.pointerEvents = 'auto';
         setTimeout(() => {
           refBento.classList.add('is-visible');
           swRefAnimateIn();
