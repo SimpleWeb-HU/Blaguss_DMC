@@ -1075,16 +1075,16 @@ document.addEventListener('DOMContentLoaded', function () {
     let bDrag = false, bStartX = 0, bLeft = 0;
     blogScroll.addEventListener('mousedown', e => { bDrag = true; blogScroll.classList.add('dragging'); bStartX = e.pageX - blogScroll.offsetLeft; bLeft = blogScroll.scrollLeft; });
     document.addEventListener('mouseup', () => { bDrag = false; blogScroll.classList.remove('dragging'); });
-    blogScroll.addEventListener('mousemove', e => { if (!bDrag) return; e.preventDefault(); blogScroll.scrollLeft = bLeft - (e.pageX - blogScroll.offsetLeft - bStartX) * 1.2; });
+    blogScroll.addEventListener('mousemove', e => { if (!bDrag) return; blogScroll.scrollLeft = bLeft - (e.pageX - blogScroll.offsetLeft - bStartX) * 1.2; });
   }
 
   // Destinations — natív scroll
-  const destScroll = document.getElementById('sw-dest-scroll');
-  if (destScroll) {
+  const destWrap = document.querySelector('.sw-dest-bento-wrap');
+  if (destWrap) {
     let dDrag = false, dStartX = 0, dLeft = 0;
-    destScroll.addEventListener('mousedown', e => { dDrag = true; destScroll.classList.add('dragging'); dStartX = e.pageX - destScroll.offsetLeft; dLeft = destScroll.scrollLeft; });
-    document.addEventListener('mouseup', () => { dDrag = false; destScroll.classList.remove('dragging'); });
-    destScroll.addEventListener('mousemove', e => { if (!dDrag) return; e.preventDefault(); destScroll.scrollLeft = dLeft - (e.pageX - destScroll.offsetLeft - dStartX) * 1.2; });
+    destWrap.addEventListener('mousedown', e => { dDrag = true; destWrap.classList.add('dragging'); dStartX = e.pageX - destWrap.offsetLeft; dLeft = destWrap.scrollLeft; });
+    document.addEventListener('mouseup', () => { dDrag = false; destWrap.classList.remove('dragging'); });
+    destWrap.addEventListener('mousemove', e => { if (!dDrag) return; destWrap.scrollLeft = dLeft - (e.pageX - destWrap.offsetLeft - dStartX) * 1.2; });
   }
   document.querySelectorAll('.sw-service-option').forEach(opt => {
     opt.addEventListener('click', function () {
