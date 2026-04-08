@@ -340,7 +340,7 @@ a { text-decoration: none; }
 .sw-card-venue-sub { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.4; max-width: 220px; }
 
 /* Első kártya nagyobb cím */
-.sw-card-venue:first-child .sw-card-venue-title { font-size: 1.625rem; }
+
 
 /* ============================================================
    PRO TIP — egyedi dizájn
@@ -553,11 +553,13 @@ a { text-decoration: none; }
   /* About — read-more gomb teljes széles */
   .sw-about-read-more { width: 100%; justify-content: center; }
 
-  /* Venue bento */
-  .sw-venue-bento {
-    grid-template-rows: 240px;
-    grid-template-columns: 280px 220px 190px 230px 210px 190px;
-  }
+  /* Venue bento — stacked */
+  .sw-venue-bento-wrap { overflow-x: unset; overflow-y: unset; cursor: default; padding-left: 0; }
+  .sw-venue-bento-wrap::after { display: none; }
+  .sw-venue-bento { display: flex; flex-direction: column; gap: 10px; width: auto; padding: 0 var(--sw-section-px); }
+  .sw-card-venue { height: 200px; }
+  .sw-card-venue-title { font-size: 1.0625rem; }
+  .sw-card-venue-sub { font-size: 0.8125rem; }
 
   /* Pro tip */
   .sw-protip-section { padding: var(--sw-section-py) var(--sw-section-px); }
@@ -607,10 +609,7 @@ a { text-decoration: none; }
   .sw-about-body { font-size: 0.9375rem; }
 
   /* Venue bento */
-  .sw-venue-bento {
-    grid-template-rows: 200px;
-    grid-template-columns: 240px 190px 170px 200px 185px 170px;
-  }
+  .sw-card-venue { height: 180px; }
   .sw-venue-header { padding: 0 var(--sw-section-px) 1.25rem; }
 
   /* Pro tip */
@@ -645,10 +644,7 @@ a { text-decoration: none; }
   .sw-hero-dest-title { font-size: clamp(1.75rem, 9vw, 2.25rem); }
   .sw-stat-item { padding: 1.125rem 1rem; }
   .sw-stat-num { font-size: 1.75rem; }
-  .sw-venue-bento {
-    grid-template-rows: 180px;
-    grid-template-columns: 210px 170px 155px 180px 165px 155px;
-  }
+  .sw-card-venue { height: 160px; }
 }
 
 </style>
@@ -1192,7 +1188,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     venueWrap.addEventListener('mousemove', e => {
       if (!isDragging) return;
-      e.preventDefault();
       const x = e.pageX - venueWrap.offsetLeft;
       const walk = (x - startX) * 1.2;
       venueWrap.scrollLeft = scrollLeft - walk;
