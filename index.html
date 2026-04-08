@@ -388,8 +388,8 @@ a { text-decoration: none; }
 .sw-mobile-link:hover { color: var(--sw-white); }
 .sw-mobile-link:last-child { border-bottom: none; }
 .sw-mobile-btns { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
-.sw-mobile-btn-dmc { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; background: var(--sw-dark); color: var(--sw-white); text-decoration: none; transition: background 0.2s; letter-spacing: 0.01em; }
-.sw-mobile-btn-dmc:hover { background: #333; color: var(--sw-white); }
+.sw-mobile-btn-dmc { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; background: var(--sw-white); color: var(--sw-dark); text-decoration: none; transition: background 0.2s; letter-spacing: 0.01em; }
+.sw-mobile-btn-dmc:hover { background: #f0f0ee; color: var(--sw-dark); }
 .sw-mobile-btn-pco { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); text-decoration: none; transition: background 0.2s; letter-spacing: 0.01em; }
 .sw-mobile-btn-pco:hover { background: #c00511; color: var(--sw-white); }
 .sw-mobile-btn-contact { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; border: 1.5px solid rgba(255,255,255,0.75); color: var(--sw-white); background: transparent; text-decoration: none; transition: all 0.2s; letter-spacing: 0.01em; }
@@ -1117,11 +1117,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: false });
     blogScroll.addEventListener('touchend', () => {
       if (!bIsHoriz) return;
-      let vel = bVelocity * 16;
+      let vel = bVelocity * 22;
       const momentum = () => {
-        if (Math.abs(vel) < 0.5) return;
+        if (Math.abs(vel) < 0.3) return;
         blogScroll.scrollLeft += vel;
-        vel *= 0.92;
+        vel *= 0.95;
         bMomentumId = requestAnimationFrame(momentum);
       };
       bMomentumId = requestAnimationFrame(momentum);
@@ -1148,27 +1148,46 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!isDown) return;
       destScroll.scrollLeft = scrollLeft - (e.pageX - destScroll.offsetLeft - startX);
     });
-    // Touch — alacsony küszöb, az oldal mozgása közben is indul
-    let touchStartX = 0, touchStartY = 0, touchScrollLeft = 0, isHoriz = null;
+    // Touch — bloghoz hasonló: irányfelismerés + momentum
+    let dTouchStartX = 0, dTouchStartY = 0, dTouchScrollLeft = 0;
+    let dLastX = 0, dLastTime = 0, dVelocity = 0;
+    let dIsHoriz = null, dMomentumId = null;
     destScroll.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      touchScrollLeft = destScroll.scrollLeft;
-      isHoriz = null;
+      dTouchStartX = dLastX = e.touches[0].clientX;
+      dTouchStartY = e.touches[0].clientY;
+      dTouchScrollLeft = destScroll.scrollLeft;
+      dIsHoriz = null; dVelocity = 0;
+      if (dMomentumId) { cancelAnimationFrame(dMomentumId); dMomentumId = null; }
+      dLastTime = Date.now();
     }, { passive: true });
     destScroll.addEventListener('touchmove', e => {
-      const dx = e.touches[0].clientX - touchStartX;
-      const dy = e.touches[0].clientY - touchStartY;
-      // 5px küszöb — döntés azonnal, nem várunk több mozdulatot
-      if (isHoriz === null) {
+      const dx = e.touches[0].clientX - dTouchStartX;
+      const dy = e.touches[0].clientY - dTouchStartY;
+      if (dIsHoriz === null) {
         if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
-          isHoriz = Math.abs(dx) >= Math.abs(dy);
+          dIsHoriz = Math.abs(dx) >= Math.abs(dy);
         } else return;
       }
-      if (!isHoriz) return;
+      if (!dIsHoriz) return;
       e.preventDefault();
-      destScroll.scrollLeft = touchScrollLeft - dx;
+      const now = Date.now();
+      const dt = now - dLastTime || 1;
+      dVelocity = (dLastX - e.touches[0].clientX) / dt;
+      dLastX = e.touches[0].clientX;
+      dLastTime = now;
+      destScroll.scrollLeft = dTouchScrollLeft - dx;
     }, { passive: false });
+    destScroll.addEventListener('touchend', () => {
+      if (!dIsHoriz) return;
+      let vel = dVelocity * 16;
+      const momentumDest = () => {
+        if (Math.abs(vel) < 0.5) return;
+        destScroll.scrollLeft += vel;
+        vel *= 0.92;
+        dMomentumId = requestAnimationFrame(momentumDest);
+      };
+      dMomentumId = requestAnimationFrame(momentumDest);
+    }, { passive: true });
     destScroll.addEventListener('scroll', () => {
       const half = getHalf();
       if (destScroll.scrollLeft >= half) destScroll.scrollLeft -= half;
