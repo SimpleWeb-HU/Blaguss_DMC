@@ -239,7 +239,7 @@ a { text-decoration: none; }
 .sw-beyond-list-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sw-red); flex-shrink: 0; }
 
 /* ---- SUSTAINABILITY ---- */
-.sw-sustain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 0.5rem; }
+.sw-sustain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 2rem; }
 .sw-sustain-card { background: var(--sw-white); border: 1px solid var(--sw-border); border-radius: 10px; padding: 1.5rem; transition: box-shadow 0.2s; }
 .sw-sustain-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
 .sw-sustain-icon { margin-bottom: 0.75rem; display: flex; align-items: center; }
@@ -483,10 +483,13 @@ a { text-decoration: none; }
   .sw-beyond-grid { grid-template-columns: 1fr; border-radius: 10px; height: auto; }
   .sw-beyond-left { min-height: unset; aspect-ratio: 3/4; }
   /* Track record — 2 oszlop, box arány eltávolítva */
-  .sw-ref-bento { grid-template-columns: 1fr 1fr; }
+  .sw-ref-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .sw-ref-bento-row { display: contents; }
+  .sw-ref-outer { padding: 1rem; border-radius: 14px; }
   .sw-ref-box { aspect-ratio: unset; min-height: unset; padding: 1.25rem; }
   .sw-ref-box:nth-child(-n+4) { aspect-ratio: 3/4; }
+  .sw-ref-stat-num { font-size: 3rem; }
+  .sw-ref-box-text h2 { font-size: 3rem; }
   .sw-cta { padding: var(--sw-section-py) var(--sw-section-px); }
   .sw-footer { padding: 3rem 1.5rem 1.5rem; }
   .sw-footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
@@ -502,10 +505,13 @@ a { text-decoration: none; }
   .sw-bento-4col { grid-template-columns: 1fr 1fr; }
   .sw-bcard-wide { grid-column: span 2; }
   /* Track record — 2 oszlop mobilon is */
-  .sw-ref-bento { grid-template-columns: 1fr 1fr; }
-  .sw-ref-box { aspect-ratio: unset; min-height: 160px; }
-  .sw-ref-box-stat { min-height: 200px; }
-  .sw-ref-box-text h2 { font-size: 3rem; }
+  .sw-ref-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .sw-ref-bento-row { display: contents; }
+  .sw-ref-outer { padding: 0.75rem; border-radius: 12px; }
+  .sw-ref-box { aspect-ratio: unset; padding: 1rem; min-height: unset; }
+  .sw-ref-box:nth-child(-n+4) { aspect-ratio: 3/4; }
+  .sw-ref-stat-num { font-size: 2.5rem; }
+  .sw-ref-box-text h2 { font-size: 2.5rem; }
   .sw-ref-review-quote { font-size: 0.875rem; }
   .sw-sustain-grid { grid-template-columns: 1fr; }
   .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
