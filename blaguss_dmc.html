@@ -517,6 +517,28 @@ a { text-decoration: none; }
   .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
   .sw-footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 }
+/* ---- XS: 390px ---- */
+@media (max-width: 390px) {
+  :root {
+    --sw-section-py: 2rem;
+    --sw-section-px: 1rem;
+  }
+
+  /* References */
+  .sw-ref-outer { padding: 0.5rem; border-radius: 10px; }
+  .sw-ref-bento { gap: 5px; }
+  .sw-ref-box { aspect-ratio: unset; padding: 0.75rem; min-height: unset; overflow: hidden; }
+  .sw-ref-box:nth-child(-n+4) { aspect-ratio: 3/4; }
+  .sw-ref-stat-num { font-size: 2rem; }
+  .sw-ref-box-text h2 { font-size: 2rem; }
+  .sw-ref-box-text .sw-ref-text-sub { font-size: 0.8125rem; }
+  .sw-ref-box-text ul li { font-size: 0.75rem; }
+  .sw-ref-review-quote { font-size: 0.75rem; line-height: 1.45; margin-bottom: 0.5rem; }
+  .sw-ref-review-author { font-size: 0.6875rem; }
+  .sw-ref-event-name { font-size: 0.9375rem; }
+  .sw-ref-event-loc { font-size: 0.75rem; }
+  .sw-ref-nav-btn { width: 28px; height: 28px; font-size: 0.75rem; }
+}
 </style>
 </head>
 <body>
