@@ -290,9 +290,8 @@ a { text-decoration: none; }
 .sw-blog-header { padding: 0 var(--sw-section-px) 1.75rem; }
 .sw-blog-header h2 { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
 .sw-blog-header p { font-size: 1rem; color: #6B6B6B; }
-.sw-blog-scroll { overflow-x: auto; overflow-y: hidden; padding-left: var(--sw-section-px); cursor: grab; scrollbar-width: none; -ms-overflow-style: none; }
+.sw-blog-scroll { overflow-x: auto; overflow-y: hidden; padding-left: var(--sw-section-px); scrollbar-width: none; -ms-overflow-style: none; }
 .sw-blog-scroll::-webkit-scrollbar { display: none; }
-.sw-blog-scroll.dragging { cursor: grabbing; }
 .sw-blog-track { display: flex; gap: 14px; width: max-content; padding-right: var(--sw-section-px); }
 .sw-card-blog { border: none; border-radius: 0; background: transparent; cursor: pointer; display: block; text-decoration: none; width: 320px; flex-shrink: 0; }
 .sw-card-blog:hover .sw-card-blog-img { transform: scale(1.02); }
@@ -1076,13 +1075,7 @@ document.addEventListener('DOMContentLoaded', function () {
   updateNavbar();
 
   // Blog — drag + touch scroll
-  const blogScroll = document.getElementById('sw-blog-scroll');
-  if (blogScroll) {
-    let bDrag = false, bStartX = 0, bLeft = 0;
-    blogScroll.addEventListener('mousedown', e => { bDrag = true; blogScroll.classList.add('dragging'); bStartX = e.pageX - blogScroll.offsetLeft; bLeft = blogScroll.scrollLeft; });
-    document.addEventListener('mouseup', () => { bDrag = false; blogScroll.classList.remove('dragging'); });
-    blogScroll.addEventListener('mousemove', e => { if (!bDrag) return; e.preventDefault(); blogScroll.scrollLeft = bLeft - (e.pageX - blogScroll.offsetLeft - bStartX) * 1.2; });
-  }
+  // Blog scroll — natív, JS nélkül
 
   // Destinations — natív scroll
   const destScroll = document.getElementById('sw-dest-scroll');
