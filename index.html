@@ -264,6 +264,22 @@ a { text-decoration: none; }
 .sw-ref-stat-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.1); margin: 0.75rem auto; }
 
 /* ---- CONTACT / CTA ---- */
+.sw-blog-section { padding-top: var(--sw-section-py); padding-bottom: var(--sw-section-py); }
+.sw-blog-header { padding: 0 var(--sw-section-px) 1.75rem; }
+.sw-blog-header h2 { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.sw-blog-header p { font-size: 1rem; color: #6B6B6B; }
+.sw-blog-scroll { overflow-x: auto; overflow-y: hidden; padding-left: var(--sw-section-px); scrollbar-width: none; -ms-overflow-style: none; }
+.sw-blog-scroll::-webkit-scrollbar { display: none; }
+.sw-blog-track { display: flex; gap: 14px; width: max-content; padding-right: var(--sw-section-px); }
+.sw-card-blog { border: none; border-radius: 0; background: transparent; cursor: pointer; display: block; text-decoration: none; width: 320px; flex-shrink: 0; }
+.sw-card-blog:hover .sw-card-blog-img { transform: scale(1.02); }
+.sw-card-blog-img { height: 260px; background: var(--sw-dark); position: relative; overflow: hidden; border-radius: 10px; transition: transform 0.4s ease; }
+.sw-card-blog-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%); }
+.sw-card-blog-cat { position: absolute; top: 0.875rem; left: 0.875rem; z-index: 2; font-size: 0.6875rem; font-weight: 700; color: var(--sw-white); background: rgba(227,6,19,0.85); padding: 0.1875rem 0.5rem; border-radius: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+.sw-card-blog-body { padding: 1rem 0 0; }
+.sw-card-blog-title { font-family: var(--sw-font-serif); font-size: 1.0625rem; font-weight: 500; color: var(--sw-dark); line-height: 1.35; margin-bottom: 0.375rem; }
+.sw-card-blog-excerpt { font-size: 0.875rem; color: #6B6B6B; line-height: 1.55; margin-bottom: 0.375rem; }
+.sw-card-blog-meta { font-size: 0.8125rem; color: #aaa; }
 .sw-cta { background: var(--sw-dark); padding: var(--sw-section-py) var(--sw-section-px); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .sw-cta-left { display: flex; flex-direction: column; justify-content: center; }
 .sw-cta-title { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 2.5vw, 2.25rem); font-weight: 500; color: var(--sw-white); letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 1rem; }
@@ -286,23 +302,6 @@ a { text-decoration: none; }
 .sw-service-option.active .sw-service-dot { background: var(--sw-dark); border-color: var(--sw-dark); }
 
 /* ---- BLOG CAROUSEL ---- */
-.sw-blog-section { padding-top: var(--sw-section-py); padding-bottom: var(--sw-section-py); }
-.sw-blog-header { padding: 0 var(--sw-section-px) 1.75rem; }
-.sw-blog-header h2 { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-.sw-blog-header p { font-size: 1rem; color: #6B6B6B; }
-.sw-blog-scroll { overflow-x: auto; overflow-y: hidden; padding-left: var(--sw-section-px); scrollbar-width: none; -ms-overflow-style: none; }
-.sw-blog-scroll::-webkit-scrollbar { display: none; }
-.sw-blog-track { display: flex; gap: 14px; width: max-content; padding-right: var(--sw-section-px); }
-.sw-card-blog { border: none; border-radius: 0; background: transparent; cursor: pointer; display: block; text-decoration: none; width: 320px; flex-shrink: 0; }
-.sw-card-blog:hover .sw-card-blog-img { transform: scale(1.02); }
-.sw-card-blog-img { height: 260px; background: var(--sw-dark); position: relative; overflow: hidden; border-radius: 10px; transition: transform 0.4s ease; }
-.sw-card-blog-placeholder { position: absolute; inset: 0; background: linear-gradient(135deg, #1A1A1A, #2A2A2A); }
-.sw-card-blog-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%); }
-.sw-card-blog-cat { position: absolute; top: 0.875rem; left: 0.875rem; z-index: 2; font-size: 0.6875rem; font-weight: 700; color: var(--sw-white); background: rgba(227,6,19,0.85); padding: 0.1875rem 0.5rem; border-radius: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
-.sw-card-blog-body { padding: 1rem 0 0; }
-.sw-card-blog-title { font-family: var(--sw-font-serif); font-size: 1.0625rem; font-weight: 500; color: var(--sw-dark); line-height: 1.35; margin-bottom: 0.375rem; }
-.sw-card-blog-excerpt { font-size: 0.875rem; color: #6B6B6B; line-height: 1.55; margin-bottom: 0.375rem; }
-.sw-card-blog-meta { font-size: 0.8125rem; color: #aaa; }
 
 /* ---- FOOTER ---- */
 .sw-footer { background: #0D0D0D; padding: 3.5rem 3rem 1.5rem; }
@@ -471,7 +470,6 @@ a { text-decoration: none; }
   .sw-cta-form { padding: 1.5rem; }
 
   /* Blog */
-  .sw-blog-header { padding: 0 var(--sw-section-px) 1.5rem; }
 
   /* Footer */
   .sw-footer { padding: 3rem 1.5rem 1.5rem; }
@@ -858,45 +856,11 @@ a { text-decoration: none; }
 
 </section>
 
-<!-- SZEKCIÓ: Contact -->
-<section class="sw-cta" id="contact" data-reveal="fade-up">
-  <div class="sw-cta-left">
-    <span class="sw-section-tag">Get in Touch</span>
-    <h2 class="sw-cta-title">Let's Create Something Extraordinary</h2>
-    <p class="sw-cta-body">Tell us about your project. Our team will get back to you within 24 hours.</p>
-  </div>
-  <div class="sw-cta-form">
-    <p style="font-size: 0.8125rem; font-weight: 600; color: #6B6B6B; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.625rem;">Select the service you're interested in.</p>
-    <div class="sw-service-sel">
-      <div class="sw-service-option active" data-service="dmc">
-        <div class="sw-service-dot"></div>
-        <span class="sw-service-label">DMC Services</span>
-        <span class="sw-service-sub">Corporate events, incentive travel</span>
-      </div>
-      <div class="sw-service-option" data-service="pco">
-        <div class="sw-service-dot"></div>
-        <span class="sw-service-label">PCO Services</span>
-        <span class="sw-service-sub">Conferences, congresses</span>
-      </div>
-    </div>
-    <input type="hidden" id="service-type" value="dmc">
-    <input type="text" class="sw-form-input" placeholder="Name">
-    <input type="email" class="sw-form-input" placeholder="e-mail address">
-    <input type="tel" class="sw-form-input" placeholder="Phone">
-    <textarea class="sw-form-textarea" placeholder="Message"></textarea>
-    <div class="sw-form-checks">
-      <label class="sw-form-check-label"><input type="checkbox"> GDPR</label>
-      <label class="sw-form-check-label"><input type="checkbox"> Newsletter</label>
-    </div>
-    <button class="sw-form-submit">Send Enquiry</button>
-  </div>
-</section>
-
 <!-- SZEKCIÓ: Blog -->
 <section class="sw-blog-section">
-  <div class="sw-blog-header" data-reveal="fade-up">
+  <div class="sw-blog-header is-visible" data-reveal="fade-up">
     <span class="sw-section-tag">Knowledge Hub</span>
-    <h2>Insights & Inspiration</h2>
+    <h2>Insights &amp; Inspiration</h2>
     <p>Expert perspectives on destination management, events, and the art of creating memorable experiences in Hungary.</p>
   </div>
   <div class="sw-blog-scroll" id="sw-blog-scroll">
@@ -952,6 +916,42 @@ a { text-decoration: none; }
     </div>
   </div>
 </section>
+
+<!-- SZEKCIÓ: Contact -->
+<section class="sw-cta" id="contact" data-reveal="fade-up">
+  <div class="sw-cta-left">
+    <span class="sw-section-tag">Get in Touch</span>
+    <h2 class="sw-cta-title">Let's Create Something Extraordinary</h2>
+    <p class="sw-cta-body">Tell us about your project. Our team will get back to you within 24 hours.</p>
+  </div>
+  <div class="sw-cta-form">
+    <p style="font-size: 0.8125rem; font-weight: 600; color: #6B6B6B; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.625rem;">Select the service you're interested in.</p>
+    <div class="sw-service-sel">
+      <div class="sw-service-option active" data-service="dmc">
+        <div class="sw-service-dot"></div>
+        <span class="sw-service-label">DMC Services</span>
+        <span class="sw-service-sub">Corporate events, incentive travel</span>
+      </div>
+      <div class="sw-service-option" data-service="pco">
+        <div class="sw-service-dot"></div>
+        <span class="sw-service-label">PCO Services</span>
+        <span class="sw-service-sub">Conferences, congresses</span>
+      </div>
+    </div>
+    <input type="hidden" id="service-type" value="dmc">
+    <input type="text" class="sw-form-input" placeholder="Name">
+    <input type="email" class="sw-form-input" placeholder="e-mail address">
+    <input type="tel" class="sw-form-input" placeholder="Phone">
+    <textarea class="sw-form-textarea" placeholder="Message"></textarea>
+    <div class="sw-form-checks">
+      <label class="sw-form-check-label"><input type="checkbox"> GDPR</label>
+      <label class="sw-form-check-label"><input type="checkbox"> Newsletter</label>
+    </div>
+    <button class="sw-form-submit">Send Enquiry</button>
+  </div>
+</section>
+
+
 
 <footer class="sw-footer">
   <div class="sw-footer-grid">
@@ -1082,7 +1082,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', updateNavbar, { passive: true });
   updateNavbar();
 
-  // Blog scroll — natív, JS nélkül
 
   // Destinations — natív scroll, JS nélkül
   document.querySelectorAll('.sw-service-option').forEach(opt => {
