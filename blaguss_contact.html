@@ -55,10 +55,13 @@ a { text-decoration: none; }
 .sw-nav-link.active { color: var(--sw-red); font-weight: 600; }
 .sw-btn-nav-dmc { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-dark); color: var(--sw-white); transition: all 0.3s; }
 .sw-btn-nav-dmc:hover { background: #333; color: var(--sw-white); }
+.sw-btn-nav-dmc:active { background: #000; transform: scale(0.96); }
 .sw-btn-nav-pco { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: background 0.2s; }
 .sw-btn-nav-pco:hover { background: #c00511; color: var(--sw-white); }
+.sw-btn-nav-pco:active { background: #a0040e; transform: scale(0.96); }
 .sw-btn-nav-contact { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; border: 1.5px solid var(--sw-dark); color: var(--sw-dark); background: transparent; transition: all 0.3s; }
 .sw-btn-nav-contact:hover { background: var(--sw-dark); color: var(--sw-white); }
+.sw-btn-nav-contact:active { background: #000; color: var(--sw-white); transform: scale(0.96); }
 
 /* ---- HAMBURGER ---- */
 .sw-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 1100; }
@@ -91,8 +94,10 @@ a { text-decoration: none; }
 /* ---- BUTTONS ---- */
 .sw-btn-primary { display: inline-block; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.02em; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: all 0.2s ease; cursor: pointer; border: none; }
 .sw-btn-primary:hover { background: #c00511; color: var(--sw-white); transform: translateY(-1px); }
+.sw-btn-primary:active { background: #a0040e; transform: scale(0.96); }
 .sw-btn-outline { display: inline-block; font-weight: 600; font-size: 0.9375rem; padding: 0.75rem 1.75rem; border-radius: 5px; background: transparent; border: 1.5px solid var(--sw-dark); color: var(--sw-dark); transition: all 0.2s ease; }
 .sw-btn-outline:hover { background: var(--sw-dark); color: var(--sw-white); transform: translateY(-1px); }
+.sw-btn-outline:active { background: #000; color: var(--sw-white); transform: scale(0.96); }
 
 /* ============================================================
    HERO — szöveges, világos (#F5F5F3)
@@ -243,6 +248,7 @@ a { text-decoration: none; }
   letter-spacing: 0.02em; transition: background 0.2s;
 }
 .sw-form-submit:hover { background: #c00511; }
+.sw-form-submit:active { background: #a0040e; transform: scale(0.98); }
 .sw-form-note { font-size: 0.8125rem; color: #aaa; text-align: center; margin-top: 0.625rem; }
 
 /* ============================================================
@@ -444,6 +450,13 @@ a { text-decoration: none; }
   .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
   .sw-footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 }
+/* ---- XS: 390px ---- */
+@media (max-width: 390px) {
+  :root { --sw-section-py: 2rem; --sw-section-px: 1rem; }
+  .sw-office-section { padding: 3rem 0 calc(3rem + 220px) 0; }
+  .sw-office-info-box { margin: 1.25rem 1rem; width: calc(100% - 2rem); }
+  .sw-footer { padding: 2rem 1rem 1rem; }
+}
 </style>
 </head>
 <body>
@@ -566,7 +579,7 @@ a { text-decoration: none; }
         <div class="sw-contact-detail-icon" style="border-color:var(--sw-border);font-size:1rem;">✉️</div>
         <div>
           <span class="sw-contact-detail-label" style="color:#6B6B6B;">E-mail</span>
-          <span class="sw-contact-detail-value" style="color:var(--sw-dark);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fc95929a93bc9e909d9b898f8f98919fd29f9391">[email&#160;protected]</a></span>
+          <span class="sw-contact-detail-value" style="color:var(--sw-dark);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="177e79717857757b7670626464737a743974787a">[email&#160;protected]</a></span>
         </div>
       </div>
       <div class="sw-contact-detail-item">
@@ -755,4 +768,16 @@ document.addEventListener('DOMContentLoaded', function () {
   if ('IntersectionObserver' in window) {
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.t
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-visible'));
+  }
+
+});
+</script>
+
+</body>
+</html>
