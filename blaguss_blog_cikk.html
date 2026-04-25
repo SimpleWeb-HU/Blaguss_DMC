@@ -9,615 +9,110 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="blaguss.css?v=002">
+    <style>
+/* Overrides for blog-cikk */
 
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --sw-red: #E30613;
-  --sw-dark: #1A1A1A;
-  --sw-dark-2: #2A2A2A;
-  --sw-dark-3: #3A3A3A;
-  --sw-gray-light: #F5F5F3;
-  --sw-border: #E8E8E5;
-  --sw-white: #FFFFFF;
-  --sw-font-serif: 'Playfair Display', Georgia, serif;
-  --sw-font-sans: 'Inter', system-ui, sans-serif;
-  --sw-section-py: 4rem;
-  --sw-section-px: 3rem;
-  --sw-radius-card: 0.625rem;
-}
+    </style>
 
-html { scroll-behavior: smooth; }
-body { font-family: var(--sw-font-sans); color: var(--sw-dark); background: var(--sw-white); -webkit-font-smoothing: antialiased; line-height: 1.65; font-size: 16px; margin: 0; padding: 0; font-variant-numeric: lining-nums tabular-nums; }
-img { max-width: 100%; height: auto; display: block; }
-a { text-decoration: none; }
 
-/* ============================================================
-   NAVBAR — fehér, fix (blog lista mintájára)
-   ============================================================ */
-.sw-navbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 3rem;
-  height: 56px;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1030;
-  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-}
-.sw-navbar.scrolled {
-  background: var(--sw-white);
-  border-bottom-color: var(--sw-border);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-}
-.sw-navbar-right { display: flex; align-items: center; gap: 2rem; }
-.sw-navbar-brand { display: flex; align-items: center; text-decoration: none; }
-.sw-navbar-logo { height: 42px; width: auto; display: block; transition: opacity 0.2s; }
-.sw-navbar-brand:hover .sw-navbar-logo { opacity: 0.85; }
-.sw-nav-links { display: flex; align-items: center; gap: 2rem; }
-.sw-nav-links-btns { display: flex; align-items: center; gap: 0.375rem; }
-.sw-nav-link { font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.9); transition: color 0.3s; }
-.sw-nav-link:hover { color: var(--sw-white); }
-.sw-nav-link.active { color: var(--sw-white); font-weight: 600; }
-.sw-navbar.scrolled .sw-nav-link { color: var(--sw-dark); }
-.sw-navbar.scrolled .sw-nav-link:hover { color: var(--sw-red); }
-.sw-navbar.scrolled .sw-nav-link.active { color: var(--sw-red); }
-.sw-btn-nav-dmc { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-white); color: var(--sw-dark); transition: all 0.3s; }
-.sw-btn-nav-dmc:hover { background: rgba(255,255,255,0.85); color: var(--sw-dark); }
-.sw-btn-nav-dmc:active { background: rgba(255,255,255,0.65); transform: scale(0.96); }
-.sw-navbar.scrolled .sw-btn-nav-dmc { background: var(--sw-dark); color: var(--sw-white); }
-.sw-navbar.scrolled .sw-btn-nav-dmc:hover { background: #333; color: var(--sw-white); }
-.sw-btn-nav-pco { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: background 0.2s; }
-.sw-btn-nav-pco:hover { background: #c00511; color: var(--sw-white); }
-.sw-btn-nav-pco:active { background: #a0040e; transform: scale(0.96); }
-.sw-btn-nav-contact { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; border: 1.5px solid rgba(255,255,255,0.75); color: var(--sw-white); background: transparent; transition: all 0.3s; }
-.sw-btn-nav-contact:hover { background: rgba(255,255,255,0.15); border-color: var(--sw-white); }
-.sw-btn-nav-contact:active { background: rgba(255,255,255,0.3); transform: scale(0.96); }
-.sw-navbar.scrolled .sw-btn-nav-contact { border-color: var(--sw-dark); color: var(--sw-dark); }
-.sw-navbar.scrolled .sw-btn-nav-contact:hover { background: var(--sw-dark); color: var(--sw-white); }
-
-/* ---- HAMBURGER ---- */
-.sw-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 1100; }
-.sw-hamburger:active { transform: scale(0.9); }
-.sw-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--sw-white); border-radius: 2px; transition: all 0.3s ease; transform-origin: center; }
-.sw-navbar.scrolled .sw-hamburger span { background: var(--sw-dark); }
-.sw-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.sw-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.sw-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-.sw-mobile-menu { position: fixed; top: 56px; left: 0; right: 0; bottom: 0; background: var(--sw-dark); z-index: 1020; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity 0.3s ease, transform 0.3s ease; overflow-y: auto; }
-.sw-mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
-.sw-mobile-menu-inner { display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 2rem 3rem; min-height: 100%; }
-.sw-mobile-nav { display: flex; flex-direction: column; }
-.sw-mobile-link { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.875rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; letter-spacing: -0.01em; line-height: 1.2; display: block; }
-.sw-mobile-link:hover { color: var(--sw-white); }
-.sw-mobile-link:active { color: var(--sw-white); opacity: 0.6; }
-.sw-mobile-link:last-child { border-bottom: none; }
-.sw-mobile-btns { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
-.sw-mobile-btn-dmc { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; background: var(--sw-white); color: var(--sw-dark); text-decoration: none; transition: background 0.2s; letter-spacing: 0.01em; }
-.sw-mobile-btn-dmc:hover { background: #f0f0ee; color: var(--sw-dark); }
-.sw-mobile-btn-dmc:active { background: #e0e0dc; transform: scale(0.97); }
-.sw-mobile-btn-pco { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); text-decoration: none; transition: background 0.2s; letter-spacing: 0.01em; }
-.sw-mobile-btn-pco:hover { background: #c00511; color: var(--sw-white); }
-.sw-mobile-btn-pco:active { background: #a0040e; transform: scale(0.97); }
-.sw-mobile-btn-contact { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; border: 1.5px solid rgba(255,255,255,0.75); color: var(--sw-white); background: transparent; text-decoration: none; transition: all 0.2s; letter-spacing: 0.01em; }
-.sw-mobile-btn-contact:hover { background: rgba(255,255,255,0.1); border-color: var(--sw-white); }
-.sw-mobile-btn-contact:active { background: rgba(255,255,255,0.25); transform: scale(0.97); }
-
-/* ---- BUTTON ---- */
-.sw-btn-primary { display: inline-block; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.02em; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: all 0.2s ease; cursor: pointer; border: none; }
-.sw-btn-primary:hover { background: #c00511; color: var(--sw-white); transform: translateY(-1px); }
-.sw-btn-primary:active { background: #a0040e; transform: scale(0.96); }
-
-/* ============================================================
-   HERO — sötét, képes, gradient alulról
-   ============================================================ */
-.sw-article-hero {
-  position: relative; overflow: hidden;
-  height: 520px;
-  display: flex; align-items: flex-end;
-}
-.sw-article-hero-bg {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, #0d1520 0%, #1a2535 100%);
-  /* Valódi kép: <img src="ARTICLE_featured.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"> */
-}
-.sw-article-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.05) 100%);
-  z-index: 1;
-}
-.sw-article-hero-content {
-  position: relative; z-index: 2;
-  padding: 0 var(--sw-section-px) 3.5rem;
-  max-width: 760px;
-}
-.sw-article-breadcrumb {
-  font-size: 0.75rem; color: rgba(255,255,255,0.35);
-  margin-bottom: 1rem;
-  display: flex; align-items: center; gap: 0.375rem;
-}
-.sw-article-breadcrumb a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
-.sw-article-breadcrumb a:hover { color: rgba(255,255,255,0.65); }
-.sw-article-breadcrumb-sep { color: rgba(255,255,255,0.2); }
-.sw-article-breadcrumb-current { color: rgba(255,255,255,0.8); }
-.sw-article-cat {
-  display: inline-block;
-  background: var(--sw-red); color: var(--sw-white);
-  font-size: 0.6875rem; font-weight: 700;
-  padding: 0.25rem 0.625rem; border-radius: 3px;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-.sw-article-hero-title {
-  font-family: var(--sw-font-serif);
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 500; color: var(--sw-white);
-  line-height: 1.15; letter-spacing: -0.01em;
-  margin-bottom: 1rem;
-}
-.sw-article-meta {
-  font-size: 0.8125rem; color: rgba(255,255,255,0.7);
-  display: flex; align-items: center; gap: 0.625rem; flex-wrap: wrap;
-}
-.sw-article-meta-dot {
-  width: 3px; height: 3px; border-radius: 50%;
-  background: rgba(255,255,255,0.25); flex-shrink: 0;
-}
-
-/* ============================================================
-   CONTENT LAYOUT — artikel + sidebar
-   ============================================================ */
-.sw-article-wrap {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 4rem;
-  padding: var(--sw-section-py) var(--sw-section-px);
-  align-items: start;
-}
-
-/* ============================================================
-   ARTICLE BODY
-   ============================================================ */
-.sw-article {}
-
-.sw-article-lead {
-  font-family: var(--sw-font-serif);
-  font-size: 1.125rem; font-weight: 400; font-style: italic;
-  color: var(--sw-dark); line-height: 1.75;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--sw-border);
-}
-.sw-article-body {
-  font-size: 1rem; color: var(--sw-dark-3);
-  line-height: 1.85; margin-bottom: 1.5rem;
-}
-.sw-article-h2 {
-  font-family: var(--sw-font-serif);
-  font-size: clamp(1.25rem, 2vw, 1.625rem);
-  font-weight: 500; color: var(--sw-dark);
-  margin: 2.5rem 0 0.875rem; line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-.sw-article-img {
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--sw-dark);
-  height: 360px;
-  margin: 2rem 0;
-  position: relative;
-  /* Valódi kép: <img src="..." style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"> */
-}
-.sw-article-img-placeholder {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, #1A2535, #0D1520);
-  display: flex; align-items: center; justify-content: center;
-}
-.sw-article-img-placeholder span { font-size: 0.6875rem; color: rgba(255,255,255,0.08); text-align: center; }
-.sw-article-img-cap {
-  position: absolute; bottom: 0.875rem; left: 1rem; right: 1rem;
-  font-size: 0.75rem; color: rgba(255,255,255,0.4);
-  font-style: italic; z-index: 2;
-}
-.sw-article-img-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);
-  z-index: 1;
-}
-
-.sw-article-quote {
-  border-left: 3px solid var(--sw-red);
-  padding: 1.25rem 1.5rem;
-  margin: 2rem 0;
-  background: #FFF8F8;
-  border-radius: 0 8px 8px 0;
-}
-.sw-article-quote-text {
-  font-family: var(--sw-font-serif);
-  font-size: 1.0625rem; font-weight: 400; font-style: italic;
-  color: var(--sw-dark); line-height: 1.65;
-  margin-bottom: 0.5rem;
-}
-.sw-article-quote-attr {
-  font-size: 0.8125rem; color: #aaa; font-weight: 600;
-}
-
-.sw-article-list {
-  list-style: none; padding: 0;
-  margin: 0.75rem 0 1.5rem;
-  display: flex; flex-direction: column; gap: 0.5rem;
-}
-.sw-article-list li {
-  display: flex; align-items: flex-start; gap: 0.625rem;
-  font-size: 1rem; color: var(--sw-dark-3); line-height: 1.65;
-}
-.sw-article-list li::before {
-  content: '';
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--sw-red); flex-shrink: 0;
-  margin-top: 0.55rem;
-}
-
-.sw-article-tags {
-  display: flex; gap: 0.5rem; flex-wrap: wrap;
-  margin-top: 2.5rem; padding-top: 1.5rem;
-  border-top: 1px solid #F0F0EE;
-}
-.sw-article-tag {
-  font-size: 0.8125rem; color: #6B6B6B;
-  border: 1px solid var(--sw-border);
-  border-radius: 20px; padding: 0.3125rem 0.875rem;
-  transition: all 0.2s;
-}
-.sw-article-tag:hover { border-color: var(--sw-dark); color: var(--sw-dark); }
-
-/* ============================================================
-   SIDEBAR
-   ============================================================ */
-.sw-article-sidebar {
-  position: sticky; top: 80px;
-  display: flex; flex-direction: column; gap: 1.25rem;
-}
-
-/* Sidebar CTA */
-.sw-sidebar-cta {
-  background: var(--sw-dark);
-  border-radius: 10px; padding: 1.75rem;
-}
-.sw-sidebar-cta-tag {
-  font-size: 0.6875rem; font-weight: 700;
-  color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase;
-  margin-bottom: 0.625rem; display: block;
-}
-.sw-sidebar-cta-title {
-  font-family: var(--sw-font-serif);
-  font-size: 1.125rem; font-weight: 500;
-  color: var(--sw-white); line-height: 1.35;
-  margin-bottom: 0.625rem;
-}
-.sw-sidebar-cta-body {
-  font-size: 0.875rem; color: rgba(255,255,255,0.45);
-  line-height: 1.6; margin-bottom: 1.125rem;
-}
-.sw-sidebar-cta-btn {
-  display: block;
-  background: var(--sw-red); color: var(--sw-white);
-  font-size: 0.875rem; font-weight: 700;
-  padding: 0.75rem 1.25rem; border-radius: 5px;
-  text-align: center; transition: background 0.2s;
-}
-.sw-sidebar-cta-btn:hover { background: #c00511; color: var(--sw-white); }
-
-/* Sidebar related */
-.sw-sidebar-related {
-  background: var(--sw-gray-light);
-  border-radius: 10px; padding: 1.5rem;
-}
-.sw-sidebar-related-title {
-  font-size: 0.6875rem; font-weight: 700;
-  color: var(--sw-dark); letter-spacing: 0.1em; text-transform: uppercase;
-  margin-bottom: 1.125rem; display: block;
-}
-.sw-sidebar-item {
-  display: flex; gap: 0.75rem;
-  margin-bottom: 1rem; padding-bottom: 1rem;
-  border-bottom: 1px solid var(--sw-border);
-  text-decoration: none; transition: opacity 0.2s;
-}
-.sw-sidebar-item:hover { opacity: 0.75; }
-.sw-sidebar-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-.sw-sidebar-item-img {
-  width: 56px; height: 44px; border-radius: 5px;
-  background: var(--sw-dark); flex-shrink: 0;
-  overflow: hidden; position: relative;
-}
-.sw-sidebar-item-img img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover; display: block;
-}
-.sw-sidebar-item-img img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
-}
-.sw-sidebar-item-img-placeholder {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, #1A1A1A, #2A2A2A);
-  display: flex; align-items: center; justify-content: center;
-}
-.sw-sidebar-item-img-placeholder span { font-size: 0.4375rem; color: rgba(255,255,255,0.15); }
-.sw-sidebar-item-cat {
-  font-size: 0.625rem; font-weight: 700;
-  color: var(--sw-red); text-transform: uppercase; letter-spacing: 0.06em;
-  margin-bottom: 0.25rem; display: block;
-}
-.sw-sidebar-item-title {
-  font-size: 0.875rem; font-weight: 600;
-  color: var(--sw-dark); line-height: 1.35;
-}
-
-/* ============================================================
-   RELATED POSTS
-   ============================================================ */
-.sw-related {
-  background: var(--sw-gray-light);
-  padding: var(--sw-section-py) var(--sw-section-px);
-  border-top: 1px solid var(--sw-border);
-}
-.sw-related-title {
-  font-family: var(--sw-font-serif);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 500; color: var(--sw-dark);
-  letter-spacing: -0.01em; margin-bottom: 2rem;
-}
-.sw-related-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-.sw-related-card {
-  border: 1px solid var(--sw-border);
-  border-radius: 10px; overflow: hidden;
-  background: var(--sw-white);
-  text-decoration: none;
-  display: block;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.sw-related-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
-.sw-related-card-img {
-  height: 160px; background: var(--sw-dark);
-  position: relative; overflow: hidden;
-}
-.sw-related-card-img img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.4s ease;
-}
-.sw-related-card:hover .sw-related-card-img img { transform: scale(1.04); }
-.sw-related-card-img-placeholder {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, #1A1A1A, #2A2A2A);
-  display: flex; align-items: center; justify-content: center;
-}
-.sw-related-card-img-placeholder span { font-size: 0.625rem; color: rgba(255,255,255,0.08); }
-.sw-related-card-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%);
-  z-index: 1;
-}
-.sw-related-card-cat {
-  position: absolute; bottom: 0.625rem; left: 0.75rem; z-index: 2;
-  font-size: 0.625rem; font-weight: 700; color: var(--sw-white);
-  background: rgba(227,6,19,0.85);
-  padding: 0.1875rem 0.4375rem; border-radius: 2px;
-  letter-spacing: 0.06em; text-transform: uppercase;
-}
-.sw-related-card-body { padding: 1.125rem; }
-.sw-related-card-title {
-  font-family: var(--sw-font-serif);
-  font-size: 1rem; font-weight: 500;
-  color: var(--sw-dark); line-height: 1.35; margin-bottom: 0.375rem;
-}
-.sw-related-card-meta { font-size: 0.8125rem; color: #aaa; }
-
-/* ============================================================
-   CTA STRIP — piros háttér (új variáns)
-   ============================================================ */
-.sw-article-cta {
-  background: var(--sw-red);
-  padding: 3rem var(--sw-section-px);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 2rem;
-}
-.sw-article-cta-left { flex: 1; min-width: 0; }
-.sw-article-cta-title {
-  font-family: var(--sw-font-serif);
-  font-size: clamp(1.25rem, 2vw, 1.625rem);
-  font-weight: 500; color: var(--sw-white);
-  letter-spacing: -0.01em; margin-bottom: 0.375rem; line-height: 1.25;
-}
-.sw-article-cta-sub { font-size: 0.9375rem; color: rgba(255,255,255,0.65); }
-.sw-btn-white {
-  display: inline-block; font-weight: 700; font-size: 0.9375rem;
-  padding: 0.75rem 1.75rem; border-radius: 5px;
-  background: var(--sw-white); color: var(--sw-dark);
-  border: 1.5px solid var(--sw-white);
-  transition: all 0.2s ease; white-space: nowrap; flex-shrink: 0;
-}
-.sw-btn-white:hover { background: var(--sw-dark); color: var(--sw-white); border-color: var(--sw-dark); transform: translateY(-1px); }
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.sw-footer { background: #0D0D0D; padding: 3.5rem 3rem 1.5rem; }
-.sw-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
-.sw-footer-logo { font-size: 1.25rem; font-weight: 800; color: var(--sw-red); letter-spacing: -0.02em; font-family: var(--sw-font-sans); margin-bottom: 0.25rem; display: block; }
-.sw-footer-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
-.sw-footer-col-title { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block; }
-.sw-footer-link { font-size: 0.875rem; color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.375rem; transition: color 0.2s; }
-.sw-footer-link:hover { color: rgba(255,255,255,0.7); }
-.sw-footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
-.sw-footer-copy { font-size: 0.8125rem; color: rgba(255,255,255,0.2); }
-.sw-social-btn { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: all 0.2s; }
-.sw-social-btn:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); }
-
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
-[data-reveal] { opacity: 0; transition: opacity 0.65s ease, transform 0.65s ease; }
-[data-reveal="fade-up"] { transform: translateY(24px); }
-[data-reveal="fade-in"] { transform: none; }
-[data-reveal].is-visible { opacity: 1; transform: none; }
-[data-reveal-stagger] > * { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal-stagger] > *:nth-child(1) { transition-delay: 0s; }
-[data-reveal-stagger] > *:nth-child(2) { transition-delay: 0.08s; }
-[data-reveal-stagger] > *:nth-child(3) { transition-delay: 0.16s; }
-[data-reveal-stagger].is-visible > * { opacity: 1; transform: none; }
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-/* ---- LG: 992px ---- */
-@media (max-width: 992px) {
-  .sw-nav-links { display: none; }
-  .sw-nav-links-btns .sw-btn-nav-contact { display: none; }
-  .sw-hamburger { display: flex; }
-  .sw-article-wrap { grid-template-columns: 1fr; gap: 3rem; }
-  .sw-article-sidebar { position: static; }
-  .sw-related-grid { grid-template-columns: 1fr 1fr; }
-  .sw-footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-/* ---- MD: 768px ---- */
-@media (max-width: 768px) {
-  :root { --sw-section-py: 3rem; --sw-section-px: 1.5rem; }
-  .sw-navbar { padding: 0 1.5rem; }
-  .sw-article-hero { height: 420px; }
-  .sw-article-hero-content { padding: 0 1.5rem 2.5rem; }
-  .sw-article-hero-title { font-size: clamp(1.5rem, 5vw, 2.25rem); }
-  .sw-article-img { height: 280px; }
-  .sw-article-cta { flex-direction: column; align-items: flex-start; }
-  .sw-btn-white { width: 100%; text-align: center; display: block; }
-  .sw-footer { padding: 3rem 1.5rem 1.5rem; }
-  .sw-footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-}
-
-/* ---- SM: 576px ---- */
-@media (max-width: 576px) {
-  :root { --sw-section-py: 2.5rem; --sw-section-px: 1.25rem; }
-  .sw-navbar { padding: 0 1.25rem; }
-  .sw-navbar-logo { height: 34px; }
-  .sw-nav-links-btns { display: none; }
-  .sw-article-hero { height: 360px; }
-  .sw-article-hero-title { font-size: clamp(1.375rem, 6vw, 2rem); }
-  .sw-article-img { height: 220px; }
-  .sw-related-grid { grid-template-columns: 1fr; }
-  .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
-  .sw-footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-}
-/* ---- XS: 390px ---- */
-@media (max-width: 390px) {
-  :root { --sw-section-py: 2rem; --sw-section-px: 1rem; }
-  .sw-article-hero { height: auto; aspect-ratio: 3/4; }
-  .sw-article-hero-title { font-size: clamp(1.25rem, 7vw, 1.75rem); }
-  .sw-article-img { height: 180px; }
-}
-</style>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="sw-navbar">
-  <a href="index.html" class="sw-navbar-brand">
-    <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="sw-navbar-logo">
+<nav class="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="nav__logo">
   </a>
-  <div class="sw-navbar-right">
-    <div class="sw-nav-links">
-      <a href="blaguss_about.html" class="sw-nav-link">About Us</a>
-      <a href="blaguss_destinations.html" class="sw-nav-link">Destinations</a>
+  <div class="nav__right">
+    <div class="nav__links">
+      <a href="blaguss_about.html" class="nav__link">About Us</a>
+      <a href="blaguss_destinations.html" class="nav__link">Destinations</a>
       
-      <a href="blaguss_blog.html" class="sw-nav-link active">Blog</a>
+      <a href="blaguss_blog.html" class="nav__link active">Blog</a>
     </div>
-    <div class="sw-nav-links-btns">
-      <a href="blaguss_dmc.html" class="sw-btn-nav-dmc">DMC</a>
-      <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO</a>
-      <a href="blaguss_contact.html" class="sw-btn-nav-contact">Contact</a>
+    <div class="nav__btns">
+      <a href="blaguss_dmc.html" class="btn btn--white btn--sm nav__btn">DMC</a>
+      <a href="blaguss_pco.html" class="btn btn--primary btn--sm nav__btn">PCO</a>
+      <a href="blaguss_contact.html" class="btn btn--outline-white btn--sm nav__btn">Contact</a>
     </div>
-    <button class="sw-hamburger" id="sw-hamburger" aria-label="Menu">
+    <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="sw-mobile-menu" id="sw-mobile-menu">
-  <div class="sw-mobile-menu-inner">
-    <nav class="sw-mobile-nav">
-      <a href="blaguss_about.html" class="sw-mobile-link">About Us</a>
-      <a href="blaguss_destinations.html" class="sw-mobile-link">Destinations</a>
-      <a href="blaguss_blog.html" class="sw-mobile-link active">Blog</a>
+<div class="mmenu" id="mmenu">
+  <div class="mmenu__inner">
+    <nav class="mmenu__nav">
+      <a href="blaguss_about.html" class="mmenu__link">About Us</a>
+      <a href="blaguss_destinations.html" class="mmenu__link">Destinations</a>
+      <a href="blaguss_blog.html" class="mmenu__link active">Blog</a>
     </nav>
-    <div class="sw-mobile-btns">
-      <a href="blaguss_dmc.html" class="sw-mobile-btn-dmc">DMC Services</a>
-      <a href="blaguss_pco.html" class="sw-mobile-btn-pco">PCO Services</a>
-      <a href="blaguss_contact.html" class="sw-mobile-btn-contact">Contact</a>
+    <div class="mmenu__btns">
+      <a href="blaguss_dmc.html" class="btn btn--white btn--lg mmenu__btn">DMC Services</a>
+      <a href="blaguss_pco.html" class="btn btn--primary btn--lg mmenu__btn">PCO Services</a>
+      <a href="blaguss_contact.html" class="btn btn--outline-white btn--lg mmenu__btn">Contact</a>
     </div>
   </div>
 </div>
 
 <!-- SZEKCIÓ: Hero -->
-<header class="sw-article-hero">
-  <div class="sw-article-hero-bg">
+<header class="ahero-art">
+  <div class="ahero-art__bg">
     <img src="ARTICLE_hero.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
   </div>
-  <div class="sw-article-hero-overlay"></div>
-  <div class="sw-article-hero-content">
-    <div class="sw-article-breadcrumb">
+  <div class="ahero-art__overlay"></div>
+  <div class="ahero-art__content">
+    <div class="art__crumb">
       <a href="blaguss_blog.html">Blog</a>
-      <span class="sw-article-breadcrumb-sep">›</span>
-      <span class="sw-article-breadcrumb-current">Incentive Travel</span>
+      <span class="art__crumb-sep">›</span>
+      <span class="art__crumb-current">Incentive Travel</span>
     </div>
-    <span class="sw-article-cat">Incentive Travel</span>
-    <h1 class="sw-article-hero-title">Why Budapest Leads in Incentive Travel for International Groups</h1>
-    <div class="sw-article-meta">
+    <span class="art__cat">Incentive Travel</span>
+    <h1 class="ahero-art__title">Why Budapest Leads in Incentive Travel for International Groups</h1>
+    <div class="art__meta">
       <span>Blaguss DMC Team</span>
-      <div class="sw-article-meta-dot"></div>
+      <div class="art__meta-dot"></div>
       <span>March 2025</span>
-      <div class="sw-article-meta-dot"></div>
+      <div class="art__meta-dot"></div>
       <span>5 min read</span>
     </div>
   </div>
 </header>
 
 <!-- SZEKCIÓ: Content + Sidebar -->
-<div class="sw-article-wrap">
+<div class="art__wrap">
 
   <!-- CIKK -->
-  <article class="sw-article">
+  <article class="art">
 
-    <p class="sw-article-lead">The Hungarian capital offers a rare combination of architectural grandeur, exceptional gastronomy, and competitive pricing — making it Europe's most compelling incentive destination right now.</p>
+    <p class="art__lead">The Hungarian capital offers a rare combination of architectural grandeur, exceptional gastronomy, and competitive pricing — making it Europe's most compelling incentive destination right now.</p>
 
-    <p class="sw-article-body">Budapest has long been on the radar of incentive travel planners, but in recent years it has moved firmly to the top of wish lists for international groups. The reasons are multiple, and they go far beyond the iconic Parliament building and the thermal baths.</p>
+    <p class="art__body">Budapest has long been on the radar of incentive travel planners, but in recent years it has moved firmly to the top of wish lists for international groups. The reasons are multiple, and they go far beyond the iconic Parliament building and the thermal baths.</p>
 
-    <h2 class="sw-article-h2">The Wow Factor is Built In</h2>
-    <p class="sw-article-body">Unlike destinations where you need to work hard to create memorable moments, Budapest delivers the wow factor at every turn. The city's Belle Époque architecture, the dramatic Danube panorama, the ruin bar scene — these are experiences that generate genuine excitement among delegates.</p>
+    <h2 class="art__h2">The Wow Factor is Built In</h2>
+    <p class="art__body">Unlike destinations where you need to work hard to create memorable moments, Budapest delivers the wow factor at every turn. The city's Belle Époque architecture, the dramatic Danube panorama, the ruin bar scene — these are experiences that generate genuine excitement among delegates.</p>
 
     <!-- Kép 1 -->
-    <div class="sw-article-img">
+    <div class="art__img">
       <img src="ARTICLE_img1.webp" alt="Budapest Danube night event venue" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="sw-article-img-overlay"></div>
-      <p class="sw-article-img-cap">Budapest — Duna-parti rendezvényhelyszín</p>
+      <div class="art__img-overlay"></div>
+      <p class="art__img-cap">Budapest — Duna-parti rendezvényhelyszín</p>
     </div>
 
-    <h2 class="sw-article-h2">Value Without Compromise</h2>
-    <p class="sw-article-body">One of Budapest's most compelling arguments is its price-to-experience ratio. You can host a gala dinner in a 19th century palace, arrange private Danube cruises, and fill four days with unique cultural experiences — all at a fraction of the cost of comparable programmes in Paris or Vienna.</p>
+    <h2 class="art__h2">Value Without Compromise</h2>
+    <p class="art__body">One of Budapest's most compelling arguments is its price-to-experience ratio. You can host a gala dinner in a 19th century palace, arrange private Danube cruises, and fill four days with unique cultural experiences — all at a fraction of the cost of comparable programmes in Paris or Vienna.</p>
 
-    <blockquote class="sw-article-quote">
-      <p class="sw-article-quote-text">"Budapest was the unanimous choice of our incentive committee. The combination of unique venues, excellent cuisine and the warmth of the local team made it unforgettable."</p>
-      <p class="sw-article-quote-attr">— Group Travel Manager, Fortune 500 Company</p>
+    <blockquote class="art__quote">
+      <p class="art__quote-text">"Budapest was the unanimous choice of our incentive committee. The combination of unique venues, excellent cuisine and the warmth of the local team made it unforgettable."</p>
+      <p class="art__quote-attr">— Group Travel Manager, Fortune 500 Company</p>
     </blockquote>
 
-    <h2 class="sw-article-h2">What Makes a Budapest Programme Stand Out</h2>
-    <ul class="sw-article-list">
+    <h2 class="art__h2">What Makes a Budapest Programme Stand Out</h2>
+    <ul class="art__list">
       <li>Private access to iconic venues — State Opera House, Buda Castle, historic bath houses</li>
       <li>Authentic Hungarian gastronomy — from market tours to Michelin-starred dinners</li>
       <li>Danube river experiences — private cruises with live music and catering</li>
@@ -626,67 +121,67 @@ a { text-decoration: none; }
     </ul>
 
     <!-- Kép 2 -->
-    <div class="sw-article-img">
+    <div class="art__img">
       <img src="ARTICLE_img2.webp" alt="Gala dinner ballroom Budapest" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="sw-article-img-overlay"></div>
-      <p class="sw-article-img-cap">Gálavacsora — elegáns bankettterem</p>
+      <div class="art__img-overlay"></div>
+      <p class="art__img-cap">Gálavacsora — elegáns bankettterem</p>
     </div>
 
-    <p class="sw-article-body">Working with a local DMC like Blaguss means access to exclusive venues and experiences that are simply not available through international booking platforms. Our long-standing supplier relationships open doors that others can't.</p>
+    <p class="art__body">Working with a local DMC like Blaguss means access to exclusive venues and experiences that are simply not available through international booking platforms. Our long-standing supplier relationships open doors that others can't.</p>
 
     <!-- Tagek -->
-    <div class="sw-article-tags">
-      <span class="sw-article-tag">Budapest</span>
-      <span class="sw-article-tag">Incentive Travel</span>
-      <span class="sw-article-tag">DMC</span>
-      <span class="sw-article-tag">Corporate Events</span>
-      <span class="sw-article-tag">Hungary</span>
+    <div class="art__tags">
+      <span class="art__tag">Budapest</span>
+      <span class="art__tag">Incentive Travel</span>
+      <span class="art__tag">DMC</span>
+      <span class="art__tag">Corporate Events</span>
+      <span class="art__tag">Hungary</span>
     </div>
 
   </article>
 
   <!-- SIDEBAR -->
-  <aside class="sw-article-sidebar">
+  <aside class="art__sidebar">
 
     <!-- CTA kártya -->
-    <div class="sw-sidebar-cta">
-      <span class="sw-sidebar-cta-tag">Planning an Incentive Trip?</span>
-      <h3 class="sw-sidebar-cta-title">Let's Design Your Budapest Programme</h3>
-      <p class="sw-sidebar-cta-body">Tell us about your group and objectives — we'll come back with tailored ideas.</p>
-      <a href="blaguss_contact.html" class="sw-sidebar-cta-btn">Request a Proposal →</a>
+    <div class="side-cta">
+      <span class="side-cta__tag">Planning an Incentive Trip?</span>
+      <h3 class="side-cta__title">Let's Design Your Budapest Programme</h3>
+      <p class="side-cta__body">Tell us about your group and objectives — we'll come back with tailored ideas.</p>
+      <a href="blaguss_contact.html" class="btn btn--primary btn--md">Request a Proposal →</a>
     </div>
 
     <!-- Related articles -->
-    <div class="sw-sidebar-related">
-      <span class="sw-sidebar-related-title">More from the Blog</span>
+    <div class="side-rel">
+      <span class="side-rel__head">More from the Blog</span>
 
-      <a href="blaguss_blog_cikk.html" class="sw-sidebar-item">
-        <div class="sw-sidebar-item-img">
+      <a href="blaguss_blog_cikk.html" class="side-rel__item">
+        <div class="side-rel__img">
           <img src="ARTICLE_03.webp" alt="Hidden Hungary">
         </div>
         <div>
-          <span class="sw-sidebar-item-cat">Destinations</span>
-          <span class="sw-sidebar-item-title">Hidden Hungary: Venues Clients Haven't Seen</span>
+          <span class="side-rel__cat">Destinations</span>
+          <span class="side-rel__item-title">Hidden Hungary: Venues Clients Haven't Seen</span>
         </div>
       </a>
 
-      <a href="blaguss_blog_cikk.html" class="sw-sidebar-item">
-        <div class="sw-sidebar-item-img">
+      <a href="blaguss_blog_cikk.html" class="side-rel__item">
+        <div class="side-rel__img">
           <img src="ARTICLE_01.webp" alt="DMC vs Agency">
         </div>
         <div>
-          <span class="sw-sidebar-item-cat">DMC</span>
-          <span class="sw-sidebar-item-title">DMC vs. Local Agency: Know the Difference</span>
+          <span class="side-rel__cat">DMC</span>
+          <span class="side-rel__item-title">DMC vs. Local Agency: Know the Difference</span>
         </div>
       </a>
 
-      <a href="blaguss_blog_cikk.html" class="sw-sidebar-item">
-        <div class="sw-sidebar-item-img">
+      <a href="blaguss_blog_cikk.html" class="side-rel__item">
+        <div class="side-rel__img">
           <img src="ARTICLE_05.webp" alt="Gala Dinners">
         </div>
         <div>
-          <span class="sw-sidebar-item-cat">Incentive</span>
-          <span class="sw-sidebar-item-title">Gala Dinners: Hungary's Most Spectacular Venues</span>
+          <span class="side-rel__cat">Incentive</span>
+          <span class="side-rel__item-title">Gala Dinners: Hungary's Most Spectacular Venues</span>
         </div>
       </a>
 
@@ -696,50 +191,50 @@ a { text-decoration: none; }
 </div>
 
 <!-- SZEKCIÓ: CTA strip — piros -->
-<div class="sw-article-cta">
-  <div class="sw-article-cta-left">
-    <p class="sw-article-cta-title">Ready to plan your next incentive programme?</p>
-    <p class="sw-article-cta-sub">Our team is ready to design a tailor-made Budapest experience for your group.</p>
+<div class="art-cta">
+  <div class="art-cta__left">
+    <p class="art-cta__title">Ready to plan your next incentive programme?</p>
+    <p class="art-cta__sub">Our team is ready to design a tailor-made Budapest experience for your group.</p>
   </div>
-  <a href="blaguss_contact.html" class="sw-btn-white">Request a Proposal</a>
+  <a href="blaguss_contact.html" class="btn btn--white btn--md">Request a Proposal</a>
 </div>
 
 <!-- FOOTER -->
-<footer class="sw-footer">
-  <div class="sw-footer-grid">
+<footer class="foot">
+  <div class="foot__grid">
     <div>
-      <span class="sw-footer-logo">BLAGUSS</span>
+      <span class="foot__logo">BLAGUSS</span>
       <p style="font-size: 0.5625rem; color: rgba(255,255,255,0.25); margin-bottom: 0.25rem;">Destination Management</p>
-      <span class="sw-footer-tagline">Bridge to Hungary</span>
+      <span class="foot__tagline">Bridge to Hungary</span>
     </div>
     <div>
-      <span class="sw-footer-col-title">Navigation</span>
-      <a href="blaguss_about.html" class="sw-footer-link">About Us</a>
-      <a href="blaguss_destinations.html" class="sw-footer-link">Destinations</a>
-            <a href="blaguss_blog.html" class="sw-footer-link">Blog</a>
-      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">GDPR</span>
+      <span class="foot__col-title">Navigation</span>
+      <a href="blaguss_about.html" class="foot__link">About Us</a>
+      <a href="blaguss_destinations.html" class="foot__link">Destinations</a>
+            <a href="blaguss_blog.html" class="foot__link">Blog</a>
+      <span class="foot__link" style="cursor:default;opacity:0.5;">GDPR</span>
     </div>
     <div>
-      <span class="sw-footer-col-title">Services</span>
-      <a href="blaguss_dmc.html" class="sw-footer-link">DMC</a>
-      <a href="blaguss_pco.html" class="sw-footer-link">PCO</a>
-      <a href="blaguss_contact.html" class="sw-footer-link">Contact</a>
+      <span class="foot__col-title">Services</span>
+      <a href="blaguss_dmc.html" class="foot__link">DMC</a>
+      <a href="blaguss_pco.html" class="foot__link">PCO</a>
+      <a href="blaguss_contact.html" class="foot__link">Contact</a>
     </div>
     <div>
-      <span class="sw-footer-col-title">Follow us</span>
+      <span class="foot__col-title">Follow us</span>
       <div style="display: flex; gap: 0.5rem; margin-top: 0.25rem;">
-        <a href="#" class="sw-social-btn" aria-label="LinkedIn">in</a>
-        <a href="#" class="sw-social-btn" aria-label="Facebook">fb</a>
-        <a href="#" class="sw-social-btn" aria-label="Instagram">ig</a>
+        <a href="#" class="social" aria-label="LinkedIn">in</a>
+        <a href="#" class="social" aria-label="Facebook">fb</a>
+        <a href="#" class="social" aria-label="Instagram">ig</a>
       </div>
     </div>
   </div>
-  <div class="sw-footer-bottom">
-    <span class="sw-footer-copy">© 2026 Blaguss Destination Management Kft.</span>
+  <div class="foot__bottom">
+    <span class="foot__copy">© 2026 Blaguss Destination Management Kft.</span>
     <div style="display: flex; align-items: center; gap: 0.5rem;">
       <span style="color: rgba(255,255,255,0.18); font-size: 0.8125rem;">Made by</span>
       <a href="https://simpleweb.hu" target="_blank" style="display: inline-flex; align-items: center; opacity: 0.5; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.5'">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232.65 66.09" style="height: 18px; width: auto; display: block;"><defs><style>.st0{fill:#ffca3a;}</style></defs><path class="st0" d="M45.17,17.8c1.94,0,3.32,1.25,3.32,2.99s-1.38,3.01-3.32,3.01-3.32-1.25-3.32-3.01,1.4-2.99,3.32-2.99ZM45.17,46.73c-1.96,0-3.07-1.17-3.07-3.38v-14.11c0-2.21,1.13-3.38,3.07-3.38s3.09,1.17,3.09,3.38v14.11c0,2.21-1.13,3.38-3.09,3.38Z"/><path class="st0" d="M79.91,46.73c-1.98,0-3.07-1.17-3.07-3.38v-9.1c0-2.27-1.11-3.55-2.99-3.55s-3.11,1.44-3.11,3.72v8.93c0,2.21-1.02,3.38-2.94,3.38s-2.96-1.17-2.96-3.38v-9.06c0-2.25-1.15-3.59-3.03-3.59s-3.07,1.42-3.07,3.72v8.93c0,2.21-1.09,3.38-3.07,3.38s-3.09-1.17-3.09-3.38v-14.21c0-2.03,1.15-3.28,3.01-3.28,1.77,0,2.88,1.15,2.98,3.09v.58h.31c.63-2.3,2.84-3.8,5.62-3.8s4.95,1.46,5.61,3.88h.29c.79-2.34,3.13-3.88,6.1-3.88,4.03,0,6.51,2.5,6.51,6.58v11.04c0,2.21-1.11,3.38-3.09,3.38Z"/><path class="st0" d="M90.39,53.7c-2,0-3.07-1.19-3.07-3.38v-21.08c0-2.17,1.08-3.38,3.03-3.38,1.82,0,2.92,1,3.07,2.84v.58h.31c.83-2.17,3.01-3.55,5.85-3.55,4.72,0,7.51,3.44,7.51,9.31v2.36c0,5.89-2.8,9.37-7.54,9.37-2.78,0-4.9-1.25-5.78-3.44h-.31v6.99c0,2.19-1.09,3.38-3.07,3.38ZM97.15,41.99c2.27,0,3.59-1.82,3.59-4.93v-1.61c0-3.15-1.32-4.93-3.63-4.93s-3.65,1.75-3.65,4.74v2.13c0,2.82,1.46,4.61,3.69,4.61Z"/><path class="st0" d="M110.63,43.35v-21.17c0-2.23,1.11-3.4,3.07-3.4s3.09,1.17,3.09,3.4v21.17c0,2.21-1.13,3.38-3.09,3.38s-3.07-1.17-3.07-3.38Z"/><path class="st0" d="M120.12,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM133.19,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M140.33,25.27c-.21-.79-.33-1.63-.33-2.15,0-1.79,1.27-3.01,3.11-3.01,1.69,0,2.69,1.09,3.23,3.47l3.26,14.51h.31l3.53-14.61c.58-2.38,1.54-3.38,3.32-3.38s2.78,1.04,3.36,3.38l3.51,14.61h.33l3.13-14.51c.48-2.34,1.55-3.47,3.26-3.47,1.8,0,3.07,1.23,3.07,2.96,0,.54-.1,1.36-.23,1.82l-5.13,18.6c-.61,2.21-1.77,3.21-3.69,3.21-2.02,0-3.3-1-3.92-3.38l-3.57-13.51h-.25l-3.61,13.69c-.56,2.09-1.86,3.21-3.74,3.21s-3.15-.79-3.84-3.21l-5.13-18.22Z"/><path class="st0" d="M174.33,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM187.4,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M202.95,43.35h-.31v.5c0,1.86-1.21,2.9-3.05,2.9-1.98,0-3.05-1.21-3.05-3.4v-21.17c0-2.17,1.09-3.38,3.07-3.38s3.07,1.21,3.07,3.38v7.05h.31c.69-2.11,3.01-3.47,5.89-3.47,4.65,0,7.45,3.46,7.45,9.33v2.36c0,5.87-2.8,9.35-7.53,9.35-2.84,0-5.07-1.31-5.85-3.44ZM206.4,42.01c2.25,0,3.55-1.8,3.55-4.91v-1.57c0-3.13-1.32-5.01-3.59-5.01s-3.69,1.84-3.69,4.82v2.03c0,2.84,1.48,4.65,3.72,4.65Z"/><g><path class="st0" d="M33.08,12.69c.53-.19.95-.3,1.5-.3,1.92,0,3.2,1.31,3.2,3.25,0,1.64-1.01,2.78-2.91,3.27l-12.63,4.58.36.14,12.23,4.74c1.92.57,2.93,1.73,2.93,3.33,0,1.94-1.31,3.33-3.16,3.33-.55,0-.97-.11-1.54-.34l-12.75-5.92c-2.93-1.16-3.98-2.78-3.98-5.14,0-2.49,1.14-4.22,3.98-5.25l12.77-5.69Z"/><path class="st0" d="M33.8,37.05c2.85,1.03,3.98,2.76,3.98,5.25s-1.05,3.98-3.98,5.14l-12.75,5.92c-.57.23-.99.34-1.54.34-1.85,0-3.16-1.39-3.16-3.33,0-1.6,1.01-2.76,2.93-3.33l12.23-4.74.36-.14-12.63-4.58c-1.9-.48-2.91-1.62-2.91-3.27,0-1.94,1.29-3.25,3.2-3.25.55,0,.97.11,1.5.3l12.77,5.69Z"/></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232.65 66.09" style="height: 18px; width: auto; display: block;"><defs></defs><path class="st0" d="M45.17,17.8c1.94,0,3.32,1.25,3.32,2.99s-1.38,3.01-3.32,3.01-3.32-1.25-3.32-3.01,1.4-2.99,3.32-2.99ZM45.17,46.73c-1.96,0-3.07-1.17-3.07-3.38v-14.11c0-2.21,1.13-3.38,3.07-3.38s3.09,1.17,3.09,3.38v14.11c0,2.21-1.13,3.38-3.09,3.38Z"/><path class="st0" d="M79.91,46.73c-1.98,0-3.07-1.17-3.07-3.38v-9.1c0-2.27-1.11-3.55-2.99-3.55s-3.11,1.44-3.11,3.72v8.93c0,2.21-1.02,3.38-2.94,3.38s-2.96-1.17-2.96-3.38v-9.06c0-2.25-1.15-3.59-3.03-3.59s-3.07,1.42-3.07,3.72v8.93c0,2.21-1.09,3.38-3.07,3.38s-3.09-1.17-3.09-3.38v-14.21c0-2.03,1.15-3.28,3.01-3.28,1.77,0,2.88,1.15,2.98,3.09v.58h.31c.63-2.3,2.84-3.8,5.62-3.8s4.95,1.46,5.61,3.88h.29c.79-2.34,3.13-3.88,6.1-3.88,4.03,0,6.51,2.5,6.51,6.58v11.04c0,2.21-1.11,3.38-3.09,3.38Z"/><path class="st0" d="M90.39,53.7c-2,0-3.07-1.19-3.07-3.38v-21.08c0-2.17,1.08-3.38,3.03-3.38,1.82,0,2.92,1,3.07,2.84v.58h.31c.83-2.17,3.01-3.55,5.85-3.55,4.72,0,7.51,3.44,7.51,9.31v2.36c0,5.89-2.8,9.37-7.54,9.37-2.78,0-4.9-1.25-5.78-3.44h-.31v6.99c0,2.19-1.09,3.38-3.07,3.38ZM97.15,41.99c2.27,0,3.59-1.82,3.59-4.93v-1.61c0-3.15-1.32-4.93-3.63-4.93s-3.65,1.75-3.65,4.74v2.13c0,2.82,1.46,4.61,3.69,4.61Z"/><path class="st0" d="M110.63,43.35v-21.17c0-2.23,1.11-3.4,3.07-3.4s3.09,1.17,3.09,3.4v21.17c0,2.21-1.13,3.38-3.09,3.38s-3.07-1.17-3.07-3.38Z"/><path class="st0" d="M120.12,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM133.19,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M140.33,25.27c-.21-.79-.33-1.63-.33-2.15,0-1.79,1.27-3.01,3.11-3.01,1.69,0,2.69,1.09,3.23,3.47l3.26,14.51h.31l3.53-14.61c.58-2.38,1.54-3.38,3.32-3.38s2.78,1.04,3.36,3.38l3.51,14.61h.33l3.13-14.51c.48-2.34,1.55-3.47,3.26-3.47,1.8,0,3.07,1.23,3.07,2.96,0,.54-.1,1.36-.23,1.82l-5.13,18.6c-.61,2.21-1.77,3.21-3.69,3.21-2.02,0-3.3-1-3.92-3.38l-3.57-13.51h-.25l-3.61,13.69c-.56,2.09-1.86,3.21-3.74,3.21s-3.15-.79-3.84-3.21l-5.13-18.22Z"/><path class="st0" d="M174.33,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM187.4,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M202.95,43.35h-.31v.5c0,1.86-1.21,2.9-3.05,2.9-1.98,0-3.05-1.21-3.05-3.4v-21.17c0-2.17,1.09-3.38,3.07-3.38s3.07,1.21,3.07,3.38v7.05h.31c.69-2.11,3.01-3.47,5.89-3.47,4.65,0,7.45,3.46,7.45,9.33v2.36c0,5.87-2.8,9.35-7.53,9.35-2.84,0-5.07-1.31-5.85-3.44ZM206.4,42.01c2.25,0,3.55-1.8,3.55-4.91v-1.57c0-3.13-1.32-5.01-3.59-5.01s-3.69,1.84-3.69,4.82v2.03c0,2.84,1.48,4.65,3.72,4.65Z"/><g><path class="st0" d="M33.08,12.69c.53-.19.95-.3,1.5-.3,1.92,0,3.2,1.31,3.2,3.25,0,1.64-1.01,2.78-2.91,3.27l-12.63,4.58.36.14,12.23,4.74c1.92.57,2.93,1.73,2.93,3.33,0,1.94-1.31,3.33-3.16,3.33-.55,0-.97-.11-1.54-.34l-12.75-5.92c-2.93-1.16-3.98-2.78-3.98-5.14,0-2.49,1.14-4.22,3.98-5.25l12.77-5.69Z"/><path class="st0" d="M33.8,37.05c2.85,1.03,3.98,2.76,3.98,5.25s-1.05,3.98-3.98,5.14l-12.75,5.92c-.57.23-.99.34-1.54.34-1.85,0-3.16-1.39-3.16-3.33,0-1.6,1.01-2.76,2.93-3.33l12.23-4.74.36-.14-12.63-4.58c-1.9-.48-2.91-1.62-2.91-3.27,0-1.94,1.29-3.25,3.2-3.25.55,0,.97.11,1.5.3l12.77,5.69Z"/></g></svg>
       </a>
     </div>
   </div>
@@ -749,14 +244,14 @@ a { text-decoration: none; }
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- Navbar scroll — transzparens → fehér ---- */
-  const navbar = document.querySelector('.sw-navbar');
+  const navbar = document.querySelector('.nav');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
   /* ---- Hamburger ---- */
-  const hamburger = document.getElementById('sw-hamburger');
-  const mobileMenu = document.getElementById('sw-mobile-menu');
+  const hamburger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mmenu');
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);

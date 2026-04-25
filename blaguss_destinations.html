@@ -9,504 +9,200 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="blaguss.css?v=002">
+    <style>
+/* Overrides for destinations */
 
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --sw-red: #E30613;
-  --sw-dark: #1A1A1A;
-  --sw-dark-2: #2A2A2A;
-  --sw-dark-3: #3A3A3A;
-  --sw-gray-light: #F5F5F3;
-  --sw-border: #E8E8E5;
-  --sw-white: #FFFFFF;
-  --sw-font-serif: 'Playfair Display', Georgia, serif;
-  --sw-font-sans: 'Inter', system-ui, sans-serif;
-  --sw-section-py: 4rem;
-  --sw-section-px: 3rem;
-  --sw-radius-card: 0.625rem;
-}
-
-html { scroll-behavior: smooth; }
-body { font-family: var(--sw-font-sans); color: var(--sw-dark); background: var(--sw-white); -webkit-font-smoothing: antialiased; line-height: 1.65; font-size: 16px; margin: 0; padding: 0; font-variant-numeric: lining-nums tabular-nums; }
-img { max-width: 100%; height: auto; display: block; }
-a { text-decoration: none; }
-
-/* ============================================================
-   NAVBAR — transzparens → scrolled fehér
-   ============================================================ */
-.sw-navbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 3rem;
-  height: 56px;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1030;
-  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-}
-.sw-navbar-right { display: flex; align-items: center; gap: 2rem; }
-.sw-navbar.scrolled {
-  background: var(--sw-white);
-  border-bottom-color: var(--sw-border);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-}
-.sw-navbar-brand { display: flex; align-items: center; text-decoration: none; }
-.sw-navbar-logo { height: 42px; width: auto; display: block; transition: opacity 0.2s; }
-.sw-navbar-brand:hover .sw-navbar-logo { opacity: 0.85; }
-.sw-nav-links { display: flex; align-items: center; gap: 2rem; }
-.sw-nav-links-btns { display: flex; align-items: center; gap: 0.375rem; }
-.sw-nav-link { font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.9); transition: color 0.3s; }
-.sw-nav-link:hover { color: var(--sw-white); }
-.sw-nav-link.active { color: var(--sw-white); font-weight: 600; }
-.sw-navbar.scrolled .sw-nav-link { color: var(--sw-dark); }
-.sw-navbar.scrolled .sw-nav-link:hover { color: var(--sw-red); }
-.sw-navbar.scrolled .sw-nav-link.active { color: var(--sw-red); }
-.sw-btn-nav-dmc { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-white); color: var(--sw-dark); transition: all 0.3s; }
-.sw-btn-nav-dmc:hover { background: rgba(255,255,255,0.85); color: var(--sw-dark); }
-.sw-btn-nav-dmc:active { background: rgba(255,255,255,0.65); transform: scale(0.96); }
-.sw-navbar.scrolled .sw-btn-nav-dmc { background: var(--sw-dark); color: var(--sw-white); }
-.sw-navbar.scrolled .sw-btn-nav-dmc:hover { background: #333; color: var(--sw-white); }
-.sw-btn-nav-pco { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: background 0.2s; }
-.sw-btn-nav-pco:hover { background: #c00511; color: var(--sw-white); }
-.sw-btn-nav-pco:active { background: #a0040e; transform: scale(0.96); }
-.sw-btn-nav-contact { font-size: 0.8125rem; font-weight: 700; padding: 0.4375rem 0.875rem; border-radius: 5px; border: 1.5px solid rgba(255,255,255,0.75); color: var(--sw-white); background: transparent; transition: all 0.3s; }
-.sw-btn-nav-contact:hover { background: rgba(255,255,255,0.15); border-color: var(--sw-white); }
-.sw-btn-nav-contact:active { background: rgba(255,255,255,0.3); transform: scale(0.96); }
-.sw-navbar.scrolled .sw-btn-nav-contact { border-color: var(--sw-dark); color: var(--sw-dark); }
-.sw-navbar.scrolled .sw-btn-nav-contact:hover { background: var(--sw-dark); color: var(--sw-white); }
-
-/* ---- HAMBURGER ---- */
-.sw-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 1100; }
-.sw-hamburger:active { transform: scale(0.9); }
-.sw-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--sw-white); border-radius: 2px; transition: all 0.3s ease; transform-origin: center; }
-.sw-navbar.scrolled .sw-hamburger span { background: var(--sw-dark); }
-.sw-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.sw-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.sw-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-.sw-mobile-menu { position: fixed; top: 56px; left: 0; right: 0; bottom: 0; background: var(--sw-dark); z-index: 1020; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity 0.3s ease, transform 0.3s ease; overflow-y: auto; }
-.sw-mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
-.sw-mobile-menu-inner { display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 2rem 3rem; min-height: 100%; }
-.sw-mobile-nav { display: flex; flex-direction: column; }
-.sw-mobile-link { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.875rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; letter-spacing: -0.01em; line-height: 1.2; display: block; }
-.sw-mobile-link:hover { color: var(--sw-white); }
-.sw-mobile-link:active { color: var(--sw-white); opacity: 0.6; }
-.sw-mobile-link:last-child { border-bottom: none; }
-.sw-mobile-btns { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
-.sw-mobile-btn-dmc { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; background: var(--sw-white); color: var(--sw-dark); text-decoration: none; transition: background 0.2s; letter-spacing: 0.01em; }
-.sw-mobile-btn-dmc:hover { background: #f0f0ee; color: var(--sw-dark); }
-.sw-mobile-btn-dmc:active { background: #e0e0dc; transform: scale(0.97); }
-.sw-mobile-btn-pco { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); text-decoration: none; transition: background 0.2s; letter-spacing: 0.01em; }
-.sw-mobile-btn-pco:hover { background: #c00511; color: var(--sw-white); }
-.sw-mobile-btn-pco:active { background: #a0040e; transform: scale(0.97); }
-.sw-mobile-btn-contact { display: block; text-align: center; font-size: 1rem; font-weight: 700; padding: 0.875rem 1.75rem; border-radius: 5px; border: 1.5px solid rgba(255,255,255,0.75); color: var(--sw-white); background: transparent; text-decoration: none; transition: all 0.2s; letter-spacing: 0.01em; }
-.sw-mobile-btn-contact:hover { background: rgba(255,255,255,0.1); border-color: var(--sw-white); }
-.sw-mobile-btn-contact:active { background: rgba(255,255,255,0.25); transform: scale(0.97); }
-
-/* ---- BUTTONS ---- */
-.sw-btn-primary { display: inline-block; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.02em; padding: 0.75rem 1.75rem; border-radius: 5px; background: var(--sw-red); color: var(--sw-white); transition: all 0.2s ease; cursor: pointer; border: none; }
-.sw-btn-primary:hover { background: #c00511; color: var(--sw-white); transform: translateY(-1px); }
-.sw-btn-primary:active { background: #a0040e; transform: scale(0.96); }
-.sw-btn-outline { display: inline-block; font-weight: 600; font-size: 0.9375rem; padding: 0.75rem 1.75rem; border-radius: 5px; background: transparent; border: 1.5px solid var(--sw-dark); color: var(--sw-dark); transition: all 0.2s ease; }
-.sw-btn-outline:hover { background: var(--sw-dark); color: var(--sw-white); transform: translateY(-1px); }
-.sw-btn-outline:active { background: #000; color: var(--sw-white); transform: scale(0.96); }
-
-/* ============================================================
-   HERO — cinematic videó, gradient jobbra
-   ============================================================ */
-.sw-dest-hero {
-  position: relative; overflow: hidden;
-  height: 500px;
-  display: flex; align-items: flex-end;
-}
-.sw-dest-hero-bg {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, #0d1520 0%, #1a2535 100%);
-  /* Valódi videó:
-     <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
-       <source src="DEST_hero.webm" type="video/webm">
-       <source src="DEST_hero.mp4" type="video/mp4">
-     </video> */
-}
-.sw-dest-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.08) 100%);
-  z-index: 1;
-}
-.sw-dest-hero-content {
-  position: relative; z-index: 2;
-  padding: 0 var(--sw-section-px) 3.5rem;
-  max-width: 560px;
-}
-.sw-dest-hero-title {
-  font-family: var(--sw-font-serif);
-  font-size: clamp(2.75rem, 6vw, 4rem);
-  font-weight: 500; color: var(--sw-white);
-  line-height: 1.05; letter-spacing: -0.01em;
-  margin-bottom: 0.875rem;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-}
-.sw-dest-hero-title span { color: var(--sw-red); }
-.sw-dest-hero-body {
-  font-size: 1rem; color: rgba(255,255,255,0.95); line-height: 1.65; max-width: 480px;
-}
-
-/* ============================================================
-   DESTINATIONS SZEKCIÓ
-   ============================================================ */
-.sw-dest-section {
-  padding: var(--sw-section-py) var(--sw-section-px);
+.dest {
+  padding-top: var(--sw-section-py);
+  padding-bottom: var(--sw-section-py);
   border-bottom: 1px solid #F0F0EE;
 }
-.sw-section-tag { display: block; font-size: 0.75rem; font-weight: 600; color: var(--sw-red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.sw-section-title { font-family: var(--sw-font-serif); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; color: var(--sw-dark); letter-spacing: -0.01em; margin-bottom: 0.75rem; line-height: 1.2; }
-.sw-section-body { font-size: 1rem; color: #6B6B6B; line-height: 1.75; max-width: 560px; }
-
-/* ============================================================
-   DESTINATION BENTO GRID
-   ============================================================ */
-.sw-dest-bento {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 260px 260px 260px;
-  gap: 12px;
-  margin-top: 2rem;
-}
-
-/* Kártya alap */
-.sw-dest-card {
-  border-radius: 10px; overflow: hidden;
-  position: relative; cursor: pointer;
-  display: flex; flex-direction: column; justify-content: flex-end;
+.dcard {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   transition: transform 0.3s ease;
 }
-.sw-dest-card:hover { transform: translateY(-3px); }
-
-/* Háttér kép / placeholder */
-.sw-dest-card-bg {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, #1A2535 0%, #0D1520 100%);
-  transition: transform 0.55s ease;
-}
-.sw-dest-card:hover .sw-dest-card-bg { transform: scale(1.04); }
-.sw-dest-card-bg img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: grayscale(0.2);
-  transition: filter 0.5s ease, transform 0.55s ease;
-}
-.sw-dest-card:hover .sw-dest-card-bg img { filter: grayscale(0); transform: scale(1.04); }
-
-/* Overlay */
-.sw-dest-card-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.1) 100%);
-  z-index: 1;
-}
-
-/* Content */
-.sw-dest-card-content {
-  position: relative; z-index: 2;
-  padding: 1.5rem;
-}
-.sw-dest-card-badge {
-  font-size: 0.6875rem; font-weight: 700;
-  color: rgba(255,255,255,0.9); letter-spacing: 0.08em; text-transform: uppercase;
-  margin-bottom: 0.375rem; display: block;
-}
-.sw-dest-card-title {
+.dcard__title {
   font-family: var(--sw-font-serif);
-  font-size: 1.375rem; font-weight: 500;
-  color: var(--sw-white); margin-bottom: 0.375rem; line-height: 1.15;
+  font-size: 1.375rem;
+  font-weight: 500;
+  color: var(--sw-white);
+  margin-bottom: 0.375rem;
+  line-height: 1.15;
   text-shadow: 0 1px 8px rgba(0,0,0,0.5);
 }
-.sw-dest-card-sub {
-  font-size: 0.875rem; color: rgba(255,255,255,0.9);
-  line-height: 1.45; margin-bottom: 0.875rem; max-width: 300px;
+.sec__body {
+  font-size: 1rem;
+  color: #6B6B6B;
+  line-height: 1.75;
+  max-width: 560px;
 }
-.sw-dest-card-btn {
-  display: inline-block;
-  background: var(--sw-white); color: var(--sw-dark);
-  font-size: 0.8125rem; font-weight: 700;
-  padding: 0.4375rem 1rem; border-radius: 4px;
-  transition: all 0.2s;
+.dest__cta-left {
+  flex: 1;
+  min-width: 0;
 }
-.sw-dest-card-btn:hover { background: var(--sw-gray-light); }
-.sw-dest-card-btn-red {
-  display: inline-block;
-  background: var(--sw-red); color: var(--sw-white);
-  font-size: 0.8125rem; font-weight: 700;
-  padding: 0.4375rem 1rem; border-radius: 4px;
-  transition: background 0.2s;
-}
-.sw-dest-card-btn-red:hover { background: #c00511; color: var(--sw-white); }
-
-/* Budapest — spans 2 cols × 2 rows */
-.sw-dest-card-featured {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-.sw-dest-card-featured .sw-dest-card-title { font-size: clamp(1.75rem, 3vw, 2.25rem); }
-.sw-dest-card-featured .sw-dest-card-badge { font-size: 0.75rem; }
-
-/* Balaton — spans 2 cols, sor 3 */
-.sw-dest-card-balaton {
-  grid-column: span 2;
-}
-
-/* ============================================================
-   CTA BANNER — sötét
-   ============================================================ */
-.sw-dest-cta {
-  background: var(--sw-dark);
-  padding: 3rem var(--sw-section-px);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 2rem;
-}
-.sw-dest-cta-left { flex: 1; min-width: 0; }
-.sw-dest-cta-title {
+.dest__cta-title {
   font-family: var(--sw-font-serif);
   font-size: clamp(1.25rem, 2vw, 1.625rem);
-  font-weight: 500; color: var(--sw-white);
-  letter-spacing: -0.01em; margin-bottom: 0.5rem; line-height: 1.25;
+  font-weight: 500;
+  color: var(--sw-white);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
 }
-.sw-dest-cta-sub { font-size: 0.9375rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+    </style>
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.sw-footer { background: #0D0D0D; padding: 3.5rem 3rem 1.5rem; }
-.sw-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
-.sw-footer-logo { font-size: 1.25rem; font-weight: 800; color: var(--sw-red); letter-spacing: -0.02em; font-family: var(--sw-font-sans); margin-bottom: 0.25rem; display: block; }
-.sw-footer-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
-.sw-footer-col-title { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block; }
-.sw-footer-link { font-size: 0.875rem; color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.375rem; transition: color 0.2s; }
-.sw-footer-link:hover { color: rgba(255,255,255,0.7); }
-.sw-footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
-.sw-footer-copy { font-size: 0.8125rem; color: rgba(255,255,255,0.2); }
-.sw-social-btn { width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: all 0.2s; }
-.sw-social-btn:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); }
 
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
-[data-reveal] { opacity: 0; transition: opacity 0.65s ease, transform 0.65s ease; }
-[data-reveal="fade-up"] { transform: translateY(24px); }
-[data-reveal="fade-in"] { transform: none; }
-[data-reveal].is-visible { opacity: 1; transform: none; }
-[data-reveal-stagger] > * { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal-stagger] > *:nth-child(1) { transition-delay: 0s; }
-[data-reveal-stagger] > *:nth-child(2) { transition-delay: 0.08s; }
-[data-reveal-stagger] > *:nth-child(3) { transition-delay: 0.16s; }
-[data-reveal-stagger] > *:nth-child(4) { transition-delay: 0.24s; }
-[data-reveal-stagger] > *:nth-child(5) { transition-delay: 0.32s; }
-[data-reveal-stagger] > *:nth-child(6) { transition-delay: 0.40s; }
-[data-reveal-stagger].is-visible > * { opacity: 1; transform: none; }
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 992px) {
-  .sw-nav-links { display: none; }
-  .sw-nav-links-btns .sw-btn-nav-contact { display: none; }
-  .sw-hamburger { display: flex; }
-  .sw-dest-bento {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 300px 220px 220px 220px;
-  }
-  .sw-dest-card-featured { grid-column: span 2; grid-row: span 1; }
-  .sw-dest-card-balaton { grid-column: span 2; }
-  .sw-footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
-  :root { --sw-section-py: 3rem; --sw-section-px: 1.5rem; }
-  .sw-navbar { padding: 0 1.5rem; }
-  .sw-dest-hero { height: 420px; }
-  .sw-dest-hero-content { padding: 0 1.5rem 2.5rem; }
-  .sw-dest-bento {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 260px 200px 200px;
-    gap: 8px;
-  }
-  .sw-dest-cta { flex-direction: column; align-items: flex-start; }
-  .sw-dest-cta .sw-btn-primary { width: 100%; text-align: center; display: block; }
-  .sw-footer { padding: 3rem 1.5rem 1.5rem; }
-  .sw-footer-grid { grid-template-columns: 1fr 1fr; }
-  .sw-footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-}
-
-@media (max-width: 576px) {
-  :root { --sw-section-py: 2.5rem; --sw-section-px: 1.25rem; }
-  .sw-navbar { padding: 0 1.25rem; }
-  .sw-navbar-logo { height: 34px; }
-  .sw-nav-links-btns { display: none; }
-  .sw-dest-hero { height: auto; aspect-ratio: 3/4; }
-  .sw-dest-hero-title { font-size: clamp(2.25rem, 8vw, 3rem); }
-  .sw-dest-bento {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-  .sw-dest-card { min-height: 220px; }
-  .sw-dest-card-featured { grid-column: span 1; grid-row: span 1; min-height: 340px; }
-  .sw-dest-card-featured .sw-dest-card-title { font-size: 1.375rem; }
-  .sw-dest-card-featured .sw-dest-card-badge { font-size: 0.6875rem; }
-  .sw-dest-card-balaton { grid-column: span 1; }
-  .sw-footer { padding: 2.5rem 1.25rem 1.25rem; }
-  .sw-footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-}
-
-/* ---- XS: 390px ---- */
-@media (max-width: 390px) {
-  :root { --sw-section-py: 2rem; --sw-section-px: 1rem; }
-  .sw-dest-hero { height: auto; aspect-ratio: 3/4; }
-  .sw-dest-hero-title { font-size: clamp(1.75rem, 8vw, 2.25rem); }
-}
-</style>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="sw-navbar">
-  <a href="index.html" class="sw-navbar-brand">
-    <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="sw-navbar-logo">
+<nav class="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="nav__logo">
   </a>
-  <div class="sw-navbar-right">
-    <div class="sw-nav-links">
-      <a href="blaguss_about.html" class="sw-nav-link">About Us</a>
-      <span class="sw-nav-link active" style="cursor:default;">Destinations</span>
+  <div class="nav__right">
+    <div class="nav__links">
+      <a href="blaguss_about.html" class="nav__link">About Us</a>
+      <span class="nav__link active" style="cursor:default;">Destinations</span>
       
-      <a href="blaguss_blog.html" class="sw-nav-link">Blog</a>
+      <a href="blaguss_blog.html" class="nav__link">Blog</a>
     </div>
-    <div class="sw-nav-links-btns">
-      <a href="blaguss_dmc.html" class="sw-btn-nav-dmc">DMC</a>
-      <a href="blaguss_pco.html" class="sw-btn-nav-pco">PCO</a>
-      <a href="blaguss_contact.html" class="sw-btn-nav-contact">Contact</a>
+    <div class="nav__btns">
+      <a href="blaguss_dmc.html" class="btn btn--white btn--sm nav__btn">DMC</a>
+      <a href="blaguss_pco.html" class="btn btn--primary btn--sm nav__btn">PCO</a>
+      <a href="blaguss_contact.html" class="btn btn--outline-white btn--sm nav__btn">Contact</a>
     </div>
-    <button class="sw-hamburger" id="sw-hamburger" aria-label="Menu">
+    <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="sw-mobile-menu" id="sw-mobile-menu">
-  <div class="sw-mobile-menu-inner">
-    <nav class="sw-mobile-nav">
-      <a href="blaguss_about.html" class="sw-mobile-link">About Us</a>
-      <a href="blaguss_destinations.html" class="sw-mobile-link active">Destinations</a>
-      <a href="blaguss_blog.html" class="sw-mobile-link">Blog</a>
+<div class="mmenu" id="mmenu">
+  <div class="mmenu__inner">
+    <nav class="mmenu__nav">
+      <a href="blaguss_about.html" class="mmenu__link">About Us</a>
+      <a href="blaguss_destinations.html" class="mmenu__link active">Destinations</a>
+      <a href="blaguss_blog.html" class="mmenu__link">Blog</a>
     </nav>
-    <div class="sw-mobile-btns">
-      <a href="blaguss_dmc.html" class="sw-mobile-btn-dmc">DMC Services</a>
-      <a href="blaguss_pco.html" class="sw-mobile-btn-pco">PCO Services</a>
-      <a href="blaguss_contact.html" class="sw-mobile-btn-contact">Contact</a>
+    <div class="mmenu__btns">
+      <a href="blaguss_dmc.html" class="btn btn--white btn--lg mmenu__btn">DMC Services</a>
+      <a href="blaguss_pco.html" class="btn btn--primary btn--lg mmenu__btn">PCO Services</a>
+      <a href="blaguss_contact.html" class="btn btn--outline-white btn--lg mmenu__btn">Contact</a>
     </div>
   </div>
 </div>
 
 <!-- SZEKCIÓ: Hero -->
-<header class="sw-dest-hero">
-  <div class="sw-dest-hero-bg">
+<header class="dhero">
+  <div class="dhero__bg">
     <img src="DEST_hero.webp" alt="Budapest sunset panorama" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
   </div>
-  <div class="sw-dest-hero-overlay"></div>
-  <div class="sw-dest-hero-content">
-    <h1 class="sw-dest-hero-title">Destinations<br><span>We Master</span></h1>
-    <p class="sw-dest-hero-body">From Budapest's grand venues to Hungary's hidden gems — we know every detail of every destination we offer.</p>
+  <div class="dhero__overlay"></div>
+  <div class="dhero__content">
+    <h1 class="dhero__title">Destinations<br><span>We Master</span></h1>
+    <p class="dhero__body">From Budapest's grand venues to Hungary's hidden gems — we know every detail of every destination we offer.</p>
   </div>
 </header>
 
 <!-- SZEKCIÓ: Destinations bento -->
-<section class="sw-dest-section">
-  <span class="sw-section-tag">Where We Operate</span>
-  <h2 class="sw-section-title">Discover Hungary</h2>
-  <p class="sw-section-body">Every destination we work with is hand-picked for its event potential, local character, and the quality of experiences it can deliver.</p>
+<section class="dest">
+  <span class="sec__tag">Where We Operate</span>
+  <h2 class="sec__title">Discover Hungary</h2>
+  <p class="sec__body">Every destination we work with is hand-picked for its event potential, local character, and the quality of experiences it can deliver.</p>
 
-  <div class="sw-dest-bento">
+  <div class="dest__bento dest__bento--grid">
 
     <!-- Budapest — featured, 2 col × 2 row -->
-    <a href="blaguss_budapest.html" class="sw-dest-card sw-dest-card-featured">
-      <div class="sw-dest-card-bg">
+    <a href="blaguss_budapest.html" class="dcard dcard--featured">
+      <div class="dcard__bg">
         <!-- Valódi kép/videó: <img src="DEST_Budapest.webp" alt="Budapest"> -->
         <img src="DEST_Budapest.webp" alt="Budapest">
       </div>
-      <div class="sw-dest-card-overlay"></div>
-      <div class="sw-dest-card-content">
-        <span class="sw-dest-card-badge">✦ Featured Destination · Capital</span>
-        <h3 class="sw-dest-card-title">Budapest</h3>
-        <p class="sw-dest-card-sub">Grand venues, rich history, world-class hospitality — Europe's most inspiring event city</p>
-        <span class="sw-dest-card-btn-red">Explore Budapest →</span>
+      <div class="dcard__overlay"></div>
+      <div class="dcard__content">
+        <span class="dcard__badge">✦ Featured Destination · Capital</span>
+        <h3 class="dcard__title">Budapest</h3>
+        <p class="dcard__sub">Grand venues, rich history, world-class hospitality — Europe's most inspiring event city</p>
+        <span class="btn btn--primary btn--sm">Explore Budapest →</span>
       </div>
     </a>
 
     <!-- Eger — col 3, row 1 -->
-    <a href="blaguss_budapest.html" class="sw-dest-card">
-      <div class="sw-dest-card-bg">
+    <a href="blaguss_budapest.html" class="dcard">
+      <div class="dcard__bg">
         <img src="DEST_Eger.webp" alt="Eger">
       </div>
-      <div class="sw-dest-card-overlay"></div>
-      <div class="sw-dest-card-content">
-        <span class="sw-dest-card-badge">Wine Country</span>
-        <h3 class="sw-dest-card-title">Eger</h3>
-        <p class="sw-dest-card-sub">Historic wine country, intimate event spaces</p>
-        <span class="sw-dest-card-btn">Explore →</span>
+      <div class="dcard__overlay"></div>
+      <div class="dcard__content">
+        <span class="dcard__badge">Wine Country</span>
+        <h3 class="dcard__title">Eger</h3>
+        <p class="dcard__sub">Historic wine country, intimate event spaces</p>
+        <span class="btn btn--white btn--sm">Explore →</span>
       </div>
     </a>
 
     <!-- Debrecen — col 4, row 1 -->
-    <a href="blaguss_budapest.html" class="sw-dest-card">
-      <div class="sw-dest-card-bg">
+    <a href="blaguss_budapest.html" class="dcard">
+      <div class="dcard__bg">
         <img src="DEST_Debrecen.webp" alt="Debrecen">
       </div>
-      <div class="sw-dest-card-overlay"></div>
-      <div class="sw-dest-card-content">
-        <span class="sw-dest-card-badge">City · Modern</span>
-        <h3 class="sw-dest-card-title">Debrecen</h3>
-        <p class="sw-dest-card-sub">Modern infrastructure, authentic cultural depth</p>
-        <span class="sw-dest-card-btn">Explore →</span>
+      <div class="dcard__overlay"></div>
+      <div class="dcard__content">
+        <span class="dcard__badge">City · Modern</span>
+        <h3 class="dcard__title">Debrecen</h3>
+        <p class="dcard__sub">Modern infrastructure, authentic cultural depth</p>
+        <span class="btn btn--white btn--sm">Explore →</span>
       </div>
     </a>
 
     <!-- Pécs — col 3, row 2 -->
-    <a href="blaguss_budapest.html" class="sw-dest-card">
-      <div class="sw-dest-card-bg">
+    <a href="blaguss_budapest.html" class="dcard">
+      <div class="dcard__bg">
         <img src="DEST_Pecs.webp" alt="Pécs">
       </div>
-      <div class="sw-dest-card-overlay"></div>
-      <div class="sw-dest-card-content">
-        <span class="sw-dest-card-badge">UNESCO Heritage</span>
-        <h3 class="sw-dest-card-title">Pécs</h3>
-        <p class="sw-dest-card-sub">2000-year history, unique cultural venues</p>
-        <span class="sw-dest-card-btn">Explore →</span>
+      <div class="dcard__overlay"></div>
+      <div class="dcard__content">
+        <span class="dcard__badge">UNESCO Heritage</span>
+        <h3 class="dcard__title">Pécs</h3>
+        <p class="dcard__sub">2000-year history, unique cultural venues</p>
+        <span class="btn btn--white btn--sm">Explore →</span>
       </div>
     </a>
 
     <!-- Tokaj — col 4, row 2 -->
-    <a href="blaguss_budapest.html" class="sw-dest-card">
-      <div class="sw-dest-card-bg">
+    <a href="blaguss_budapest.html" class="dcard">
+      <div class="dcard__bg">
         <img src="DEST_Tokaj.webp" alt="Tokaj">
       </div>
-      <div class="sw-dest-card-overlay"></div>
-      <div class="sw-dest-card-content">
-        <span class="sw-dest-card-badge">UNESCO Wine</span>
-        <h3 class="sw-dest-card-title">Tokaj</h3>
-        <p class="sw-dest-card-sub">World-famous wine region, cellar events</p>
-        <span class="sw-dest-card-btn">Explore →</span>
+      <div class="dcard__overlay"></div>
+      <div class="dcard__content">
+        <span class="dcard__badge">UNESCO Wine</span>
+        <h3 class="dcard__title">Tokaj</h3>
+        <p class="dcard__sub">World-famous wine region, cellar events</p>
+        <span class="btn btn--white btn--sm">Explore →</span>
       </div>
     </a>
 
     <!-- Lake Balaton — 2 col széles, row 3 -->
-    <a href="blaguss_budapest.html" class="sw-dest-card sw-dest-card-balaton">
-      <div class="sw-dest-card-bg">
+    <a href="blaguss_budapest.html" class="dcard dcard--balaton">
+      <div class="dcard__bg">
         <img src="DEST_Balaton.webp" alt="Lake Balaton">
       </div>
-      <div class="sw-dest-card-overlay"></div>
-      <div class="sw-dest-card-content">
-        <span class="sw-dest-card-badge">Lake · Retreat</span>
-        <h3 class="sw-dest-card-title">Lake Balaton</h3>
-        <p class="sw-dest-card-sub">Exclusive retreats, lakeside venues, team experiences</p>
-        <span class="sw-dest-card-btn">Explore →</span>
+      <div class="dcard__overlay"></div>
+      <div class="dcard__content">
+        <span class="dcard__badge">Lake · Retreat</span>
+        <h3 class="dcard__title">Lake Balaton</h3>
+        <p class="dcard__sub">Exclusive retreats, lakeside venues, team experiences</p>
+        <span class="btn btn--white btn--sm">Explore →</span>
       </div>
     </a>
 
@@ -514,50 +210,50 @@ a { text-decoration: none; }
 </section>
 
 <!-- SZEKCIÓ: CTA banner -->
-<div class="sw-dest-cta" data-reveal="fade-up">
-  <div class="sw-dest-cta-left">
-    <p class="sw-dest-cta-title">Don't see your destination?</p>
-    <p class="sw-dest-cta-sub">We cover all of Hungary — countryside castles, thermal resorts, rural estates. Tell us what you have in mind.</p>
+<div class="dest__cta" data-reveal="fade-up">
+  <div class="dest__cta-left">
+    <p class="dest__cta-title">Don't see your destination?</p>
+    <p class="dest__cta-sub">We cover all of Hungary — countryside castles, thermal resorts, rural estates. Tell us what you have in mind.</p>
   </div>
-  <a href="blaguss_contact.html" class="sw-btn-primary">Request a Custom Programme</a>
+  <a href="blaguss_contact.html" class="btn btn--primary btn--md">Request a Custom Programme</a>
 </div>
 
 <!-- FOOTER -->
-<footer class="sw-footer">
-  <div class="sw-footer-grid">
+<footer class="foot">
+  <div class="foot__grid">
     <div>
-      <span class="sw-footer-logo">BLAGUSS</span>
+      <span class="foot__logo">BLAGUSS</span>
       <p style="font-size: 0.5625rem; color: rgba(255,255,255,0.25); margin-bottom: 0.25rem;">Destination Management</p>
-      <span class="sw-footer-tagline">Bridge to Hungary</span>
+      <span class="foot__tagline">Bridge to Hungary</span>
     </div>
     <div>
-      <span class="sw-footer-col-title">Navigation</span>
-      <a href="blaguss_about.html" class="sw-footer-link">About Us</a>
-      <span class="sw-footer-link" style="cursor:default;opacity:0.65;">Destinations</span>
-            <a href="blaguss_blog.html" class="sw-footer-link">Blog</a>
-      <span class="sw-footer-link" style="cursor:default;opacity:0.5;">GDPR</span>
+      <span class="foot__col-title">Navigation</span>
+      <a href="blaguss_about.html" class="foot__link">About Us</a>
+      <span class="foot__link" style="cursor:default;opacity:0.65;">Destinations</span>
+            <a href="blaguss_blog.html" class="foot__link">Blog</a>
+      <span class="foot__link" style="cursor:default;opacity:0.5;">GDPR</span>
     </div>
     <div>
-      <span class="sw-footer-col-title">Services</span>
-      <a href="blaguss_dmc.html" class="sw-footer-link">DMC</a>
-      <a href="blaguss_pco.html" class="sw-footer-link">PCO</a>
-      <a href="blaguss_contact.html" class="sw-footer-link">Contact</a>
+      <span class="foot__col-title">Services</span>
+      <a href="blaguss_dmc.html" class="foot__link">DMC</a>
+      <a href="blaguss_pco.html" class="foot__link">PCO</a>
+      <a href="blaguss_contact.html" class="foot__link">Contact</a>
     </div>
     <div>
-      <span class="sw-footer-col-title">Follow us</span>
+      <span class="foot__col-title">Follow us</span>
       <div style="display: flex; gap: 0.5rem; margin-top: 0.25rem;">
-        <a href="#" class="sw-social-btn" aria-label="LinkedIn">in</a>
-        <a href="#" class="sw-social-btn" aria-label="Facebook">fb</a>
-        <a href="#" class="sw-social-btn" aria-label="Instagram">ig</a>
+        <a href="#" class="social" aria-label="LinkedIn">in</a>
+        <a href="#" class="social" aria-label="Facebook">fb</a>
+        <a href="#" class="social" aria-label="Instagram">ig</a>
       </div>
     </div>
   </div>
-  <div class="sw-footer-bottom">
-    <span class="sw-footer-copy">© 2026 Blaguss Destination Management Kft.</span>
+  <div class="foot__bottom">
+    <span class="foot__copy">© 2026 Blaguss Destination Management Kft.</span>
     <div style="display: flex; align-items: center; gap: 0.5rem;">
       <span style="color: rgba(255,255,255,0.18); font-size: 0.8125rem;">Made by</span>
       <a href="https://simpleweb.hu" target="_blank" style="display: inline-flex; align-items: center; opacity: 0.5; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.5'">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232.65 66.09" style="height: 18px; width: auto; display: block;"><defs><style>.st0{fill:#ffca3a;}</style></defs><path class="st0" d="M45.17,17.8c1.94,0,3.32,1.25,3.32,2.99s-1.38,3.01-3.32,3.01-3.32-1.25-3.32-3.01,1.4-2.99,3.32-2.99ZM45.17,46.73c-1.96,0-3.07-1.17-3.07-3.38v-14.11c0-2.21,1.13-3.38,3.07-3.38s3.09,1.17,3.09,3.38v14.11c0,2.21-1.13,3.38-3.09,3.38Z"/><path class="st0" d="M79.91,46.73c-1.98,0-3.07-1.17-3.07-3.38v-9.1c0-2.27-1.11-3.55-2.99-3.55s-3.11,1.44-3.11,3.72v8.93c0,2.21-1.02,3.38-2.94,3.38s-2.96-1.17-2.96-3.38v-9.06c0-2.25-1.15-3.59-3.03-3.59s-3.07,1.42-3.07,3.72v8.93c0,2.21-1.09,3.38-3.07,3.38s-3.09-1.17-3.09-3.38v-14.21c0-2.03,1.15-3.28,3.01-3.28,1.77,0,2.88,1.15,2.98,3.09v.58h.31c.63-2.3,2.84-3.8,5.62-3.8s4.95,1.46,5.61,3.88h.29c.79-2.34,3.13-3.88,6.1-3.88,4.03,0,6.51,2.5,6.51,6.58v11.04c0,2.21-1.11,3.38-3.09,3.38Z"/><path class="st0" d="M90.39,53.7c-2,0-3.07-1.19-3.07-3.38v-21.08c0-2.17,1.08-3.38,3.03-3.38,1.82,0,2.92,1,3.07,2.84v.58h.31c.83-2.17,3.01-3.55,5.85-3.55,4.72,0,7.51,3.44,7.51,9.31v2.36c0,5.89-2.8,9.37-7.54,9.37-2.78,0-4.9-1.25-5.78-3.44h-.31v6.99c0,2.19-1.09,3.38-3.07,3.38ZM97.15,41.99c2.27,0,3.59-1.82,3.59-4.93v-1.61c0-3.15-1.32-4.93-3.63-4.93s-3.65,1.75-3.65,4.74v2.13c0,2.82,1.46,4.61,3.69,4.61Z"/><path class="st0" d="M110.63,43.35v-21.17c0-2.23,1.11-3.4,3.07-3.4s3.09,1.17,3.09,3.4v21.17c0,2.21-1.13,3.38-3.09,3.38s-3.07-1.17-3.07-3.38Z"/><path class="st0" d="M120.12,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM133.19,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M140.33,25.27c-.21-.79-.33-1.63-.33-2.15,0-1.79,1.27-3.01,3.11-3.01,1.69,0,2.69,1.09,3.23,3.47l3.26,14.51h.31l3.53-14.61c.58-2.38,1.54-3.38,3.32-3.38s2.78,1.04,3.36,3.38l3.51,14.61h.33l3.13-14.51c.48-2.34,1.55-3.47,3.26-3.47,1.8,0,3.07,1.23,3.07,2.96,0,.54-.1,1.36-.23,1.82l-5.13,18.6c-.61,2.21-1.77,3.21-3.69,3.21-2.02,0-3.3-1-3.92-3.38l-3.57-13.51h-.25l-3.61,13.69c-.56,2.09-1.86,3.21-3.74,3.21s-3.15-.79-3.84-3.21l-5.13-18.22Z"/><path class="st0" d="M174.33,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM187.4,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M202.95,43.35h-.31v.5c0,1.86-1.21,2.9-3.05,2.9-1.98,0-3.05-1.21-3.05-3.4v-21.17c0-2.17,1.09-3.38,3.07-3.38s3.07,1.21,3.07,3.38v7.05h.31c.69-2.11,3.01-3.47,5.89-3.47,4.65,0,7.45,3.46,7.45,9.33v2.36c0,5.87-2.8,9.35-7.53,9.35-2.84,0-5.07-1.31-5.85-3.44ZM206.4,42.01c2.25,0,3.55-1.8,3.55-4.91v-1.57c0-3.13-1.32-5.01-3.59-5.01s-3.69,1.84-3.69,4.82v2.03c0,2.84,1.48,4.65,3.72,4.65Z"/><g><path class="st0" d="M33.08,12.69c.53-.19.95-.3,1.5-.3,1.92,0,3.2,1.31,3.2,3.25,0,1.64-1.01,2.78-2.91,3.27l-12.63,4.58.36.14,12.23,4.74c1.92.57,2.93,1.73,2.93,3.33,0,1.94-1.31,3.33-3.16,3.33-.55,0-.97-.11-1.54-.34l-12.75-5.92c-2.93-1.16-3.98-2.78-3.98-5.14,0-2.49,1.14-4.22,3.98-5.25l12.77-5.69Z"/><path class="st0" d="M33.8,37.05c2.85,1.03,3.98,2.76,3.98,5.25s-1.05,3.98-3.98,5.14l-12.75,5.92c-.57.23-.99.34-1.54.34-1.85,0-3.16-1.39-3.16-3.33,0-1.6,1.01-2.76,2.93-3.33l12.23-4.74.36-.14-12.63-4.58c-1.9-.48-2.91-1.62-2.91-3.27,0-1.94,1.29-3.25,3.2-3.25.55,0,.97.11,1.5.3l12.77,5.69Z"/></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232.65 66.09" style="height: 18px; width: auto; display: block;"><defs></defs><path class="st0" d="M45.17,17.8c1.94,0,3.32,1.25,3.32,2.99s-1.38,3.01-3.32,3.01-3.32-1.25-3.32-3.01,1.4-2.99,3.32-2.99ZM45.17,46.73c-1.96,0-3.07-1.17-3.07-3.38v-14.11c0-2.21,1.13-3.38,3.07-3.38s3.09,1.17,3.09,3.38v14.11c0,2.21-1.13,3.38-3.09,3.38Z"/><path class="st0" d="M79.91,46.73c-1.98,0-3.07-1.17-3.07-3.38v-9.1c0-2.27-1.11-3.55-2.99-3.55s-3.11,1.44-3.11,3.72v8.93c0,2.21-1.02,3.38-2.94,3.38s-2.96-1.17-2.96-3.38v-9.06c0-2.25-1.15-3.59-3.03-3.59s-3.07,1.42-3.07,3.72v8.93c0,2.21-1.09,3.38-3.07,3.38s-3.09-1.17-3.09-3.38v-14.21c0-2.03,1.15-3.28,3.01-3.28,1.77,0,2.88,1.15,2.98,3.09v.58h.31c.63-2.3,2.84-3.8,5.62-3.8s4.95,1.46,5.61,3.88h.29c.79-2.34,3.13-3.88,6.1-3.88,4.03,0,6.51,2.5,6.51,6.58v11.04c0,2.21-1.11,3.38-3.09,3.38Z"/><path class="st0" d="M90.39,53.7c-2,0-3.07-1.19-3.07-3.38v-21.08c0-2.17,1.08-3.38,3.03-3.38,1.82,0,2.92,1,3.07,2.84v.58h.31c.83-2.17,3.01-3.55,5.85-3.55,4.72,0,7.51,3.44,7.51,9.31v2.36c0,5.89-2.8,9.37-7.54,9.37-2.78,0-4.9-1.25-5.78-3.44h-.31v6.99c0,2.19-1.09,3.38-3.07,3.38ZM97.15,41.99c2.27,0,3.59-1.82,3.59-4.93v-1.61c0-3.15-1.32-4.93-3.63-4.93s-3.65,1.75-3.65,4.74v2.13c0,2.82,1.46,4.61,3.69,4.61Z"/><path class="st0" d="M110.63,43.35v-21.17c0-2.23,1.11-3.4,3.07-3.4s3.09,1.17,3.09,3.4v21.17c0,2.21-1.13,3.38-3.09,3.38s-3.07-1.17-3.07-3.38Z"/><path class="st0" d="M120.12,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM133.19,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M140.33,25.27c-.21-.79-.33-1.63-.33-2.15,0-1.79,1.27-3.01,3.11-3.01,1.69,0,2.69,1.09,3.23,3.47l3.26,14.51h.31l3.53-14.61c.58-2.38,1.54-3.38,3.32-3.38s2.78,1.04,3.36,3.38l3.51,14.61h.33l3.13-14.51c.48-2.34,1.55-3.47,3.26-3.47,1.8,0,3.07,1.23,3.07,2.96,0,.54-.1,1.36-.23,1.82l-5.13,18.6c-.61,2.21-1.77,3.21-3.69,3.21-2.02,0-3.3-1-3.92-3.38l-3.57-13.51h-.25l-3.61,13.69c-.56,2.09-1.86,3.21-3.74,3.21s-3.15-.79-3.84-3.21l-5.13-18.22Z"/><path class="st0" d="M174.33,35.18c0-5.8,3.84-9.64,9.62-9.64,5.43,0,9.27,3.8,9.27,8.89,0,2.34-.83,3.19-3.03,3.19h-9.58v.75c.04,2.42,1.65,4.05,4.4,4.05,1.48,0,2.48-.33,3.26-.9.94-.6,1.34-.96,2.3-.96,1.25,0,2.07.81,2.07,2.11,0,1.09-.67,2.05-1.84,2.78-1.4,1-3.65,1.59-6.24,1.59-6.33,0-10.23-3.61-10.23-9.6v-2.27ZM187.4,34.08v-.06c0-2.34-1.31-3.88-3.32-3.88-2.17,0-3.47,1.57-3.47,3.88v.06h6.8Z"/><path class="st0" d="M202.95,43.35h-.31v.5c0,1.86-1.21,2.9-3.05,2.9-1.98,0-3.05-1.21-3.05-3.4v-21.17c0-2.17,1.09-3.38,3.07-3.38s3.07,1.21,3.07,3.38v7.05h.31c.69-2.11,3.01-3.47,5.89-3.47,4.65,0,7.45,3.46,7.45,9.33v2.36c0,5.87-2.8,9.35-7.53,9.35-2.84,0-5.07-1.31-5.85-3.44ZM206.4,42.01c2.25,0,3.55-1.8,3.55-4.91v-1.57c0-3.13-1.32-5.01-3.59-5.01s-3.69,1.84-3.69,4.82v2.03c0,2.84,1.48,4.65,3.72,4.65Z"/><g><path class="st0" d="M33.08,12.69c.53-.19.95-.3,1.5-.3,1.92,0,3.2,1.31,3.2,3.25,0,1.64-1.01,2.78-2.91,3.27l-12.63,4.58.36.14,12.23,4.74c1.92.57,2.93,1.73,2.93,3.33,0,1.94-1.31,3.33-3.16,3.33-.55,0-.97-.11-1.54-.34l-12.75-5.92c-2.93-1.16-3.98-2.78-3.98-5.14,0-2.49,1.14-4.22,3.98-5.25l12.77-5.69Z"/><path class="st0" d="M33.8,37.05c2.85,1.03,3.98,2.76,3.98,5.25s-1.05,3.98-3.98,5.14l-12.75,5.92c-.57.23-.99.34-1.54.34-1.85,0-3.16-1.39-3.16-3.33,0-1.6,1.01-2.76,2.93-3.33l12.23-4.74.36-.14-12.63-4.58c-1.9-.48-2.91-1.62-2.91-3.27,0-1.94,1.29-3.25,3.2-3.25.55,0,.97.11,1.5.3l12.77,5.69Z"/></g></svg>
       </a>
     </div>
   </div>
@@ -567,14 +263,14 @@ a { text-decoration: none; }
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- Navbar scroll — transzparens → fehér ---- */
-  const navbar = document.querySelector('.sw-navbar');
+  const navbar = document.querySelector('.nav');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
   /* ---- Hamburger ---- */
-  const hamburger = document.getElementById('sw-hamburger');
-  const mobileMenu = document.getElementById('sw-mobile-menu');
+  const hamburger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mmenu');
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
