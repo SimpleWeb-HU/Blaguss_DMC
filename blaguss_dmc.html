@@ -86,7 +86,11 @@
 
 <!-- SZEKCIÓ: Hero -->
 <section class="hero">
-  <div class="hero__ph hero__ph--dmc"></div>
+  <div class="hero__ph hero__ph--dmc" style="background-image:url('Blaguss_DMC_hero_fallback.webp'); background-size:cover; background-position:center;"></div>
+  <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; z-index:1;">
+    <source src="Blaguss_DMC_hero.webm" type="video/webm">
+    <source src="Blaguss_DMC_hero_fallback.mp4" type="video/mp4">
+  </video>
   <div class="hero__overlay"></div>
   <div class="hero__content" data-reveal="fade-up">
     <span class="sec__tag">Destination Management Company</span>
