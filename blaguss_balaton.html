@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Budapest — Blaguss Destination Management</title>
-  <meta name="description" content="Discover Budapest as Europe's most inspiring MICE destination. Blaguss DMC delivers exceptional corporate events, incentive travel and conferences in the Hungarian capital.">
+  <title>Lake Balaton — Blaguss Destination Management</title>
+  <meta name="description" content="Discover Lake Balaton, Central Europe's largest lake. Blaguss DMC delivers exclusive lakeside retreats, sailing programmes and wine experiences for corporate events and incentive trips.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +61,8 @@
      ============================================================ -->
 <section class="hero--dest">
   <div class="hero__img">
-    <img src="BUDAPEST_hero.webp" alt="Budapest cityscape" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+    <!-- TODO: a hero kép vízjeles iStock-fotó (demo célra). Élesedéshez licensz-tisztára cserélni! -->
+    <img src="BALATON_hero.webp" alt="Tihany peninsula and Lake Balaton" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
   </div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
@@ -71,10 +72,10 @@
         <span class="crumb__sep">›</span>
         <a href="blaguss_destinations.html">Destinations</a>
         <span class="crumb__sep">›</span>
-        <span class="crumb__current">Budapest</span>
+        <span class="crumb__current">Lake Balaton</span>
       </div>
-      <h1 class="hero__title">Budapest</h1>
-      <p class="hero__sub">Europe's most inspiring event destination</p>
+      <h1 class="hero__title">Lake Balaton</h1>
+      <p class="hero__sub">Central Europe's largest lake</p>
     </div>
 
   </div>
@@ -86,25 +87,27 @@
 <div class="stats-bar" id="stats-bar">
   <div class="stat">
     <span class="stat__num">
-      <span id="stat-mice" data-target="5000">0</span><span class="stat__num-suffix">+</span>
+      <span id="stat-mice" data-target="77">0</span><span class="stat__num-suffix">km</span>
     </span>
-    <span class="stat__label">MICE events per year</span>
+    <span class="stat__label">Long</span>
   </div>
   <div class="stat">
     <span class="stat__num">
-      <span id="stat-venues" data-target="300">0</span><span class="stat__num-suffix">+</span>
+      <span id="stat-venues" data-target="1.8" data-decimals="1">0</span><span class="stat__num-suffix">billion m³</span>
     </span>
-    <span class="stat__label">Event venues in the city</span>
+    <span class="stat__label">of water</span>
   </div>
   <div class="stat">
     <span class="stat__num">
-      <span class="stat__num-prefix">#</span><span id="stat-icca" data-target="14">0</span>
+      <span id="stat-icca" data-target="2000">0</span><span class="stat__num-suffix">+</span>
     </span>
-    <span class="stat__label">ICCA Europe congress ranking</span>
+    <span class="stat__label">hours of sunshine annually</span>
   </div>
   <div class="stat">
-    <span class="stat__num" style="font-size:2rem; letter-spacing:-0.02em;">UNESCO</span>
-    <span class="stat__label">World Heritage Site</span>
+    <span class="stat__num">
+      <span id="stat-swans" data-target="500">0</span><span class="stat__num-suffix">+</span>
+    </span>
+    <span class="stat__label">swans on the lake</span>
   </div>
 </div>
 
@@ -112,21 +115,23 @@
      WHY BUDAPEST — középre igazított (40years stílus)
      ============================================================ -->
 <section class="about" data-reveal="fade-up">
-  <span class="sec__tag">Why Budapest</span>
-  <h2 class="about__title">Hungary's Capital —<br>Grand Venues, Rich History</h2>
+  <span class="sec__tag">Lake Balaton</span>
+  <h2 class="about__title">An experience<br>designed to inspire</h2>
 
   <!-- 1. bekezdés — mindig látszik -->
-  <p class="about__body">Budapest is one of Europe's most dynamic destinations for corporate events and incentive travel. Straddling the Danube between Buda's forested hills and Pest's elegant boulevards, the city offers a rare combination: centuries of imperial architecture, world-class gastronomy and a vibrant contemporary culture — all within a compact, walkable capital that surprises first-time visitors and rewards those who return.</p>
+  <p class="about__body">Lake Balaton, just a short distance from Budapest, delivers a dynamic setting that inspires, energises and connects.</p>
 
   <!-- 2. bekezdés — levágva + fade, JS méretezi -->
   <div class="about__p2" id="about__p2">
-    <p class="about__body" id="sw-about-p2">From the grand halls of the Hungarian State Opera to rooftop terraces overlooking Parliament, from candlelit gala dinners in 19th-century palaces to private boat receptions on the Danube — every event in Budapest becomes an experience in itself. The city's extraordinary density of landmark venues means that within a single programme, delegates can move from a Baroque concert hall to a contemporary rooftop bar without ever leaving the inner districts.</p>
+    <p class="about__body" id="sw-about-p2">In the summer months, the lake's warm waters and expansive shoreline create the perfect backdrop for outdoor programmes and networking in a relaxed yet sophisticated environment. The southern shore offers wide, easily accessible beaches, while the northern shore captivates with its more dramatic landscapes, boutique venues and elevated experiences.</p>
     <div class="about__p2-fade" id="about__p2-fade"></div>
   </div>
 
-  <!-- 3-4. bekezdés — alapból rejtve -->
-  <p class="about__body about__extra" id="sw-about-extra-1">Budapest's hospitality infrastructure is equally impressive. The city is home to more than a dozen five-star international hotel brands, all within easy reach of the historic centre, and its restaurant scene has earned growing international recognition — with several Michelin-starred establishments that make for unforgettable gastronomy experiences. Add to this outstanding programme options — historical sights, thermal spas, riverbank cycling — and Budapest consistently delivers experiences that linger long after the journey ends.</p>
-  <p class="about__body about__extra" id="sw-about-extra-2">With one of the most competitive value propositions in Central Europe, excellent air connectivity to over 150 direct destinations, and a Blaguss team that has operated here for over four decades, your Budapest programme is in expert hands from the first site inspection to the final transfer.</p>
+  <!-- 3-6. bekezdés — alapból rejtve -->
+  <p class="about__body about__extra" id="sw-about-extra-1">Balaton stands out for its diverse and engaging programme possibilities. Cycling routes encircle the lake, providing scenic and active team-building opportunities, while sailing takes centre stage as one of the region's most distinctive experiences. Chartering a private yacht or organising a regatta-style event adds a memorable, high-end touch to any itinerary. Complementing this are adventure parks, unique outdoor venues and a wide range of curated activities designed to foster collaboration and creativity.</p>
+  <p class="about__body about__extra" id="sw-about-extra-2">The region's gastronomy and wine culture further elevate the experience. Family-owned wineries welcome guests with exclusive tastings and panoramic views, while local cuisine blends tradition with modern flair. From lakeside dining to refined culinary experiences, Balaton delivers authentic flavours in an inspiring setting.</p>
+  <p class="about__body about__extra" id="sw-about-extra-3">Cultural heritage and natural beauty are never far away. The elegant atmosphere of Balatonfüred and the historic charm of Keszthely provide ideal settings for evening programmes or off-site events, while the volcanic hills of the northern shore offer striking backdrops for unforgettable moments. Nearby, the Tapolca Lake Cave adds a unique and unexpected highlight to any programme.</p>
+  <p class="about__body about__extra" id="sw-about-extra-4">Beyond the peak season, Lake Balaton reveals a quieter, more intimate side. Autumn and winter bring a sense of calm, making it an ideal time for focused meetings, wellness retreats and exclusive gatherings. With fewer crowds and a more contemplative atmosphere, the region offers space to think, connect and create lasting impressions. Whichever season you choose, the Blaguss team transforms your stay in Hungary into a truly memorable experience.</p>
 
   <button class="about__more" id="about__more" aria-expanded="false">
     Continue reading <i class="about__more-icon">↓</i>
@@ -138,76 +143,76 @@
      ============================================================ -->
 <section class="venue">
   <div class="venue__head" data-reveal="fade-up">
-    <span class="sec__tag">Venue Types</span>
-    <h2>Where We Host Events</h2>
-    <p>From palaces to river boats — Budapest offers a venue for every occasion.</p>
+    <span class="sec__tag">Venues</span>
+    <h2>What to Visit</h2>
+    <p>Where historic charm meets natural beauty — discover Lake Balaton.</p>
   </div>
   <div class="venue__wrap" id="sw-venue-wrap">
     <div class="venue__bento" data-reveal-stagger>
 
-      <!-- 1. Historic Palaces — wide -->
+      <!-- 1. Sailing -->
       <div class="vcard">
-        <img src="VENUE_01_historic_palace.webp" alt="Historic palace gala venue Budapest">
+        <img src="BALATON_01_sailing.webp" alt="Sailing boats on Lake Balaton">
         <div class="vcard__overlay"></div>
         <div class="vcard__content">
-          <span class="vcard__badge">Gala & Dinners</span>
-          <h3 class="vcard__title">Historic Palace</h3>
-          <p class="vcard__sub">Gala dinners in grand 19th century settings</p>
+          <span class="vcard__badge">Activity</span>
+          <h3 class="vcard__title">Sailing</h3>
+          <p class="vcard__sub">Where freedom meets the horizon</p>
         </div>
       </div>
 
-      <!-- 2. 5-Star Hotels -->
+      <!-- 2. Balatonfüred -->
       <div class="vcard">
-        <img src="VENUE_02_hotels.webp" alt="5-star hotel conference facility Budapest">
+        <img src="BALATON_02_balatonfured.webp" alt="Tagore promenade Balatonfüred lakeside pergola">
         <div class="vcard__overlay"></div>
         <div class="vcard__content">
-          <span class="vcard__badge">Conferences</span>
-          <h3 class="vcard__title">5-Star Hotels</h3>
-          <p class="vcard__sub">International facilities & luxury accommodation</p>
+          <span class="vcard__badge">Historic Towns</span>
+          <h3 class="vcard__title">Balatonfüred</h3>
+          <p class="vcard__sub">Elegance, heritage and lakeside charm</p>
         </div>
       </div>
 
-      <!-- 3. Cultural Venues -->
+      <!-- 3. Keszthely -->
       <div class="vcard">
-        <img src="VENUE_03_cultural_opera.webp" alt="Hungarian State Opera House gala dinner">
+        <img src="BALATON_03_keszthely.webp" alt="Festetics Palace Keszthely aerial view">
         <div class="vcard__overlay"></div>
         <div class="vcard__content">
-          <span class="vcard__badge">Cultural</span>
-          <h3 class="vcard__title">Cultural Venues</h3>
-          <p class="vcard__sub">Opera House, art galleries</p>
+          <span class="vcard__badge">Culture</span>
+          <h3 class="vcard__title">Keszthely</h3>
+          <p class="vcard__sub">The grandeur of Festetics Palace</p>
         </div>
       </div>
 
-      <!-- 4. Danube Cruises -->
+      <!-- 4. Wine tasting -->
       <div class="vcard">
-        <img src="VENUE_04_danube.webp" alt="Danube river cruise dinner Budapest night">
+        <img src="BALATON_04_wine.webp" alt="Badacsony vineyards and Lake Balaton landscape">
         <div class="vcard__overlay"></div>
         <div class="vcard__content">
-          <span class="vcard__badge">Unique Experiences</span>
-          <h3 class="vcard__title">Danube Cruises</h3>
-          <p class="vcard__sub">Private boat dinners on the Danube</p>
+          <span class="vcard__badge">Gastronomy</span>
+          <h3 class="vcard__title">Wine tasting</h3>
+          <p class="vcard__sub">Discover the flavours of Balaton</p>
         </div>
       </div>
 
-      <!-- 5. Congress Centres -->
+      <!-- 5. Hévíz -->
       <div class="vcard">
-        <img src="VENUE_05_congress.webp" alt="Congress centre Budapest">
+        <img src="BALATON_05_heviz.webp" alt="Lake Hévíz thermal spa pavilions aerial view">
         <div class="vcard__overlay"></div>
         <div class="vcard__content">
-          <span class="vcard__badge">Congress</span>
-          <h3 class="vcard__title">Congress Centres</h3>
-          <p class="vcard__sub">Major exhibition & congress halls</p>
+          <span class="vcard__badge">Wellness</span>
+          <h3 class="vcard__title">Hévíz</h3>
+          <p class="vcard__sub">The world's largest natural thermal lake</p>
         </div>
       </div>
 
-      <!-- 6. Unique Spaces -->
+      <!-- 6. Winter at Lake Balaton -->
       <div class="vcard">
-        <img src="VENUE_06_unique.webp" alt="Atmospheric cave cellar venue with candlelight Budapest">
+        <img src="BALATON_06_winter.webp" alt="Frozen Lake Balaton in winter with Badacsony in background">
         <div class="vcard__overlay"></div>
         <div class="vcard__content">
-          <span class="vcard__badge">Off the Beaten Track</span>
-          <h3 class="vcard__title">Unique Spaces</h3>
-          <p class="vcard__sub">Caves, thermal baths, rooftop terraces</p>
+          <span class="vcard__badge">Serenity</span>
+          <h3 class="vcard__title">Winter at Lake Balaton</h3>
+          <p class="vcard__sub">Unforgettable moments on a frozen lake</p>
         </div>
       </div>
 
@@ -226,13 +231,13 @@
         <div class="tip__icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="32" height="32"><path fill="#ffffff" d="M99.998,25c13.803,0,26.307,5.603,35.361,14.65,9.06,9.06,14.669,21.571,14.669,35.368,0,20.446-6.591,27.95-12.97,35.199-5.176,5.887-10.191,11.593-10.191,26.165v25.94c0,3.477-1.428,6.643-3.722,8.944l-.019.019c-2.3,2.294-5.467,3.716-8.944,3.716h-28.363c-3.477,0-6.643-1.428-8.944-3.722l-.019-.019c-2.294-2.301-3.716-5.467-3.716-8.937v-25.74l-.006-.2c0-14.572-5.015-20.285-10.191-26.165-6.378-7.251-12.97-14.753-12.97-35.199,0-13.803,5.603-26.307,14.669-35.368,9.054-9.054,21.557-14.65,35.361-14.65h-.006ZM89.123,163c-1.829,0-3.309-1.48-3.309-3.309s1.48-3.309,3.309-3.309h21.758c1.829,0,3.309,1.48,3.309,3.309s-1.48,3.309-3.309,3.309h-21.758ZM89.123,151.692c-1.829,0-3.309-1.48-3.309-3.309s1.48-3.309,3.309-3.309h21.758c1.829,0,3.309,1.48,3.309,3.309s-1.48,3.309-3.309,3.309h-21.758ZM115.876,133.079h4.446c.711-14.643,6.159-20.848,11.768-27.225,5.564-6.326,11.315-12.866,11.315-30.832,0-11.994-4.853-22.845-12.698-30.689-7.852-7.852-18.709-12.711-30.708-12.711s-22.849,4.86-30.708,12.711c-7.845,7.845-12.698,18.695-12.698,30.689,0,17.964,5.751,24.504,11.315,30.832,5.609,6.385,11.057,12.582,11.768,27.225h4.446M90.744,133.072h5.945M103.307,133.072h5.945M167.296,110.066c1.577.905,2.12,2.921,1.215,4.498-.905,1.577-2.921,2.12-4.498,1.215l-8.356-4.827c-1.577-.905-2.12-2.921-1.215-4.498s2.921-2.12,4.498-1.215l8.356,4.827ZM44.347,39.086c1.577.905,2.12,2.921,1.215,4.498-.905,1.577-2.921,2.12-4.498,1.215l-8.356-4.827c-1.577-.905-2.12-2.921-1.215-4.498.905-1.577,2.921-2.12,4.498-1.215l8.356,4.827ZM164.001,34.258c1.577-.911,3.599-.375,4.511,1.202.911,1.577.375,3.599-1.202,4.511l-8.356,4.827c-1.577.911-3.599.375-4.511-1.202s-.375-3.599,1.202-4.511l8.356-4.827ZM41.065,105.245c1.577-.905,3.593-.362,4.498,1.215s.362,3.593-1.215,4.498l-8.356,4.827c-1.577.905-3.593.362-4.498-1.215-.905-1.577-.362-3.593,1.215-4.498l8.356-4.827ZM175.808,71.712c1.829,0,3.309,1.48,3.309,3.309s-1.48,3.309-3.309,3.309h-9.648c-1.829,0-3.309-1.48-3.309-3.309s1.48-3.309,3.309-3.309h9.648ZM33.84,71.712c1.829,0,3.309,1.48,3.309,3.309s-1.48,3.309-3.309,3.309h-9.648c-1.829,0-3.309-1.48-3.309-3.309s1.48-3.309,3.309-3.309h9.648ZM120.246,139.695h-40.498v22.625c0,1.674.679,3.186,1.771,4.278,1.105,1.105,2.617,1.784,4.291,1.784h28.363c1.674,0,3.192-.679,4.278-1.771,1.105-1.105,1.784-2.617,1.784-4.291v-22.625h.011Z"/></svg>
       </div>
-        <h3 class="tip__title">Combine Budapest with a countryside excursion</h3>
+        <h3 class="tip__title">The Scent of Lavender, All Year Round</h3>
         <span class="tip__tag">Pro Tip from our team</span>
       </div>
     </div>
     <div class="tip__right">
-      <p class="tip__body">The most memorable incentive programmes pair a Budapest city programme with a one-day excursion beyond the capital. <strong>Eger's Baroque old town and world-famous wine cellars</strong> make for an outstanding afternoon, while <strong>Lake Balaton</strong> — just 90 minutes away — offers a completely different atmosphere: lakeside restaurants, vineyards and a relaxed pace that recharges even the most demanding delegate group.</p>
-      <p class="tip__body">Blaguss handles all logistics seamlessly, from private coaches to venue bookings, ensuring a smooth transition between city buzz and countryside tranquillity. Many of our clients tell us the countryside day becomes the highlight they remember most.</p>
+      <p class="tip__body"><strong>Tihany</strong> is a destination where history meets fragrance. In June, the peninsula is wrapped in the scent and soft purple hues of blooming lavender, yet the experience lasts far beyond the summer season. Home to one of Hungary's most modern lavender distilleries, Tihany produces high-quality essential oils used in locally crafted natural cosmetics made from pure, regional ingredients. Visitors can explore this unique heritage year-round at the <strong>Lavender Tihany Visitor Centre</strong>, where an engaging exhibition reveals the story of lavender and its enduring connection to the region.</p>
+      <p class="tip__body">Blaguss ensures every detail is handled seamlessly, from private transfers to carefully selected venues. And even if Tihany is not part of your itinerary, its essence can still accompany your guests through elegant lavender-inspired gifts.</p>
 
     </div>
   </div>
@@ -244,8 +249,8 @@
 <div class="dest__cta-bar" data-reveal="fade-up">
   <div class="dest__cta-left">
     <span class="dest__cta-tag">Explore More</span>
-    <h3 class="dest__cta-title">Budapest is just the beginning —<br>discover all of Hungary</h3>
-    <p class="dest__cta-body">From the thermal shores of Lake Balaton to the wine hills of Tokaj and the baroque streets of Eger, Hungary offers an extraordinary variety of settings beyond the capital. Whether you're planning a multi-destination incentive programme or looking for the perfect day-trip to complement your Budapest event, we know every corner of the country.</p>
+    <h3 class="dest__cta-title">If Lake Balaton inspired you —<br>discover all that Hungary has to offer</h3>
+    <p class="dest__cta-body">From UNESCO World Heritage sites to the charming village of Szentendre and the baroque streets of Eger, Hungary offers an extraordinary variety of settings. Whether you are planning a multi-destination incentive programme or a tailored wellness escape, our team knows every corner of the country.</p>
   </div>
   <div class="dest__cta-right">
     <a href="blaguss_destinations.html" class="btn btn--primary btn--md">View All Destinations</a>
@@ -329,8 +334,8 @@
 <section class="cta" id="contact" data-reveal="fade-up">
   <div class="cta__left">
     <span class="sec__tag">Get in Touch</span>
-    <h2 class="cta__title">Plan Your Budapest Event</h2>
-    <p class="cta__body">Tell us about your group, your objectives and your dates. Our Budapest team will get back to you within 24 hours with a tailored proposal.</p>
+    <h2 class="cta__title">Plan Your Lake Balaton Event</h2>
+    <p class="cta__body">Tell us about your group, your objectives and your dates. Our team will get back to you within 24 hours with a tailored proposal.</p>
   </div>
   <div class="cta__form">
     <p style="font-size: 0.8125rem; font-weight: 600; color: #6B6B6B; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.625rem;">Select the service you're interested in.</p>

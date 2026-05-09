@@ -3,75 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Destinations — Blaguss Destination Management</title>
-  <meta name="description" content="From Budapest's grand venues to Hungary's hidden gems — we know every detail of every destination we offer.">
+  <title>Privacy Policy — Blaguss Destination Management</title>
+  <meta name="description" content="Privacy Policy of Blaguss Travel Ltd. — how we collect, use and protect your personal data.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="blaguss.css?v=002">
-    <style>
-/* Overrides for destinations */
+  <link rel="stylesheet" href="blaguss.css?v=002">
+  <style>
+/* Overrides for privacy page */
 
-.dest {
+.privacy {
   padding-top: var(--sw-section-py);
   padding-bottom: var(--sw-section-py);
-  border-bottom: 1px solid #F0F0EE;
+  padding-left: var(--sw-section-px);
+  padding-right: var(--sw-section-px);
 }
-.dcard {
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  transition: transform 0.3s ease;
+.privacy__inner {
+  max-width: 800px;
+  margin: 0 auto;
 }
-.dcard__title {
-  font-family: var(--sw-font-serif);
-  font-size: 1.375rem;
-  font-weight: 500;
-  color: var(--sw-white);
-  margin-bottom: 0.375rem;
-  line-height: 1.15;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-}
-.sec__body {
-  font-size: 1rem;
+.privacy__updated {
+  font-size: 0.8125rem;
   color: #6B6B6B;
-  line-height: 1.75;
-  max-width: 560px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
-.dest__cta-left {
-  flex: 1;
-  min-width: 0;
-}
-.dest__cta-title {
+.privacy h2 {
   font-family: var(--sw-font-serif);
-  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-size: clamp(1.5rem, 2.5vw, 1.875rem);
   font-weight: 500;
-  color: var(--sw-white);
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
-  line-height: 1.25;
+  color: var(--sw-dark);
+  line-height: 1.2;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
 }
-    </style>
+.privacy h2:first-of-type {
+  margin-top: 0;
+}
+.privacy h3 {
+  font-family: var(--sw-font-sans);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--sw-dark);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.privacy p {
+  font-size: 1rem;
+  color: var(--sw-dark-2);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.privacy ul {
+  margin: 0 0 1rem 1.25rem;
+  padding: 0;
+}
+.privacy ul li {
+  font-size: 1rem;
+  color: var(--sw-dark-2);
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+.privacy a {
+  color: var(--sw-red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s ease;
+}
+.privacy a:hover {
+  opacity: 0.75;
+}
 
-
+@media(max-width:992px) {
+  .foot__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+  </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="nav">
+<nav class="nav nav--solid">
   <a href="index.html" class="nav__brand">
     <img src="Blaguss_logo_v1.svg" alt="Blaguss Destination Management" class="nav__logo">
   </a>
   <div class="nav__right">
     <div class="nav__links">
       <a href="blaguss_about.html" class="nav__link">About Us</a>
-      <span class="nav__link active" style="cursor:default;">Destinations</span>
-      
+      <a href="blaguss_destinations.html" class="nav__link">Destinations</a>
       <a href="blaguss_blog.html" class="nav__link">Blog</a>
     </div>
     <div class="nav__btns">
@@ -90,7 +113,7 @@
   <div class="mmenu__inner">
     <nav class="mmenu__nav">
       <a href="blaguss_about.html" class="mmenu__link">About Us</a>
-      <a href="blaguss_destinations.html" class="mmenu__link active">Destinations</a>
+      <a href="blaguss_destinations.html" class="mmenu__link">Destinations</a>
       <a href="blaguss_blog.html" class="mmenu__link">Blog</a>
     </nav>
     <div class="mmenu__btns">
@@ -102,120 +125,79 @@
 </div>
 
 <!-- SZEKCIÓ: Hero -->
-<header class="dhero">
-  <div class="dhero__bg">
-    <img src="DEST_hero.webp" alt="Budapest sunset panorama" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
-  </div>
-  <div class="dhero__overlay"></div>
-  <div class="dhero__content">
-    <h1 class="dhero__title">Discover<br><span>Hungary</span></h1>
-    <p class="dhero__body">From Budapest's grand venues to Hungary's hidden gems — we know every detail of every destination we offer.</p>
+<header class="bhero">
+  <div class="bhero__content">
+    <span class="bhero__tag">Legal</span>
+    <h1 class="bhero__title">Privacy<br><span>Policy</span></h1>
+    <p class="bhero__body">How we collect, use and protect your personal data — in accordance with the EU General Data Protection Regulation (GDPR).</p>
   </div>
 </header>
 
-<!-- SZEKCIÓ: Destinations bento -->
-<section class="dest">
-  <span class="sec__tag">Where We Operate</span>
-  <h2 class="sec__title">Destinations We Master</h2>
-  <p class="sec__body">From Budapest's iconic venues to Hungary's hidden gems — we bring local knowledge to every destination we offer.</p>
+<!-- SZEKCIÓ: Privacy content -->
+<section class="privacy">
+  <div class="privacy__inner">
 
-  <div class="dest__bento dest__bento--grid">
+    <p class="privacy__updated">Last updated: 7 May 2026</p>
 
-    <!-- Budapest — featured, bal felső 2×2 -->
-    <a href="blaguss_budapest.html" class="dcard dcard--featured">
-      <div class="dcard__bg">
-        <img src="DEST_Budapest.webp" alt="Budapest">
-      </div>
-      <div class="dcard__overlay"></div>
-      <div class="dcard__content">
-        <span class="dcard__badge">✦ Featured Destination · Capital</span>
-        <h3 class="dcard__title">Budapest</h3>
-        <p class="dcard__sub">Hungary's capital — grand venues, rich history, and world-class hospitality.</p>
-        <span class="btn btn--primary btn--sm">Explore Budapest →</span>
-      </div>
-    </a>
+    <h2>1. Data Controller</h2>
+    <p>This Privacy Policy applies to personal data collected by <strong>Blaguss Travel Ltd.</strong> (registered in Budapest, Hungary), the operator of this website. For any privacy-related questions, please contact us at <a href="mailto:dmc@blaguss.hu">dmc@blaguss.hu</a>.</p>
 
-    <!-- Lake Balaton — jobb felső, span 2 col, row 1 -->
-    <a href="blaguss_balaton.html" class="dcard dcard--balaton">
-      <div class="dcard__bg">
-        <img src="DEST_Balaton.webp" alt="Lake Balaton">
-      </div>
-      <div class="dcard__overlay"></div>
-      <div class="dcard__content">
-        <span class="dcard__badge">Lake · Retreat</span>
-        <h3 class="dcard__title">Lake Balaton</h3>
-        <p class="dcard__sub">Central Europe's largest lake, perfect for exclusive retreats and team experiences.</p>
-        <span class="btn btn--white btn--sm">Explore →</span>
-      </div>
-    </a>
+    <h2>2. What Data We Collect</h2>
+    <p>We collect personal data that you voluntarily provide to us when you fill in our contact or enquiry forms, including:</p>
+    <ul>
+      <li>Name and organisation</li>
+      <li>Email address</li>
+      <li>Phone number</li>
+      <li>Any additional information you choose to share in the message field</li>
+    </ul>
+    <p>We may also collect technical information through cookies and similar technologies, such as your IP address, browser type and pages visited, in order to improve the functionality of our website.</p>
 
-    <!-- Wine regions — jobb oldal, sor 2, col 3 -->
-    <a href="blaguss_wine_regions.html" class="dcard dcard--wine">
-      <div class="dcard__bg">
-        <img src="DEST_Tokaj.webp" alt="Wine regions">
-      </div>
-      <div class="dcard__overlay"></div>
-      <div class="dcard__content">
-        <span class="dcard__badge">Wine · Gastronomy</span>
-        <h3 class="dcard__title">Wine regions</h3>
-        <p class="dcard__sub">Centuries-old tradition, historic cellars, and unforgettable tasting experiences.</p>
-        <span class="btn btn--white btn--sm">Explore →</span>
-      </div>
-    </a>
+    <h2>3. Purpose of Data Processing</h2>
+    <p>We process your personal data for the following purposes:</p>
+    <ul>
+      <li>To respond to your enquiries and provide you with a tailored proposal</li>
+      <li>To deliver the services you have requested from us</li>
+      <li>To communicate important information related to ongoing projects</li>
+      <li>To comply with our legal and contractual obligations</li>
+      <li>To improve the quality and performance of our website</li>
+    </ul>
 
-    <!-- UNESCO Heritage Sites — jobb oldal, sor 2, col 4 -->
-    <a href="blaguss_unesco.html" class="dcard dcard--unesco">
-      <div class="dcard__bg">
-        <img src="DEST_Pecs.webp" alt="UNESCO Heritage Sites">
-      </div>
-      <div class="dcard__overlay"></div>
-      <div class="dcard__content">
-        <span class="dcard__badge">History</span>
-        <h3 class="dcard__title">UNESCO Heritage Sites</h3>
-        <p class="dcard__sub">A unique journey through centuries of history and heritage.</p>
-        <span class="btn btn--white btn--sm">Explore →</span>
-      </div>
-    </a>
+    <h2>4. Legal Basis</h2>
+    <p>We process your personal data based on your explicit consent (Article 6(1)(a) GDPR), the necessity to perform a contract or take pre-contractual steps at your request (Article 6(1)(b) GDPR), and our legitimate interests in operating and improving our business (Article 6(1)(f) GDPR).</p>
 
-    <!-- Day trips from Budapest — bal alsó, span 2 col, row 3 -->
-    <a href="blaguss_day_trips.html" class="dcard dcard--daytrips">
-      <div class="dcard__bg">
-        <img src="DEST_Daytrips.webp" alt="Day trips from Budapest">
-      </div>
-      <div class="dcard__overlay"></div>
-      <div class="dcard__content">
-        <span class="dcard__badge">Culture</span>
-        <h3 class="dcard__title">Day trips from Budapest</h3>
-        <p class="dcard__sub">Escape the city to discover historic towns and scenic landscapes.</p>
-        <span class="btn btn--white btn--sm">Explore →</span>
-      </div>
-    </a>
+    <h2>5. Data Retention</h2>
+    <p>We retain your personal data only for as long as necessary to fulfil the purposes for which it was collected, or as required by applicable law. Enquiry data not leading to a contract is typically retained for up to 12 months. Contractual data is retained in accordance with applicable accounting and tax regulations.</p>
 
-    <!-- Thermal baths — jobb alsó, span 2 col, row 3 -->
-    <a href="blaguss_thermal_spas.html" class="dcard dcard--thermal">
-      <div class="dcard__bg">
-        <img src="DEST_Szechenyi.webp" alt="Thermal baths">
-      </div>
-      <div class="dcard__overlay"></div>
-      <div class="dcard__content">
-        <span class="dcard__badge">Relaxation</span>
-        <h3 class="dcard__title">Thermal baths</h3>
-        <p class="dcard__sub">Mineral-rich waters promote health, wellbeing, and deep relaxation.</p>
-        <span class="btn btn--white btn--sm">Explore →</span>
-      </div>
-    </a>
+    <h2>6. Data Sharing</h2>
+    <p>We do not sell or rent your personal data. We may share your data with carefully selected service providers (such as hosting providers, email service providers and trusted partners) who assist us in delivering our services, strictly under appropriate confidentiality and data protection agreements.</p>
+
+    <h2>7. Your Rights</h2>
+    <p>Under the GDPR, you have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Right of access</strong> — to obtain confirmation of, and access to, your personal data</li>
+      <li><strong>Right to rectification</strong> — to correct inaccurate or incomplete data</li>
+      <li><strong>Right to erasure</strong> — to request deletion of your data under certain conditions</li>
+      <li><strong>Right to restrict processing</strong> — to limit how we use your data</li>
+      <li><strong>Right to data portability</strong> — to receive your data in a structured, machine-readable format</li>
+      <li><strong>Right to object</strong> — to object to certain types of processing</li>
+      <li><strong>Right to withdraw consent</strong> — at any time, without affecting the lawfulness of prior processing</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at <a href="mailto:dmc@blaguss.hu">dmc@blaguss.hu</a>.</p>
+
+    <h2>8. Cookies</h2>
+    <p>Our website uses cookies to enhance user experience and analyse website performance. You can manage your cookie preferences through your browser settings. Disabling certain cookies may affect the functionality of the website.</p>
+
+    <h2>9. Data Security</h2>
+    <p>We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, alteration, disclosure or destruction. While no method of transmission over the internet is fully secure, we continuously work to maintain a high standard of data protection.</p>
+
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. The updated version will be posted on this page with a revised "Last updated" date.</p>
+
+    <h2>11. Supervisory Authority</h2>
+    <p>If you believe that our processing of your personal data infringes the GDPR, you have the right to lodge a complaint with the Hungarian National Authority for Data Protection and Freedom of Information (NAIH). Contact details are available at <a href="https://naih.hu" target="_blank" rel="noopener">naih.hu</a>.</p>
 
   </div>
 </section>
-
-<!-- SZEKCIÓ: CTA banner -->
-<div class="dest__cta" data-reveal="fade-up">
-  <div class="dest__cta-left">
-    <p class="dest__cta-title">Don't see your destination?</p>
-    <p class="dest__cta-sub">We cover all of Hungary — countryside castles, thermal resorts, rural estates. Tell us what you have in mind.</p>
-  </div>
-  <a href="blaguss_contact.html" class="btn btn--primary btn--md">Request a Custom Programme</a>
-</div>
 
 <!-- FOOTER -->
 <footer class="foot">
@@ -227,9 +209,9 @@
     <div>
       <span class="foot__col-title">Navigation</span>
       <a href="blaguss_about.html" class="foot__link">About Us</a>
-      <span class="foot__link" style="cursor:default;opacity:0.65;">Destinations</span>
-            <a href="blaguss_blog.html" class="foot__link">Blog</a>
-      <a href="blaguss_privacy.html" class="foot__link">Privacy Policy</a>
+      <a href="blaguss_destinations.html" class="foot__link">Destinations</a>
+      <a href="blaguss_blog.html" class="foot__link">Blog</a>
+      <span class="foot__link active" style="cursor:default;">Privacy Policy</span>
     </div>
     <div>
       <span class="foot__col-title">Services</span>
@@ -260,12 +242,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ---- Navbar scroll — transzparens → fehér ---- */
-  const navbar = document.querySelector('.nav');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-
   /* ---- Hamburger ---- */
   const hamburger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mmenu');
@@ -273,8 +249,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const isOpen = mobileMenu.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
-    if (isOpen) navbar.classList.add('scrolled');
-    else if (window.scrollY <= 60) navbar.classList.remove('scrolled');
   });
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
@@ -283,7 +257,6 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = '';
     });
   });
-  // Close on outside tap
   document.addEventListener('click', e => {
     if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
       mobileMenu.classList.remove('open');
@@ -291,19 +264,6 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = '';
     }
   });
-
-  /* ---- Scroll reveal ---- */
-  const reveals = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => obs.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add('is-visible'));
-  }
 
 });
 </script>

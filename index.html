@@ -165,7 +165,7 @@
 <!-- NAVBAR -->
 <nav class="nav">
   <a href="index.html" class="nav__brand">
-    <img src="Blaguss_DMC_Logo.png" alt="Blaguss Destination Management" class="nav__logo">
+    <img src="Blaguss_logo_v1.svg" alt="Blaguss Destination Management" class="nav__logo">
   </a>
   <div class="nav__right">
     <div class="nav__links">
@@ -207,13 +207,13 @@
   <img src="BLAGUSS_index_Hero_Fallback.webp" alt="Budapest — Bridge to Hungary" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; z-index:0;">
   <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; z-index:1;" id="sw-hero-video">
     <source src="BLAGUSS_index_Hero.webm" type="video/webm">
-    <source src="BLAGUSS_index_Hero.mp4" type="video/mp4">
+    <source src="BLAGUSS_index_Hero_Fallback.mp4" type="video/mp4">
   </video>
   <div class="hero__overlay"></div>
   <div class="hero__content" data-reveal="fade-up">
-    <span class="sec__tag">Since 1984 · Hungary's DMC Leader</span>
-    <h1 class="hero__title">Bridge to<br><span class="hero__accent">Hungary</span></h1>
-    <p class="hero__sub">Destination Management since 1984</p>
+    <span class="sec__tag">Full-Service Travel &amp; Event Solutions</span>
+    <h1 class="hero__title">Your Bridge to<br><span class="hero__accent">Hungary</span></h1>
+    <p class="hero__sub">Destination Management since 1987</p>
     <p class="hero__body">Four decades of trusted expertise, creative thinking, and flawless execution — bringing Hungary to the world's most discerning clients.</p>
     <div class="hero__ctas">
       <a href="#services" class="btn btn--primary btn--lg">Explore Our Services</a>
@@ -230,7 +230,7 @@
 <section class="about">
   <div style="max-width: 900px; margin: 0 auto;" data-reveal="fade-up">
     <h2 class="about__title">40 Years of Bridging the World to Hungary</h2>
-    <p class="about__body">Since 1984, Blaguss DMC has been the partner of choice for international organizations, corporations, and event professionals seeking an uncompromising standard of service in Hungary and the wider region.</p>
+    <p class="about__body">Since 1987, Blaguss DMC has been the partner of choice for international organizations, corporations, and event professionals seeking an uncompromising standard of service in Hungary and the wider region.</p>
     <a href="blaguss_about.html" class="btn btn--outline btn--md">About Us</a>
   </div>
 </section>
@@ -238,11 +238,20 @@
 <!-- SZEKCIÓ: Logo Marquee -->
 <section class="mq">
   <p class="mq__title">Recognised By the Industry's Leading Associations</p>
-  <div class="mq__track">
-    <div class="mq__logo"><img src="LOGO_MUISZ.png" alt="MUISZ"></div>
-    <div class="mq__logo"><img src="LOGO_Maresz.png" alt="Maresz" onerror="this.src='LOGO_MARESZ.png';this.onerror=null;"></div>
-    <div class="mq__logo"><img src="LOGO_VisitHungary.png" alt="Visit Hungary"></div>
-    <div class="mq__logo"><img src="LOGO_Euromic.png" alt="Euromic"></div>
+  <div class="mq__grid">
+    <div class="mq__featured">
+      <a href="https://www.euromic.com/" target="_blank" rel="noopener" class="mq__featured-logo">
+        <img src="LOGO_Euromic.png" alt="Euromic">
+      </a>
+      <p class="mq__featured-caption">Blaguss DMC Hungary, proud member of euromic</p>
+    </div>
+    <div class="mq__divider" aria-hidden="true"></div>
+    <div class="mq__track">
+      <div class="mq__logo"><img src="LOGO_HTAQ.png" alt="Hungarian Tourism Agency Qualified Partner"></div>
+      <div class="mq__logo"><img src="LOGO_MUISZ.png" alt="MUISZ"></div>
+      <div class="mq__logo"><img src="LOGO_MARESZ.png" alt="MaReSz"></div>
+      <div class="mq__logo"><img src="LOGO_IATA.png" alt="IATA"></div>
+    </div>
   </div>
 </section>
 
@@ -278,7 +287,7 @@
       <div class="cservice__content">
         <span class="cservice__tag">Professional Congress Organisation</span>
         <h3 class="cservice__title">PCO Services</h3>
-        <p class="cservice__body">Professional congress organisation for international conferences, associations, and academic events of any scale.</p>
+        <p class="cservice__body">Full-service PCO solutions for international congresses and conferences in Budapest and across Europe.</p>
         <a href="blaguss_pco.html" class="btn btn--primary btn--md">Discover PCO</a>
       </div>
     </article>
@@ -290,7 +299,7 @@
   <div class="dest__head" data-reveal="fade-up">
     <span class="sec__tag">Where We Operate</span>
     <h2>Destinations We Master</h2>
-    <p>From Budapest's grand venues to Hungary's hidden gems — we know every detail of every destination we offer.</p>
+    <p>From Budapest's iconic venues to Hungary's hidden gems — we bring local knowledge to every destination we offer.</p>
   </div>
 
   <div class="dest__wrap dest__wrap--scroll">
@@ -309,7 +318,7 @@
       </a>
 
       <!-- Lake Balaton — széles, felső sor -->
-      <a href="blaguss_destinations.html" class="dcard dcard--balaton">
+      <a href="blaguss_balaton.html" class="dcard dcard--balaton">
         <img src="DEST_Balaton.webp" alt="Lake Balaton" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="dcard__ph" style="background: #0d2137; opacity:0;"></div>
         <div class="dcard__overlay"></div>
@@ -320,62 +329,51 @@
         </div>
       </a>
 
-      <!-- Eger — felső sor -->
-      <a href="blaguss_destinations.html" class="dcard dcard--eger">
-        <img src="DEST_Eger.webp" alt="Eger" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
+      <!-- Wine regions -->
+      <a href="blaguss_wine_regions.html" class="dcard dcard--eger">
+        <img src="DEST_Tokaj.webp" alt="Wine regions" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="dcard__ph" style="background: #1f1209; opacity:0;"></div>
         <div class="dcard__overlay"></div>
         <div class="dcard__content">
-          <span class="dcard__badge">Wine Country</span>
-          <h3 class="dcard__title">Eger</h3>
-          <p class="dcard__sub">Historic wine country with a distinct character and intimate event spaces.</p>
+          <span class="dcard__badge">Wine · Gastronomy</span>
+          <h3 class="dcard__title">Wine regions</h3>
+          <p class="dcard__sub">Centuries-old tradition, historic cellars, and unforgettable tasting experiences.</p>
         </div>
       </a>
 
-      <!-- Debrecen — alsó sor -->
-      <a href="blaguss_destinations.html" class="dcard dcard--debrecen">
-        <img src="DEST_Debrecen.webp" alt="Debrecen" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
+      <!-- Day trips from Budapest -->
+      <a href="blaguss_day_trips.html" class="dcard dcard--debrecen">
+        <img src="DEST_Daytrips.webp" alt="Day trips from Budapest" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="dcard__ph" style="background: #111827; opacity:0;"></div>
         <div class="dcard__overlay"></div>
         <div class="dcard__content">
-          <span class="dcard__badge">City</span>
-          <h3 class="dcard__title">Debrecen</h3>
-          <p class="dcard__sub">Hungary's second city — modern infrastructure with authentic cultural depth.</p>
+          <span class="dcard__badge">Culture</span>
+          <h3 class="dcard__title">Day trips from Budapest</h3>
+          <p class="dcard__sub">Escape the city to discover historic towns and scenic landscapes.</p>
         </div>
       </a>
 
-      <!-- Pécs — alsó sor -->
-      <a href="blaguss_destinations.html" class="dcard dcard--pecs">
-        <img src="DEST_Pecs.webp" alt="Pécs" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
+      <!-- UNESCO Heritage Sites -->
+      <a href="blaguss_unesco.html" class="dcard dcard--pecs">
+        <img src="DEST_Pecs.webp" alt="UNESCO Heritage Sites" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="dcard__ph" style="background: #1a0d1a; opacity:0;"></div>
         <div class="dcard__overlay"></div>
         <div class="dcard__content">
-          <span class="dcard__badge">UNESCO Heritage</span>
-          <h3 class="dcard__title">Pécs</h3>
-          <p class="dcard__sub">A UNESCO-listed cultural gem with a Mediterranean atmosphere.</p>
+          <span class="dcard__badge">History</span>
+          <h3 class="dcard__title">UNESCO Heritage Sites</h3>
+          <p class="dcard__sub">A unique journey through centuries of history and heritage.</p>
         </div>
       </a>
 
-      <!-- Tokaj — alsó sor -->
-      <a href="blaguss_destinations.html" class="dcard dcard--tokaj">
-        <img src="DEST_Tokaj.webp" alt="Tokaj" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
+      <!-- Thermal baths -->
+      <a href="blaguss_thermal_spas.html" class="dcard dcard--tokaj">
+        <img src="DEST_Thermal.webp" alt="Thermal baths" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="dcard__ph" style="background: #1a1200; opacity:0;"></div>
         <div class="dcard__overlay"></div>
         <div class="dcard__content">
-          <span class="dcard__badge">UNESCO Wine</span>
-          <h3 class="dcard__title">Tokaj</h3>
-          <p class="dcard__sub">A UNESCO-listed wine region of international fame, celebrated for its unique Aszú wines.</p>
-        </div>
-      </a>
-
-      <!-- Győr — jobb oszlop, 2 sor, kifut -->
-      <a href="blaguss_destinations.html" class="dcard dcard--gyor">
-        <div class="dcard__ph" style="background: #0d1a0d;"></div>
-        <div class="dcard__overlay"></div>
-        <div class="dcard__content">
-          <span class="dcard__badge">Baroque City</span>
-          <h3 class="dcard__title">Győr</h3>
-          <p class="dcard__sub">Baroque old town, well connected</p>
+          <span class="dcard__badge">Relaxation</span>
+          <h3 class="dcard__title">Thermal baths</h3>
+          <p class="dcard__sub">Mineral-rich waters promote health, wellbeing, and deep relaxation.</p>
         </div>
       </a>
 
@@ -542,7 +540,7 @@
   <div class="cta__left">
     <span class="sec__tag">Get in Touch</span>
     <h2 class="cta__title">Let's Create Something Extraordinary</h2>
-    <p class="cta__body">Tell us about your project. Our team will get back to you within 24 hours.</p>
+    <p class="cta__body">What's on your mind? Let's start the conversation — our team will respond within 24 hours.</p>
   </div>
   <div class="cta__form">
     <p style="font-size: 0.8125rem; font-weight: 600; color: #6B6B6B; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.625rem;">Select the service you're interested in.</p>
@@ -560,12 +558,11 @@
     </div>
     <input type="hidden" id="service-type" value="dmc">
     <input type="text" class="form__input" placeholder="Name">
-    <input type="email" class="form__input" placeholder="e-mail address">
+    <input type="email" class="form__input" placeholder="Email Address">
     <input type="tel" class="form__input" placeholder="Phone">
     <textarea class="form__textarea" placeholder="Message"></textarea>
     <div class="form__checks">
-      <label class="form__check-label"><input type="checkbox"> GDPR</label>
-      <label class="form__check-label"><input type="checkbox"> Newsletter</label>
+      <label class="form__check-label"><input type="checkbox" required> I accept the <a href="blaguss_privacy.html" class="form__check-link">Data Privacy Policy</a></label>
     </div>
     <button class="btn btn--primary btn--lg form__submit">Send Enquiry</button>
   </div>
@@ -576,16 +573,15 @@
 <footer class="foot">
   <div class="foot__grid">
     <div>
-      <span class="foot__logo">BLAGUSS</span>
-      <p style="font-size: 0.5625rem; color: rgba(255,255,255,0.25); margin-bottom: 0.25rem;">Destination Management</p>
-      <span class="foot__tagline">Bridge to Hungary</span>
+      <img src="Blaguss_logo_v1.svg" alt="Blaguss Destination Management" class="foot__logo">
+      <span class="foot__tagline">Your Bridge to Hungary</span>
     </div>
     <div>
       <span class="foot__col-title">Navigation</span>
       <a href="blaguss_about.html" class="foot__link">About Us</a>
       <a href="blaguss_destinations.html" class="foot__link">Destinations</a>
             <a href="blaguss_blog.html" class="foot__link">Blog</a>
-      <span class="foot__link" style="cursor:default;opacity:0.5;">GDPR</span>
+      <a href="blaguss_privacy.html" class="foot__link">Privacy Policy</a>
     </div>
     <div>
       <span class="foot__col-title">Services</span>
@@ -603,7 +599,7 @@
     </div>
   </div>
   <div class="foot__bottom">
-    <span class="foot__copy">© 2026 Blaguss Destination Management Kft.</span>
+    <span class="foot__copy">© 2026 Blaguss Travel Ltd.</span>
     <div style="display: flex; align-items: center; gap: 0.5rem;">
       <span style="color: rgba(255,255,255,0.18); font-size: 0.8125rem;">Made by</span>
       <a href="https://simpleweb.hu" target="_blank" style="display: inline-flex; align-items: center; opacity: 0.5; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.5'">
@@ -929,6 +925,11 @@ document.addEventListener('DOMContentLoaded', function () {
       if (stat1Num) { stat1Num.classList.remove('counting'); stat1Num.textContent = '0'; }
       if (stat2Num) { stat2Num.classList.remove('counting'); stat2Num.textContent = '0'; }
 
+      // Csempék random átrendezése a két sorban (csak desktop layoutban)
+      swRefShuffleBoxes();
+      // Mobil layout magasság-egyenlítés újra (új utolsó 2 cellára)
+      if (typeof equalizeRefBoxes === 'function') equalizeRefBoxes();
+
       swRefAnimateIn();
 
       // 3. Inline transition override törlése — CSS veszi vissza az irányítást
@@ -942,6 +943,44 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
     }, 420);
+  }
+
+  // Csempék random átrendezése — DOM sorrend cserélése a két ref__bento-row-ban.
+  // A CSS grid a DOM sorrendet követi, így a vizuális elhelyezkedés is randomizálódik.
+  // A :nth-child alapú reveal animáció továbbra is jól működik (a pozícióhoz
+  // tartozó animáció kerül a hova kerülő cellára).
+  let swRefLastOrder = null;
+  function swRefShuffleBoxes() {
+    if (!refBento) return;
+    const rows = refBento.querySelectorAll('.ref__bento-row');
+    if (rows.length !== 2) return;
+    const allBoxes = Array.from(refBento.querySelectorAll('.ref__box'));
+    if (allBoxes.length !== 6) return;
+
+    // Permutáció generálása, ami eltér az előzőtől
+    function shuffle(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+    let order;
+    let attempts = 0;
+    do {
+      order = shuffle([0, 1, 2, 3, 4, 5]);
+      attempts++;
+    } while (
+      swRefLastOrder &&
+      order.every((v, i) => v === swRefLastOrder[i]) &&
+      attempts < 10
+    );
+    swRefLastOrder = order;
+
+    // Boxok átrakása a két sorba, 3-3 cella
+    order.slice(0, 3).forEach(idx => rows[0].appendChild(allBoxes[idx]));
+    order.slice(3, 6).forEach(idx => rows[1].appendChild(allBoxes[idx]));
   }
 
   // Nyíl gombok
