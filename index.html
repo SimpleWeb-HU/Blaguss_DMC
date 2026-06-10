@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="blaguss.css?v=002">
+    <link rel="stylesheet" href="blaguss.css?v=007">
     <style>
 /* Overrides for index */
 
@@ -239,18 +239,23 @@
 <section class="mq">
   <p class="mq__title">Recognised By the Industry's Leading Associations</p>
   <div class="mq__grid">
-    <div class="mq__featured">
-      <a href="https://www.euromic.com/" target="_blank" rel="noopener" class="mq__featured-logo">
-        <img src="LOGO_Euromic.png" alt="Euromic">
-      </a>
-      <p class="mq__featured-caption">Blaguss DMC Hungary, proud member of euromic</p>
-    </div>
-    <div class="mq__divider" aria-hidden="true"></div>
     <div class="mq__track">
       <div class="mq__logo"><img src="LOGO_HTAQ.png" alt="Hungarian Tourism Agency Qualified Partner"></div>
-      <div class="mq__logo"><img src="LOGO_MUISZ.png" alt="MUISZ"></div>
       <div class="mq__logo"><img src="LOGO_MARESZ.png" alt="MaReSz"></div>
+      <div class="mq__logo"><img src="LOGO_MUISZ.png" alt="MUISZ"></div>
       <div class="mq__logo"><img src="LOGO_IATA.png" alt="IATA"></div>
+    </div>
+    <div class="mq__feature-row">
+      <div class="mq__featured">
+        <a href="https://www.euromic.com/" target="_blank" rel="noopener" class="mq__featured-logo">
+          <img src="LOGO_Euromic.png" alt="Euromic">
+        </a>
+        <p class="mq__featured-caption">Blaguss DMC Hungary, proud member of euromic</p>
+      </div>
+      <div class="mq__cert">
+        <img src="sticker_certified_2026_en.png" alt="Certified 2026">
+        <p class="mq__featured-caption">Blaguss DMC Hungary, certified for sustainable tourism</p>
+      </div>
     </div>
   </div>
 </section>
@@ -261,12 +266,12 @@
     <h2>Our Expertise</h2>
   </div>
   <div class="expertise__grid" data-reveal-stagger>
-    <article class="cservice" id="sw-dmc-card">
-      <img src="DMC_kartya_Budapest.webp" alt="DMC Services — Gala dinner" class="cservice__img">
-      <!-- DMC videó: ide kerül majd -->
-      <video class="cservice__vid" src="DMC_kartya_hover.mp4" muted loop playsinline preload="none"></video>
-      <div class="cservice__overlay"></div>
-      <div class="cservice__content">
+    <article class="cservice cservice--dmc" id="sw-dmc-card">
+      <div class="cservice__media">
+        <img src="DMC_kartya_Budapest.webp" alt="DMC Services — Gala dinner" class="cservice__img">
+        <video class="cservice__vid" src="DMC_kartya_hover.webm" muted loop playsinline preload="none"></video>
+      </div>
+      <div class="cservice__panel">
         <span class="cservice__tag">Destination Management</span>
         <h3 class="cservice__title">DMC Services</h3>
         <p class="cservice__body">End-to-end destination management for corporate groups, incentive travel, and special events across Hungary.</p>
@@ -280,15 +285,16 @@
         <div class="or__line"></div>
       </div>
     </div>
-    <article class="cservice" id="sw-pco-card">
-      <img src="PCO_kartya_Budapest.webp" alt="PCO Services — Conference speaker" class="cservice__img">
-      <video class="cservice__vid" src="PCO_kartya_hover.mp4" muted loop playsinline preload="none"></video>
-      <div class="cservice__overlay"></div>
-      <div class="cservice__content">
+    <article class="cservice cservice--pco" id="sw-pco-card">
+      <div class="cservice__media">
+        <img src="PCO_kartya_Budapest.webp" alt="PCO Services — Conference speaker" class="cservice__img">
+        <video class="cservice__vid" src="PCO_kartya_hover.webm" muted loop playsinline preload="none"></video>
+      </div>
+      <div class="cservice__panel">
         <span class="cservice__tag">Professional Congress Organisation</span>
         <h3 class="cservice__title">PCO Services</h3>
         <p class="cservice__body">Full-service PCO solutions for international congresses and conferences in Budapest and across Europe.</p>
-        <a href="blaguss_pco.html" class="btn btn--primary btn--md">Discover PCO</a>
+        <a href="blaguss_pco.html" class="btn btn--white btn--md">Discover PCO</a>
       </div>
     </article>
   </div>
@@ -367,12 +373,12 @@
 
       <!-- Thermal baths -->
       <a href="blaguss_thermal_spas.html" class="dcard dcard--tokaj">
-        <img src="DEST_Thermal.webp" alt="Thermal baths" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
+        <img src="DEST_Thermal.webp" alt="Thermal spas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;transition:transform 0.55s ease;">
         <div class="dcard__ph" style="background: #1a1200; opacity:0;"></div>
         <div class="dcard__overlay"></div>
         <div class="dcard__content">
           <span class="dcard__badge">Relaxation</span>
-          <h3 class="dcard__title">Thermal baths</h3>
+          <h3 class="dcard__title">Thermal spas</h3>
           <p class="dcard__sub">Mineral-rich waters promote health, wellbeing, and deep relaxation.</p>
         </div>
       </a>
@@ -392,6 +398,7 @@
     </div>
     
   </div>
+  <div class="ref__outer-wrap">
   <div class="ref__outer">
 
     <!-- Event fejléc -->
@@ -464,6 +471,7 @@
       </div>
 
     </div>
+  </div>
   </div>
 
 </section>
